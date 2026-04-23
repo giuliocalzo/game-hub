@@ -62,6 +62,13 @@ import MakeTen from './components/games/MakeTen';
 import TellingTime from './components/games/TellingTime';
 import NumberPattern from './components/games/NumberPattern';
 import Subitize from './components/games/Subitize';
+
+import Piano from './components/games/Piano';
+import DrumPad from './components/games/DrumPad';
+import Xylophone from './components/games/Xylophone';
+import WordScramble from './components/games/WordScramble';
+import AlphabetOrder from './components/games/AlphabetOrder';
+import HiddenPicture from './components/games/HiddenPicture';
 // New educational
 import Hangman from './components/games/Hangman';
 import WordSearch from './components/games/WordSearch';
@@ -554,6 +561,44 @@ const AVAILABLE_GAMES: Game[] = [
     category: 'math',
   },
 
+  // Music
+  {
+    id: 'piano',
+    name: 'Piano',
+    description: 'Two-octave playable piano',
+    tagline: 'Play notes with your mouse, touch, or keyboard.',
+    icon: '🎹',
+    gradient: 'from-gray-700 to-gray-900',
+    difficulty: 'Easy',
+    supportsBot: false,
+    solo: true,
+    category: 'music',
+  },
+  {
+    id: 'drum-pad',
+    name: 'Drum Pad',
+    description: 'Tap drums and make a beat',
+    tagline: 'Nine pads, one groove.',
+    icon: '🥁',
+    gradient: 'from-rose-500 to-red-700',
+    difficulty: 'Easy',
+    supportsBot: false,
+    solo: true,
+    category: 'music',
+  },
+  {
+    id: 'xylophone',
+    name: 'Xylophone',
+    description: 'Tap the colored bars',
+    tagline: 'Play a tune on the colorful bars.',
+    icon: '🎶',
+    gradient: 'from-amber-400 to-orange-500',
+    difficulty: 'Easy',
+    supportsBot: false,
+    solo: true,
+    category: 'music',
+  },
+
   // Puzzle
   {
     id: 'memory',
@@ -627,6 +672,18 @@ const AVAILABLE_GAMES: Game[] = [
     solo: true,
     category: 'puzzle',
   },
+  {
+    id: 'hidden-picture',
+    name: 'Hidden Picture',
+    description: 'Spot hidden objects in a scene',
+    tagline: 'Find every hidden object as fast as you can.',
+    icon: '🔎',
+    gradient: 'from-teal-400 to-emerald-600',
+    difficulty: 'Easy',
+    supportsBot: false,
+    solo: true,
+    category: 'puzzle',
+  },
 
   // Educational
   {
@@ -684,6 +741,30 @@ const AVAILABLE_GAMES: Game[] = [
     tagline: 'Type sentences to build speed and accuracy.',
     icon: '⌨️',
     gradient: 'from-gray-500 to-gray-700',
+    difficulty: 'Easy',
+    supportsBot: false,
+    solo: true,
+    category: 'educational',
+  },
+  {
+    id: 'word-scramble',
+    name: 'Word Scramble',
+    description: 'Unscramble jumbled letters',
+    tagline: 'Click the letters in order to rebuild the word.',
+    icon: '🔤',
+    gradient: 'from-lime-500 to-emerald-600',
+    difficulty: 'Easy',
+    supportsBot: false,
+    solo: true,
+    category: 'educational',
+  },
+  {
+    id: 'alphabet-order',
+    name: 'Alphabet Order',
+    description: 'Tap letters A–Z in order',
+    tagline: 'Hit the letters in alphabetical order as fast as you can.',
+    icon: '🔠',
+    gradient: 'from-amber-400 to-pink-500',
     difficulty: 'Easy',
     supportsBot: false,
     solo: true,
@@ -760,6 +841,12 @@ function App() {
       case 'telling-time': return <TellingTime isBotEnabled={isBotEnabled} />;
       case 'number-pattern': return <NumberPattern isBotEnabled={isBotEnabled} />;
       case 'subitize': return <Subitize isBotEnabled={isBotEnabled} />;
+      case 'piano': return <Piano isBotEnabled={isBotEnabled} />;
+      case 'drum-pad': return <DrumPad isBotEnabled={isBotEnabled} />;
+      case 'xylophone': return <Xylophone isBotEnabled={isBotEnabled} />;
+      case 'word-scramble': return <WordScramble isBotEnabled={isBotEnabled} />;
+      case 'alphabet-order': return <AlphabetOrder isBotEnabled={isBotEnabled} />;
+      case 'hidden-picture': return <HiddenPicture isBotEnabled={isBotEnabled} />;
       case 'hangman': return <Hangman isBotEnabled={isBotEnabled} />;
       case 'word-search': return <WordSearch isBotEnabled={isBotEnabled} />;
       case 'math-quiz': return <MathQuiz isBotEnabled={isBotEnabled} />;

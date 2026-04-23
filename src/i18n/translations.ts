@@ -71,6 +71,30 @@ const en: Dict = {
   'category.art.desc': 'Make something beautiful.',
   'category.math.label': 'Math games',
   'category.math.desc': 'Counting, calculation, and patterns.',
+  'category.music.label': 'Music',
+  'category.music.desc': 'Play, strum, and make a beat.',
+
+  // Music activities
+  'game.piano.name': 'Piano',
+  'game.piano.tagline': 'Play notes with your mouse, touch, or keyboard.',
+  'game.piano.instructions': 'Click or tap the keys to play. On desktop, use the keyboard row (a, s, d…) to play the white keys. Toggle note labels with the button at the top.',
+  'game.drum-pad.name': 'Drum Pad',
+  'game.drum-pad.tagline': 'Nine pads, one groove.',
+  'game.drum-pad.instructions': 'Tap the pads to trigger kick, snare, hi-hat, clap, and more. On desktop, press keys 1–9 to play along. Chain taps to build a beat.',
+  'game.xylophone.name': 'Xylophone',
+  'game.xylophone.tagline': 'Play a tune on the colorful bars.',
+  'game.xylophone.instructions': 'Tap a bar to play its note. The bars are tuned to a C-major scale (C D E F G A B C). You can also press keys 1–8 on the keyboard.',
+
+  // Literacy / puzzle extras
+  'game.word-scramble.name': 'Word Scramble',
+  'game.word-scramble.tagline': 'Click the letters in order to rebuild the word.',
+  'game.word-scramble.instructions': 'The target word has been jumbled into letter tiles. Click the tiles one by one to spell the correct word. Words come from the selected language. Use Backspace to undo the last pick.',
+  'game.alphabet-order.name': 'Alphabet Order',
+  'game.alphabet-order.tagline': 'Hit the letters in alphabetical order as fast as you can.',
+  'game.alphabet-order.instructions': 'Click the letters in alphabetical order, starting from A. The next letter to find is highlighted. Pick A–E, A–J, or the full A–Z.',
+  'game.hidden-picture.name': 'Hidden Picture',
+  'game.hidden-picture.tagline': 'Find every hidden object as fast as you can.',
+  'game.hidden-picture.instructions': 'Each scene hides a handful of objects. Look at the list and click every object when you spot it in the picture. Switch scenes with the chips at the top.',
 
   // Math activities
   'game.balloon-pop.name': 'Balloon Pop',
@@ -394,6 +418,31 @@ const it: Dict = {
   'category.art.desc': 'Crea qualcosa di bello.',
   'category.math.label': 'Giochi di matematica',
   'category.math.desc': 'Contare, calcolare, scoprire schemi.',
+  'category.music.label': 'Musica',
+  'category.music.desc': 'Suona, pizzica, crea un ritmo.',
+
+  // Music activities
+  'game.piano.name': 'Pianoforte',
+  'game.piano.tagline': 'Suona le note con mouse, tocco o tastiera.',
+  'game.piano.instructions': 'Clicca o tocca i tasti per suonare. Sul computer, usa la fila della tastiera (a, s, d…) per i tasti bianchi. Mostra o nascondi le etichette delle note con il bottone in alto.',
+  'game.drum-pad.name': 'Batteria',
+  'game.drum-pad.tagline': 'Nove pad, un solo groove.',
+  'game.drum-pad.instructions': 'Tocca i pad per far partire cassa, rullante, charleston, clap e altro. Sul computer, premi i tasti 1\u20139 per suonare. Concatena i colpi per creare un beat.',
+  'game.xylophone.name': 'Xilofono',
+  'game.xylophone.tagline': 'Suona una melodia sulle barre colorate.',
+  'game.xylophone.instructions': 'Tocca una barra per suonarne la nota. Le barre sono accordate sulla scala di Do maggiore (Do Re Mi Fa Sol La Si Do). Puoi anche premere i tasti 1\u20138 sulla tastiera.',
+
+  // Literacy / puzzle extras
+  'game.word-scramble.name': 'Parole Mescolate',
+  'game.word-scramble.tagline': 'Clicca le lettere in ordine per ricomporre la parola.',
+  'game.word-scramble.instructions': 'La parola è stata mescolata in tessere di lettere. Clicca le tessere una per una per comporre la parola giusta. Le parole seguono la lingua selezionata. Usa \u201cBackspace\u201d per annullare l\u2019ultima lettera.',
+  'game.alphabet-order.name': 'Ordine Alfabetico',
+  'game.alphabet-order.tagline': 'Tocca le lettere in ordine alfabetico il più velocemente possibile.',
+  'game.alphabet-order.instructions': 'Clicca le lettere in ordine alfabetico, partendo dalla A. La lettera successiva è evidenziata. Scegli A\u2013E, A\u2013J oppure tutto A\u2013Z.',
+  'game.hidden-picture.name': 'Immagine Nascosta',
+  'game.hidden-picture.tagline': 'Trova tutti gli oggetti nascosti il più in fretta possibile.',
+  'game.hidden-picture.instructions': 'Ogni scena nasconde alcuni oggetti. Guarda la lista e clicca ogni oggetto quando lo trovi nell\u2019immagine. Cambia scena con i bottoni in alto.',
+
 
   // Math activities
   'game.balloon-pop.name': 'Scoppia Palloncini',
@@ -713,6 +762,31 @@ const de: Dict = {
   'category.art.desc': 'Mach etwas Schönes.',
   'category.math.label': 'Mathespiele',
   'category.math.desc': 'Zählen, Rechnen und Muster.',
+  'category.music.label': 'Musik',
+  'category.music.desc': 'Spielen, zupfen, den Beat machen.',
+
+  // Music activities
+  'game.piano.name': 'Klavier',
+  'game.piano.tagline': 'Spiele Noten mit Maus, Touch oder Tastatur.',
+  'game.piano.instructions': 'Klicke oder tippe die Tasten. Am PC nutzt du die Buchstabenreihe (a, s, d …) für die weißen Tasten. Mit dem Knopf oben blendest du die Notennamen ein oder aus.',
+  'game.drum-pad.name': 'Drum Pad',
+  'game.drum-pad.tagline': 'Neun Pads, ein Groove.',
+  'game.drum-pad.instructions': 'Tippe die Pads für Kick, Snare, Hi-Hat, Clap und mehr. Am PC drückst du die Tasten 1\u20139. Kombiniere Taps zu einem Beat.',
+  'game.xylophone.name': 'Xylofon',
+  'game.xylophone.tagline': 'Spiele eine Melodie auf den bunten Stäben.',
+  'game.xylophone.instructions': 'Tippe einen Stab, um seine Note zu spielen. Die Stäbe sind auf die C-Dur-Tonleiter gestimmt (C D E F G A H C). Du kannst auch die Tasten 1\u20138 drücken.',
+
+  // Literacy / puzzle extras
+  'game.word-scramble.name': 'Wort Verwirbelt',
+  'game.word-scramble.tagline': 'Klicke die Buchstaben in der richtigen Reihenfolge.',
+  'game.word-scramble.instructions': 'Das Wort wurde in Buchstaben-Kacheln zerlegt. Klicke die Kacheln der Reihe nach, um das Wort richtig zu schreiben. Die Wörter richten sich nach der gewählten Sprache. \u201eBackspace\u201c nimmt den letzten Buchstaben zurück.',
+  'game.alphabet-order.name': 'ABC-Reihenfolge',
+  'game.alphabet-order.tagline': 'Tippe die Buchstaben so schnell wie möglich in Reihenfolge.',
+  'game.alphabet-order.instructions': 'Klicke die Buchstaben in alphabetischer Reihenfolge ab A. Der nächste Buchstabe ist hervorgehoben. Wähle A\u2013E, A\u2013J oder das ganze A\u2013Z.',
+  'game.hidden-picture.name': 'Wimmelbild',
+  'game.hidden-picture.tagline': 'Finde alle versteckten Objekte so schnell wie möglich.',
+  'game.hidden-picture.instructions': 'Jede Szene versteckt einige Objekte. Sieh dir die Liste an und klicke jedes Objekt an, wenn du es im Bild findest. Mit den Knöpfen oben wechselst du die Szene.',
+
 
   // Math activities
   'game.balloon-pop.name': 'Ballon Platzen',

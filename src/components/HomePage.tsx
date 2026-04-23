@@ -19,6 +19,7 @@ const CATEGORY_EMOJI: Record<GameCategory, string> = {
   educational: '🎓',
   art: '🎨',
   math: '🔢',
+  music: '🎵',
 };
 
 const CATEGORY_ORDER: GameCategory[] = [
@@ -29,6 +30,7 @@ const CATEGORY_ORDER: GameCategory[] = [
   'puzzle',
   'art',
   'math',
+  'music',
   'educational',
 ];
 
