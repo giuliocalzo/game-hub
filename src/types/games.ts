@@ -3,6 +3,14 @@ export interface Game {
   name: string;
   description: string;
   icon: string;
+  /** Tailwind gradient classes for the card background, e.g. "from-amber-400 to-orange-500" */
+  gradient: string;
+  /** Emoji or short tag describing difficulty / age hint */
+  difficulty: 'Easy' | 'Medium' | 'Hard';
+  /** Short tagline shown on the home card */
+  tagline: string;
+  /** Whether this game supports a bot/AI opponent */
+  supportsBot: boolean;
 }
 
 export interface ChessPosition {

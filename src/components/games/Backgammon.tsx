@@ -366,14 +366,6 @@ const Backgammon: React.FC<BackgammonProps> = ({ isBotEnabled }) => {
     }
   };
 
-  const resetGame = () => {
-    if (botTimeoutRef.current) {
-      clearTimeout(botTimeoutRef.current);
-    }
-    setGameState(initializeGame());
-    setGameStatus('');
-  };
-
   const getStatusMessage = () => {
     if (gameState.winner) return `${gameState.winner} wins!`;
     if (gameStatus) return gameStatus;
@@ -434,16 +426,6 @@ const Backgammon: React.FC<BackgammonProps> = ({ isBotEnabled }) => {
 
   return (
     <div className="flex flex-col items-center space-y-6">
-      <div className="flex items-center justify-between w-full max-w-4xl">
-        <h3 className="text-2xl font-bold text-gray-800">Backgammon</h3>
-        <button
-          onClick={resetGame}
-          className="px-4 py-2 bg-purple-500 text-white rounded-lg hover:bg-purple-600 transition-colors"
-        >
-          Reset Game
-        </button>
-      </div>
-      
       <div className={`text-lg font-semibold ${
         gameState.winner ? 'text-green-600' : 
         isBotEnabled && gameState.currentPlayer === 'black' ? 'text-purple-600' : 'text-gray-700'

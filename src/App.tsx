@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
-import { Gamepad2, Bot, User } from 'lucide-react';
-import GameSelector from './components/GameSelector';
+import { useState, useEffect } from 'react';
+import { Gamepad2 } from 'lucide-react';
+import HomePage from './components/HomePage';
+import GameShell from './components/GameShell';
 import Chess from './components/games/Chess';
 import Dama from './components/games/Dama';
 import Tris from './components/games/Tris';
@@ -11,46 +12,83 @@ import { Game } from './types/games';
 
 const AVAILABLE_GAMES: Game[] = [
   {
-    id: 'chess',
-    name: 'Chess',
-    description: 'Strategic board game with pieces and tactics',
-    icon: '♔',
-  },
-  {
-    id: 'dama',
-    name: 'Dama (Checkers)',
-    description: 'Jump and capture opponent pieces',
-    icon: '⚫',
-  },
-  {
     id: 'tris',
-    name: 'Tris (Tic-Tac-Toe)',
+    name: 'Tic-Tac-Toe',
     description: 'Get three in a row to win',
+    tagline: 'Quick, classic, and great for all ages.',
     icon: '❌',
+    gradient: 'from-sky-400 to-blue-500',
+    difficulty: 'Easy',
+    supportsBot: true,
   },
   {
     id: 'snakes-and-ladders',
-    name: 'Snakes and Ladders',
+    name: 'Snakes & Ladders',
     description: 'Roll dice and climb to victory',
+    tagline: 'Roll the dice, climb the ladders, dodge the snakes!',
     icon: '🎲',
-  },
-  {
-    id: 'backgammon',
-    name: 'Backgammon',
-    description: 'Race your pieces home in this classic strategy game',
-    icon: '🎯',
+    gradient: 'from-emerald-400 to-green-600',
+    difficulty: 'Easy',
+    supportsBot: true,
   },
   {
     id: 'uno',
     name: 'UNO',
     description: 'Match colors and numbers in this fast-paced card game',
+    tagline: 'Match colors and numbers — don\u2019t forget to shout UNO!',
+    icon: '🃏',
+    gradient: 'from-rose-500 to-orange-500',
+    difficulty: 'Medium',
+    supportsBot: true,
+  },
+  {
+    id: 'dama',
+    name: 'Checkers',
+    description: 'Jump and capture opponent pieces',
+    tagline: 'Jump, capture, and crown your kings.',
+    icon: '⚫',
+    gradient: 'from-rose-400 to-red-600',
+    difficulty: 'Medium',
+    supportsBot: true,
+  },
+  {
+    id: 'backgammon',
+    name: 'Backgammon',
+    description: 'Race your pieces home in this classic strategy game',
+    tagline: 'Race your pieces home with a bit of dice luck.',
+    icon: '🎯',
+    gradient: 'from-amber-500 to-yellow-600',
+    difficulty: 'Hard',
+    supportsBot: true,
+  },
+  {
+    id: 'chess',
+    name: 'Chess',
+    description: 'Strategic board game with pieces and tactics',
+    tagline: 'The ultimate strategy game. Plan your moves!',
+    icon: '♔',
+    gradient: 'from-slate-600 to-slate-800',
+    difficulty: 'Hard',
+    supportsBot: true,
   },
 ];
 
+type View = 'home' | 'game';
+
 function App() {
-  const [selectedGame, setSelectedGame] = useState<string>('chess');
-  const [activeGame, setActiveGame] = useState<string>('chess');
+  const [view, setView] = useState<View>('home');
+  const [activeGameId, setActiveGameId] = useState<string | null>(null);
   const [isBotEnabled, setIsBotEnabled] = useState<boolean>(false);
+  const [restartKey, setRestartKey] = useState<number>(0);
+
+  // Keep page title in sync — nice touch for tabs.
+  useEffect(() => {
+    const active = AVAILABLE_GAMES.find((g) => g.id === activeGameId);
+    document.title =
+      view === 'game' && active ? `${active.name} — GameHub` : 'GameHub';
+  }, [view, activeGameId]);
+
+  const activeGame = AVAILABLE_GAMES.find((g) => g.id === activeGameId) ?? null;
 
   const renderGame = (gameId: string) => {
     switch (gameId) {
@@ -67,57 +105,86 @@ function App() {
       case 'uno':
         return <Uno isBotEnabled={isBotEnabled} />;
       default:
-        return <div>Game not found</div>;
+        return <div className="text-gray-600">Game not found.</div>;
     }
   };
 
-  const handleSelectionChange = (gameId: string) => {
-    setSelectedGame(gameId);
-    setActiveGame(gameId);
+  const handleSelectGame = (gameId: string) => {
+    setActiveGameId(gameId);
+    setRestartKey((k) => k + 1);
+    setView('game');
+  };
+
+  const handleBackHome = () => {
+    setView('home');
+  };
+
+  const handleRestart = () => {
+    setRestartKey((k) => k + 1);
   };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50">
-      {/* Header */}
-      <header className="bg-white/90 backdrop-blur-sm shadow-sm border-b border-gray-200 relative z-50">
-        <div className="max-w-6xl mx-auto px-4 py-6">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-3">
-              <Gamepad2 className="w-8 h-8 text-blue-600" />
-              <h1 className="text-3xl font-bold text-gray-900">GameHub</h1>
-            </div>
-            
-            <div className="flex items-center space-x-4">
-              <button
-                onClick={() => setIsBotEnabled(!isBotEnabled)}
-                className={`flex items-center space-x-2 px-4 py-2 rounded-lg font-medium transition-all ${
-                  isBotEnabled 
-                    ? 'bg-purple-100 text-purple-700 border border-purple-200' 
-                    : 'bg-gray-100 text-gray-600 border border-gray-200'
-                }`}
-              >
-                {isBotEnabled ? <Bot className="w-4 h-4" /> : <User className="w-4 h-4" />}
-                <span>{isBotEnabled ? 'Bot Player' : '2 Players'}</span>
-              </button>
-              
-              <GameSelector
-                games={AVAILABLE_GAMES}
-                selectedGame={selectedGame}
-                onSelectionChange={handleSelectionChange}
-              />
-            </div>
+      {/* Decorative background blobs */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none fixed inset-0 overflow-hidden"
+      >
+        <div className="absolute -top-24 -left-24 w-96 h-96 rounded-full bg-blue-200/40 blur-3xl" />
+        <div className="absolute top-1/3 -right-24 w-96 h-96 rounded-full bg-purple-200/40 blur-3xl" />
+        <div className="absolute bottom-0 left-1/3 w-96 h-96 rounded-full bg-pink-200/30 blur-3xl" />
+      </div>
+
+      <div className="relative">
+        {/* Header */}
+        <header className="bg-white/70 backdrop-blur-md shadow-sm border-b border-white/60 sticky top-0 z-40">
+          <div className="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+            <button
+              onClick={handleBackHome}
+              className="flex items-center gap-2.5 group"
+              aria-label="Go to home"
+            >
+              <span className="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 shadow-md group-hover:shadow-lg transition-shadow">
+                <Gamepad2 className="w-5 h-5 text-white" />
+              </span>
+              <span className="text-2xl font-extrabold tracking-tight text-gray-900">
+                Game<span className="text-blue-600">Hub</span>
+              </span>
+            </button>
+            <span className="hidden sm:block text-sm text-gray-500">
+              Play together · Learn together
+            </span>
           </div>
-        </div>
-      </header>
+        </header>
 
-      {/* Main Content */}
-      <main className="max-w-6xl mx-auto px-4 py-8">
+        {/* Main */}
+        <main>
+          {view === 'home' || !activeGame ? (
+            <HomePage
+              games={AVAILABLE_GAMES}
+              isBotEnabled={isBotEnabled}
+              onToggleBot={setIsBotEnabled}
+              onSelectGame={handleSelectGame}
+            />
+          ) : (
+            <GameShell
+              game={activeGame}
+              isBotEnabled={isBotEnabled}
+              onBack={handleBackHome}
+              onRestart={handleRestart}
+            >
+              {/* key forces the game to fully remount on restart / game switch */}
+              <div key={`${activeGame.id}-${restartKey}`}>
+                {renderGame(activeGame.id)}
+              </div>
+            </GameShell>
+          )}
+        </main>
 
-        {/* Active Game */}
-        <div className="bg-white/80 backdrop-blur-sm rounded-xl shadow-lg border border-gray-200 p-8">
-          {renderGame(activeGame)}
-        </div>
-      </main>
+        <footer className="max-w-6xl mx-auto px-4 py-8 text-center text-xs text-gray-500">
+          Made with care for curious young players.
+        </footer>
+      </div>
     </div>
   );
 }

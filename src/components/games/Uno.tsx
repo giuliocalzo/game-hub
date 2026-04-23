@@ -318,15 +318,6 @@ const Uno: React.FC<UnoProps> = ({ isBotEnabled }) => {
     setGameState(prev => ({ ...prev, currentPlayerIndex: nextIndex }));
   };
 
-  const resetGame = () => {
-    if (botTimeoutRef.current) {
-      clearTimeout(botTimeoutRef.current);
-    }
-    setGameState(initializeGame());
-    setSelectedCard(null);
-    setGameStatus('');
-  };
-
   const getStatusMessage = () => {
     if (gameState.winner) return `🎉 ${gameState.winner} wins! 🎉`;
     if (gameStatus) return gameStatus;
@@ -343,16 +334,6 @@ const Uno: React.FC<UnoProps> = ({ isBotEnabled }) => {
 
   return (
     <div className="flex flex-col items-center space-y-6">
-      <div className="flex items-center justify-between w-full max-w-4xl">
-        <h3 className="text-2xl font-bold text-gray-800">UNO</h3>
-        <button
-          onClick={resetGame}
-          className="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors"
-        >
-          Reset Game
-        </button>
-      </div>
-      
       <div className={`text-lg font-semibold ${
         gameState.winner ? 'text-green-600' : 
         gameState.gamePhase === 'color-selection' ? 'text-purple-600' :

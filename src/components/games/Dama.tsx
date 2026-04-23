@@ -414,17 +414,6 @@ const Dama: React.FC<DamaProps> = ({ isBotEnabled }) => {
     }
   }, [board, selectedSquare, currentPlayer, isBotEnabled, mustCapture]);
 
-  const resetGame = () => {
-    if (botTimeoutRef.current) {
-      clearTimeout(botTimeoutRef.current);
-    }
-    setBoard(initializeBoard());
-    setSelectedSquare(null);
-    setCurrentPlayer('red');
-    setGameStatus('');
-    setMustCapture([]);
-  };
-
   const getStatusMessage = () => {
     if (gameStatus) return gameStatus;
     if (isBotEnabled && currentPlayer === 'black') return "Bot is thinking...";
@@ -433,16 +422,6 @@ const Dama: React.FC<DamaProps> = ({ isBotEnabled }) => {
 
   return (
     <div className="flex flex-col items-center space-y-6">
-      <div className="flex items-center justify-between w-full max-w-md">
-        <h3 className="text-2xl font-bold text-gray-800">Dama (Checkers)</h3>
-        <button
-          onClick={resetGame}
-          className="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors"
-        >
-          Reset Game
-        </button>
-      </div>
-      
       <div className={`text-lg font-semibold ${
         gameStatus.includes('must') ? 'text-orange-600' : 
         gameStatus.includes('captured') ? 'text-green-600' :

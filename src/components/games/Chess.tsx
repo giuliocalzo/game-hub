@@ -362,16 +362,6 @@ const Chess: React.FC<ChessProps> = ({ isBotEnabled }) => {
     }
   }, [board, selectedSquare, currentPlayer, isBotEnabled]);
 
-  const resetGame = () => {
-    if (botTimeoutRef.current) {
-      clearTimeout(botTimeoutRef.current);
-    }
-    setBoard(initializeBoard());
-    setSelectedSquare(null);
-    setCurrentPlayer('white');
-    setGameStatus('');
-  };
-
   const getStatusMessage = () => {
     if (gameStatus) return gameStatus;
     if (isBotEnabled && currentPlayer === 'black') return "Bot is thinking...";
@@ -380,16 +370,6 @@ const Chess: React.FC<ChessProps> = ({ isBotEnabled }) => {
 
   return (
     <div className="flex flex-col items-center space-y-6">
-      <div className="flex items-center justify-between w-full max-w-md">
-        <h3 className="text-2xl font-bold text-gray-800">Chess</h3>
-        <button
-          onClick={resetGame}
-          className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
-        >
-          Reset Game
-        </button>
-      </div>
-      
       <div className={`text-lg font-semibold ${
         gameStatus.includes('check') ? 'text-red-600' : 
         isBotEnabled && currentPlayer === 'black' ? 'text-purple-600' : 'text-gray-700'

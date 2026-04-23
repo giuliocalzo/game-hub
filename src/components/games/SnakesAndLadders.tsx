@@ -84,13 +84,6 @@ const SnakesAndLadders: React.FC<SnakesAndLaddersProps> = ({ isBotEnabled }) => 
     }
   }, [isBotEnabled, currentPlayerIndex, isRolling, winner, rollDice]);
 
-  const resetGame = () => {
-    setGameBoard(players.map(p => ({ ...p, position: 1 })));
-    setCurrentPlayerIndex(0);
-    setDiceValue(null);
-    setWinner(null);
-  };
-
   const getSquareContent = (squareNumber: number) => {
     const playersHere = gameBoard.filter(p => p.position === squareNumber);
     
@@ -152,16 +145,6 @@ const SnakesAndLadders: React.FC<SnakesAndLaddersProps> = ({ isBotEnabled }) => 
 
   return (
     <div className="flex flex-col items-center space-y-6">
-      <div className="flex items-center justify-between w-full max-w-md">
-        <h3 className="text-2xl font-bold text-gray-800">Snakes and Ladders</h3>
-        <button
-          onClick={resetGame}
-          className="px-4 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition-colors"
-        >
-          Reset Game
-        </button>
-      </div>
-      
       {winner ? (
         <div className="text-2xl font-bold text-green-600">
           🎉 {winner} Wins! 🎉

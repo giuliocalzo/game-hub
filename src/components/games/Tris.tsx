@@ -117,17 +117,6 @@ const Tris: React.FC<TrisProps> = ({ isBotEnabled }) => {
     });
   }, [board, checkWinner, isBotEnabled]);
 
-  const resetGame = () => {
-    if (botTimeoutRef.current) {
-      clearTimeout(botTimeoutRef.current);
-    }
-    setBoard({
-      squares: Array(9).fill(null),
-      currentPlayer: 'X',
-      winner: null,
-    });
-  };
-
   const getStatusMessage = () => {
     if (board.winner === 'tie') return "It's a tie!";
     if (board.winner) return `Player ${board.winner} wins!`;
@@ -137,16 +126,6 @@ const Tris: React.FC<TrisProps> = ({ isBotEnabled }) => {
 
   return (
     <div className="flex flex-col items-center space-y-6">
-      <div className="flex items-center justify-between w-full max-w-md">
-        <h3 className="text-2xl font-bold text-gray-800">Tris (Tic-Tac-Toe)</h3>
-        <button
-          onClick={resetGame}
-          className="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors"
-        >
-          Reset Game
-        </button>
-      </div>
-      
       <div className={`text-lg font-semibold ${
         board.winner ? 'text-green-600' : 'text-gray-700'
       }`}>
