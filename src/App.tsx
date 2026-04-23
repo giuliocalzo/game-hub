@@ -69,6 +69,15 @@ import Xylophone from './components/games/Xylophone';
 import WordScramble from './components/games/WordScramble';
 import AlphabetOrder from './components/games/AlphabetOrder';
 import HiddenPicture from './components/games/HiddenPicture';
+
+import Maze from './components/games/Maze';
+import BallSort from './components/games/BallSort';
+import ColorLink from './components/games/ColorLink';
+import BlockPuzzle from './components/games/BlockPuzzle';
+import PegSolitaire from './components/games/PegSolitaire';
+import Darts from './components/games/Darts';
+import Metronome from './components/games/Metronome';
+import NoteQuiz from './components/games/NoteQuiz';
 // New educational
 import Hangman from './components/games/Hangman';
 import WordSearch from './components/games/WordSearch';
@@ -427,6 +436,18 @@ const AVAILABLE_GAMES: Game[] = [
     category: 'arcade',
   },
   {
+    id: 'darts',
+    name: 'Darts',
+    description: 'Throw darts at a spinning target',
+    tagline: 'Click to throw — aim for the bullseye.',
+    icon: '🎯',
+    gradient: 'from-red-500 to-rose-700',
+    difficulty: 'Medium',
+    supportsBot: false,
+    solo: true,
+    category: 'arcade',
+  },
+  {
     id: 'morris',
     name: "Nine Men's Morris",
     description: 'Mill strategy game',
@@ -598,6 +619,30 @@ const AVAILABLE_GAMES: Game[] = [
     solo: true,
     category: 'music',
   },
+  {
+    id: 'metronome',
+    name: 'Metronome',
+    description: 'Keep the beat at any tempo',
+    tagline: 'Adjustable BPM and time signature.',
+    icon: '⏱️',
+    gradient: 'from-indigo-500 to-purple-700',
+    difficulty: 'Easy',
+    supportsBot: false,
+    solo: true,
+    category: 'music',
+  },
+  {
+    id: 'note-quiz',
+    name: 'Note Quiz',
+    description: 'Identify notes on the staff',
+    tagline: 'Read the treble clef — pick the right note.',
+    icon: '🎼',
+    gradient: 'from-sky-400 to-indigo-600',
+    difficulty: 'Medium',
+    supportsBot: false,
+    solo: true,
+    category: 'music',
+  },
 
   // Puzzle
   {
@@ -680,6 +725,66 @@ const AVAILABLE_GAMES: Game[] = [
     icon: '🔎',
     gradient: 'from-teal-400 to-emerald-600',
     difficulty: 'Easy',
+    supportsBot: false,
+    solo: true,
+    category: 'puzzle',
+  },
+  {
+    id: 'maze',
+    name: 'Maze',
+    description: 'Find your way to the exit',
+    tagline: 'Navigate to the flag through a generated maze.',
+    icon: '🌀',
+    gradient: 'from-emerald-400 to-green-700',
+    difficulty: 'Easy',
+    supportsBot: false,
+    solo: true,
+    category: 'puzzle',
+  },
+  {
+    id: 'ball-sort',
+    name: 'Ball Sort',
+    description: 'Sort colored balls into tubes',
+    tagline: 'Arrange each tube to hold a single color.',
+    icon: '🧪',
+    gradient: 'from-cyan-400 to-blue-600',
+    difficulty: 'Medium',
+    supportsBot: false,
+    solo: true,
+    category: 'puzzle',
+  },
+  {
+    id: 'color-link',
+    name: 'Color Link',
+    description: 'Connect matching colored dots',
+    tagline: 'Draw non-crossing paths between pairs.',
+    icon: '🔗',
+    gradient: 'from-rose-400 to-pink-600',
+    difficulty: 'Medium',
+    supportsBot: false,
+    solo: true,
+    category: 'puzzle',
+  },
+  {
+    id: 'block-puzzle',
+    name: 'Block Puzzle',
+    description: 'Fill rows and columns to clear',
+    tagline: 'Place pieces on a 10×10 grid and clear lines.',
+    icon: '🧱',
+    gradient: 'from-amber-400 to-orange-600',
+    difficulty: 'Medium',
+    supportsBot: false,
+    solo: true,
+    category: 'puzzle',
+  },
+  {
+    id: 'peg-solitaire',
+    name: 'Peg Solitaire',
+    description: 'Leave one peg in the center',
+    tagline: 'Jump pegs over pegs to remove them.',
+    icon: '🟠',
+    gradient: 'from-amber-600 to-orange-800',
+    difficulty: 'Hard',
     supportsBot: false,
     solo: true,
     category: 'puzzle',
@@ -847,6 +952,14 @@ function App() {
       case 'word-scramble': return <WordScramble isBotEnabled={isBotEnabled} />;
       case 'alphabet-order': return <AlphabetOrder isBotEnabled={isBotEnabled} />;
       case 'hidden-picture': return <HiddenPicture isBotEnabled={isBotEnabled} />;
+      case 'maze': return <Maze isBotEnabled={isBotEnabled} />;
+      case 'ball-sort': return <BallSort isBotEnabled={isBotEnabled} />;
+      case 'color-link': return <ColorLink isBotEnabled={isBotEnabled} />;
+      case 'block-puzzle': return <BlockPuzzle isBotEnabled={isBotEnabled} />;
+      case 'peg-solitaire': return <PegSolitaire isBotEnabled={isBotEnabled} />;
+      case 'darts': return <Darts isBotEnabled={isBotEnabled} />;
+      case 'metronome': return <Metronome isBotEnabled={isBotEnabled} />;
+      case 'note-quiz': return <NoteQuiz isBotEnabled={isBotEnabled} />;
       case 'hangman': return <Hangman isBotEnabled={isBotEnabled} />;
       case 'word-search': return <WordSearch isBotEnabled={isBotEnabled} />;
       case 'math-quiz': return <MathQuiz isBotEnabled={isBotEnabled} />;
