@@ -196,9 +196,6 @@ const WordSearch: React.FC<{ isBotEnabled: boolean }> = () => {
         ))}
       </div>
 
-      <p className="text-xs md:text-sm text-gray-500 max-w-md text-center">
-        Click the first letter, then the last letter of a word. Words can go in any direction, including diagonals.
-      </p>
     </div>
   );
 };

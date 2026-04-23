@@ -402,9 +402,6 @@ const Chess: React.FC<ChessProps> = ({ isBotEnabled }) => {
         )}
       </div>
 
-      <div className="text-xs md:text-sm text-gray-500 max-w-md text-center leading-relaxed">
-        Click a piece to select it, then click a valid square to move.
-      </div>
     </div>
   );
 };

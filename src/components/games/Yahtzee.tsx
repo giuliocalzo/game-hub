@@ -172,9 +172,6 @@ const Yahtzee: React.FC<{ isBotEnabled: boolean }> = () => {
         />
       )}
 
-      <p className="text-xs md:text-sm text-gray-500 max-w-md text-center">
-        Roll up to 3 times per turn. Keep dice by tapping them. Pick a category to score.
-      </p>
     </div>
   );
 };

@@ -299,9 +299,6 @@ const Solitaire: React.FC<{ isBotEnabled: boolean }> = () => {
         />
       )}
 
-      <p className="text-xs md:text-sm text-gray-500 max-w-md text-center">
-        Click a card to select, then click a destination. Alternate colors go down (K→2) on tableau. Build each foundation up by suit from A to K.
-      </p>
     </div>
   );
 };

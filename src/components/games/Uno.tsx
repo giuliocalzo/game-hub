@@ -458,10 +458,6 @@ const Uno: React.FC<UnoProps> = ({ isBotEnabled }) => {
         </div>
       </div>
 
-      <div className="text-sm text-gray-600 max-w-2xl text-center">
-        <p className="mb-2">Match the color, number, or symbol. Wild cards (★) can be played anytime.</p>
-        <p>🚫 Skip • 🔄 Reverse • +2 Draw Two • ★ Wild • ★+4 Wild Draw Four</p>
-      </div>
     </div>
   );
 };

@@ -166,9 +166,6 @@ const Reversi: React.FC<{ isBotEnabled: boolean }> = ({ isBotEnabled }) => {
         )}
       </div>
 
-      <p className="text-xs md:text-sm text-gray-500 max-w-md text-center">
-        Place a disc so that at least one row of opponent discs is sandwiched. Those discs flip to your color.
-      </p>
     </div>
   );
 };

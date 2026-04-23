@@ -124,9 +124,6 @@ const WhackAMole: React.FC<{ isBotEnabled: boolean }> = () => {
         </button>
       )}
 
-      <p className="text-xs md:text-sm text-gray-500 max-w-md text-center">
-        Tap the moles before they disappear. Score as many as you can in 30 seconds.
-      </p>
     </div>
   );
 };

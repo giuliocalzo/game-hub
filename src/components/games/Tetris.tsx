@@ -228,9 +228,6 @@ const Tetris: React.FC<{ isBotEnabled: boolean }> = () => {
         </button>
       </div>
 
-      <p className="text-xs md:text-sm text-gray-500 max-w-md text-center">
-        ← → to move · ↑ to rotate · ↓ soft-drop · space hard-drop.
-      </p>
     </div>
   );
 };

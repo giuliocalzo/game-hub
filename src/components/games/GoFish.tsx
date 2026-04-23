@@ -224,9 +224,6 @@ const GoFish: React.FC<{ isBotEnabled: boolean }> = () => {
         />
       )}
 
-      <p className="text-xs md:text-sm text-gray-500 max-w-md text-center">
-        Ask the bot for a rank you hold. If they have it, you take all. Otherwise, "go fish" from the deck.
-      </p>
     </div>
   );
 };

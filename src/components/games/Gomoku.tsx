@@ -154,9 +154,6 @@ const Gomoku: React.FC<{ isBotEnabled: boolean }> = ({ isBotEnabled }) => {
         )}
       </div>
 
-      <p className="text-xs md:text-sm text-gray-500 max-w-md text-center">
-        Place stones in turn. First to get five in a row wins.
-      </p>
     </div>
   );
 };

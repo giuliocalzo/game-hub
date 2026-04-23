@@ -526,10 +526,6 @@ const Backgammon: React.FC<BackgammonProps> = ({ isBotEnabled }) => {
         )}
       </div>
 
-      <div className="text-xs md:text-sm text-gray-500 max-w-2xl text-center leading-relaxed">
-        <p>Move pieces around and bear them off to win. Hitting an opponent sends them to the bar.</p>
-        <p>Use all dice rolls when possible. Doubles let you move four times.</p>
-      </div>
     </div>
   );
 };

@@ -158,9 +158,6 @@ const Nonogram: React.FC<{ isBotEnabled: boolean }> = () => {
         )}
       </div>
 
-      <p className="text-xs md:text-sm text-gray-500 max-w-md text-center">
-        Click to fill a cell. Right-click (or long-press) to mark it empty. The numbers tell you how many consecutive filled cells are in each row and column.
-      </p>
     </div>
   );
 };

@@ -161,9 +161,6 @@ const Pig: React.FC<PigProps> = ({ isBotEnabled }) => {
         </button>
       </div>
 
-      <p className="text-xs md:text-sm text-gray-500 max-w-md text-center">
-        Roll to add to your turn total. Bank to lock it in. Roll a 1 and lose your turn. First to 100 wins!
-      </p>
     </div>
   );
 };

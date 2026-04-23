@@ -119,9 +119,6 @@ const FlagsQuiz: React.FC<{ isBotEnabled: boolean }> = () => {
         />
       )}
 
-      <p className="text-xs md:text-sm text-gray-500 max-w-md text-center">
-        Look at the flag and pick the correct country.
-      </p>
     </div>
   );
 };

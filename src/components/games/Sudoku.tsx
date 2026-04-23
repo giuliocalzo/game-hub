@@ -178,9 +178,6 @@ const Sudoku: React.FC<{ isBotEnabled: boolean }> = () => {
         ))}
       </div>
 
-      <p className="text-xs md:text-sm text-gray-500 max-w-md text-center">
-        Tap a cell then a number, or use your keyboard. 0 / backspace clears.
-      </p>
     </div>
   );
 };

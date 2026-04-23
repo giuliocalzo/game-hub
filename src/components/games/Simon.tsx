@@ -136,9 +136,6 @@ const Simon: React.FC<{ isBotEnabled: boolean }> = () => {
         )}
       </div>
 
-      <p className="text-xs md:text-sm text-gray-500 max-w-md text-center">
-        Watch the pattern, then repeat it by tapping the colors in order.
-      </p>
     </div>
   );
 };

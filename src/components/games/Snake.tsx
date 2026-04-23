@@ -187,9 +187,6 @@ const Snake: React.FC<{ isBotEnabled: boolean }> = () => {
           Reset
         </button>
       </div>
-      <p className="text-xs md:text-sm text-gray-500 max-w-md text-center">
-        Use arrows or WASD to steer. Eat red food, don't hit yourself or the walls.
-      </p>
     </div>
   );
 };

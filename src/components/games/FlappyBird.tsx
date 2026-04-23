@@ -160,9 +160,6 @@ const FlappyBird: React.FC<{ isBotEnabled: boolean }> = () => {
         )}
       </div>
 
-      <p className="text-xs md:text-sm text-gray-500 max-w-md text-center">
-        Tap (or press space) to flap. Steer through the gaps without touching the pipes or walls.
-      </p>
     </div>
   );
 };

@@ -109,9 +109,6 @@ const TypingPractice: React.FC<{ isBotEnabled: boolean }> = () => {
         New sentence
       </button>
 
-      <p className="text-xs md:text-sm text-gray-500 max-w-md text-center">
-        Type the sentence exactly as shown. Your WPM and accuracy update as you go.
-      </p>
     </div>
   );
 };

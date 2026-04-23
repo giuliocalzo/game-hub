@@ -112,9 +112,6 @@ const War: React.FC<{ isBotEnabled: boolean }> = () => {
         />
       )}
 
-      <p className="text-xs md:text-sm text-gray-500 max-w-md text-center">
-        Both players flip the top card. Higher card takes both. Ties trigger a "war".
-      </p>
     </div>
   );
 };

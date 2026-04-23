@@ -109,9 +109,6 @@ const Fifteen: React.FC<{ isBotEnabled: boolean }> = () => {
         Shuffle
       </button>
 
-      <p className="text-xs md:text-sm text-gray-500 max-w-md text-center">
-        Slide tiles into the empty square to order them 1 → 15.
-      </p>
     </div>
   );
 };

@@ -253,9 +253,6 @@ const CrazyEights: React.FC<{ isBotEnabled: boolean }> = () => {
         />
       )}
 
-      <p className="text-xs md:text-sm text-gray-500 max-w-md text-center">
-        Play a card matching the rank or suit of the top card. Eights are wild — pick any suit. First to empty hand wins.
-      </p>
     </div>
   );
 };

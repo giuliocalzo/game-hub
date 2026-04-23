@@ -459,11 +459,6 @@ const Dama: React.FC<DamaProps> = ({ isBotEnabled }) => {
           ))
         )}
       </div>
-      
-      <div className="text-sm text-gray-500 max-w-md text-center leading-relaxed">
-        <p>Captures are mandatory. Kings can move diagonally in any direction.</p>
-        <p>Reach the opposite end to promote your piece to a king.</p>
-      </div>
     </div>
   );
 };

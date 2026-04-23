@@ -147,9 +147,6 @@ const MathQuiz: React.FC<{ isBotEnabled: boolean }> = () => {
         )}
       </div>
 
-      <p className="text-xs md:text-sm text-gray-500 max-w-md text-center">
-        Answer 10 quick math questions before time runs out.
-      </p>
     </div>
   );
 };

@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import { Gamepad2 } from 'lucide-react';
 import HomePage from './components/HomePage';
 import GameShell from './components/GameShell';
+import LanguagePicker from './components/LanguagePicker';
+import { useTranslation } from './i18n/I18nContext';
 import { Game } from './types/games';
 
 // Existing games
@@ -467,6 +469,7 @@ const AVAILABLE_GAMES: Game[] = [
 type View = 'home' | 'game';
 
 function App() {
+  const { t } = useTranslation();
   const [view, setView] = useState<View>('home');
   const [activeGameId, setActiveGameId] = useState<string | null>(null);
   const [isBotEnabled, setIsBotEnabled] = useState<boolean>(false);
@@ -474,9 +477,12 @@ function App() {
 
   useEffect(() => {
     const active = AVAILABLE_GAMES.find((g) => g.id === activeGameId);
+    const brand = t('app.brand');
     document.title =
-      view === 'game' && active ? `${active.name} — GameHub` : 'GameHub';
-  }, [view, activeGameId]);
+      view === 'game' && active
+        ? `${t(`game.${active.id}.name`)} — ${brand}`
+        : brand;
+  }, [view, activeGameId, t]);
 
   const activeGame = AVAILABLE_GAMES.find((g) => g.id === activeGameId) ?? null;
 
@@ -544,11 +550,11 @@ function App() {
 
       <div className="relative">
         <header className="bg-white/70 backdrop-blur-md shadow-sm border-b border-white/60 sticky top-0 z-40">
-          <div className="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+          <div className="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between gap-3">
             <button
               onClick={handleBackHome}
               className="flex items-center gap-2.5 group"
-              aria-label="Go to home"
+              aria-label={t('shell.back_aria')}
             >
               <span className="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 shadow-md group-hover:shadow-lg transition-shadow">
                 <Gamepad2 className="w-5 h-5 text-white" />
@@ -557,9 +563,12 @@ function App() {
                 Game<span className="text-blue-600">Hub</span>
               </span>
             </button>
-            <span className="hidden sm:block text-sm text-gray-500">
-              Play together · Learn together
-            </span>
+            <div className="flex items-center gap-3">
+              <span className="hidden md:block text-sm text-gray-500">
+                {t('app.tagline')}
+              </span>
+              <LanguagePicker />
+            </div>
           </div>
         </header>
 
@@ -586,7 +595,7 @@ function App() {
         </main>
 
         <footer className="max-w-6xl mx-auto px-4 py-8 text-center text-xs text-gray-500">
-          Made with care for curious young players.
+          {t('app.footer')}
         </footer>
       </div>
     </div>

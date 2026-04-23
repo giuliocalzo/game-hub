@@ -257,9 +257,6 @@ const Ludo: React.FC<{ isBotEnabled: boolean }> = ({ isBotEnabled }) => {
         )}
       </div>
 
-      <p className="text-xs md:text-sm text-gray-500 max-w-md text-center">
-        Roll a 6 to leave base. Move tokens around the track, enter the home stretch, and finish all four to win. Rolling a 6 grants another roll.
-      </p>
     </div>
   );
 };

@@ -215,9 +215,6 @@ const DotsAndBoxes: React.FC<{ isBotEnabled: boolean }> = ({ isBotEnabled }) => 
         )}
       </div>
 
-      <p className="text-xs md:text-sm text-gray-500 max-w-md text-center">
-        Take turns drawing a line. Complete the 4th side of a box to claim it and play again.
-      </p>
     </div>
   );
 };

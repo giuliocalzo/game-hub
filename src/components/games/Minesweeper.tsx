@@ -183,9 +183,6 @@ const Minesweeper: React.FC<{ isBotEnabled: boolean }> = () => {
         )}
       </div>
 
-      <p className="text-xs md:text-sm text-gray-500 max-w-md text-center">
-        Tap to open · right-click (or long-press) to flag. Numbers show nearby mines.
-      </p>
     </div>
   );
 };

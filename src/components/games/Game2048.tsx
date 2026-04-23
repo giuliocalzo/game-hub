@@ -213,9 +213,6 @@ const Game2048: React.FC<{ isBotEnabled: boolean }> = () => {
         <ArrowBtn onClick={() => tryMove('right')}>→</ArrowBtn>
       </div>
 
-      <p className="text-xs md:text-sm text-gray-500 max-w-md text-center">
-        Slide tiles in four directions. Matching tiles merge. First to 2048 wins.
-      </p>
     </div>
   );
 };

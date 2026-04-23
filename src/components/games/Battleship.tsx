@@ -168,9 +168,6 @@ const Battleship: React.FC<{ isBotEnabled: boolean }> = ({ isBotEnabled }) => {
         />
       )}
 
-      <p className="text-xs md:text-sm text-gray-500 max-w-md text-center">
-        Click cells in the opponent's waters to fire. Sink every ship to win.
-      </p>
     </div>
   );
 };

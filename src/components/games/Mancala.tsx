@@ -198,9 +198,6 @@ const Mancala: React.FC<{ isBotEnabled: boolean }> = ({ isBotEnabled }) => {
         )}
       </div>
 
-      <p className="text-xs md:text-sm text-gray-500 max-w-md text-center">
-        Pick up stones from one of your pits and sow them counter-clockwise. Land the last stone in your store for another turn. Game ends when one side is empty.
-      </p>
     </div>
   );
 };

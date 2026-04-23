@@ -190,9 +190,6 @@ const ConnectFour: React.FC<ConnectFourProps> = ({ isBotEnabled }) => {
         )}
       </div>
 
-      <p className="text-xs md:text-sm text-gray-500 max-w-md text-center">
-        Click a column to drop your disc. First to line up four in a row — horizontally, vertically or diagonally — wins.
-      </p>
     </div>
   );
 };

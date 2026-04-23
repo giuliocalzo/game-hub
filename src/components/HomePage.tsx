@@ -1,6 +1,7 @@
 import React, { useMemo, useState } from 'react';
 import { Bot, Users, Sparkles, Play, Search } from 'lucide-react';
 import { Game, GameCategory } from '../types/games';
+import { useTranslation } from '../i18n/I18nContext';
 
 interface HomePageProps {
   games: Game[];
@@ -9,22 +10,13 @@ interface HomePageProps {
   onSelectGame: (gameId: string) => void;
 }
 
-const difficultyStyles: Record<Game['difficulty'], string> = {
-  Easy: 'bg-emerald-100 text-emerald-700 border-emerald-200',
-  Medium: 'bg-amber-100 text-amber-700 border-amber-200',
-  Hard: 'bg-rose-100 text-rose-700 border-rose-200',
-};
-
-const CATEGORY_META: Record<
-  GameCategory,
-  { label: string; emoji: string; description: string }
-> = {
-  board: { label: 'Board & strategy', emoji: '♟️', description: 'Think, plan, outsmart.' },
-  card: { label: 'Card games', emoji: '🃏', description: 'Match, collect, and swap.' },
-  dice: { label: 'Dice games', emoji: '🎲', description: 'Roll your luck.' },
-  puzzle: { label: 'Puzzles', emoji: '🧩', description: 'Solo challenges.' },
-  arcade: { label: 'Arcade & reflex', emoji: '🕹️', description: 'Quick reactions.' },
-  educational: { label: 'Learn & play', emoji: '🎓', description: 'Sneaky learning.' },
+const CATEGORY_EMOJI: Record<GameCategory, string> = {
+  board: '♟️',
+  card: '🃏',
+  dice: '🎲',
+  puzzle: '🧩',
+  arcade: '🕹️',
+  educational: '🎓',
 };
 
 const CATEGORY_ORDER: GameCategory[] = [
@@ -44,8 +36,15 @@ const HomePage: React.FC<HomePageProps> = ({
   onToggleBot,
   onSelectGame,
 }) => {
+  const { t } = useTranslation();
   const [filter, setFilter] = useState<Filter>('all');
   const [query, setQuery] = useState('');
+
+  const difficultyStyles: Record<Game['difficulty'], string> = {
+    Easy: 'bg-emerald-100 text-emerald-700 border-emerald-200',
+    Medium: 'bg-amber-100 text-amber-700 border-amber-200',
+    Hard: 'bg-rose-100 text-rose-700 border-rose-200',
+  };
 
   const availableCategories = useMemo(() => {
     const set = new Set(games.map((g) => g.category));
@@ -57,13 +56,16 @@ const HomePage: React.FC<HomePageProps> = ({
     return games.filter((g) => {
       if (filter !== 'all' && g.category !== filter) return false;
       if (!q) return true;
+      const name = t(`game.${g.id}.name`).toLowerCase();
+      const tagline = t(`game.${g.id}.tagline`).toLowerCase();
       return (
-        g.name.toLowerCase().includes(q) ||
+        name.includes(q) ||
+        tagline.includes(q) ||
         g.description.toLowerCase().includes(q) ||
-        g.tagline.toLowerCase().includes(q)
+        g.name.toLowerCase().includes(q)
       );
     });
-  }, [games, filter, query]);
+  }, [games, filter, query, t]);
 
   const grouped = useMemo(() => {
     const byCat = new Map<GameCategory, Game[]>();
@@ -85,19 +87,16 @@ const HomePage: React.FC<HomePageProps> = ({
         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/70 backdrop-blur border border-white shadow-sm mb-5">
           <Sparkles className="w-4 h-4 text-amber-500" />
           <span className="text-sm font-medium text-gray-700">
-            {games.length}+ fun games in one place
+            {t('home.badge', { count: games.length })}
           </span>
         </div>
         <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-gray-900 mb-4">
-          Pick a game and
+          {t('home.title.pick')}
           <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent">
-            {' '}let's play!
+            {' '}{t('home.title.play')}
           </span>
         </h1>
-        <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-          Classic board games, card games, puzzles and arcade fun — all in one
-          colorful home for kids.
-        </p>
+        <p className="text-lg text-gray-600 max-w-2xl mx-auto">{t('home.subtitle')}</p>
       </div>
 
       {/* Mode toggle */}
@@ -118,7 +117,7 @@ const HomePage: React.FC<HomePageProps> = ({
             }`}
           >
             <Users className="w-4 h-4" />
-            2 Players
+            {t('mode.two_players')}
           </button>
           <button
             role="radio"
@@ -131,7 +130,7 @@ const HomePage: React.FC<HomePageProps> = ({
             }`}
           >
             <Bot className="w-4 h-4" />
-            Play vs Bot
+            {t('mode.vs_bot')}
           </button>
         </div>
       </div>
@@ -144,8 +143,8 @@ const HomePage: React.FC<HomePageProps> = ({
             type="search"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Search games..."
-            aria-label="Search games"
+            placeholder={t('home.search.placeholder')}
+            aria-label={t('home.search.placeholder')}
             className="w-full pl-9 pr-3 py-2.5 rounded-full bg-white border border-gray-200 shadow-sm text-sm focus:outline-none focus:ring-2 focus:ring-blue-300"
           />
         </div>
@@ -155,7 +154,7 @@ const HomePage: React.FC<HomePageProps> = ({
           className="flex flex-wrap gap-1.5"
         >
           <FilterChip active={filter === 'all'} onClick={() => setFilter('all')}>
-            All
+            {t('home.filter.all')}
           </FilterChip>
           {availableCategories.map((c) => (
             <FilterChip
@@ -164,9 +163,9 @@ const HomePage: React.FC<HomePageProps> = ({
               onClick={() => setFilter(c)}
             >
               <span aria-hidden="true" className="mr-1">
-                {CATEGORY_META[c].emoji}
+                {CATEGORY_EMOJI[c]}
               </span>
-              {CATEGORY_META[c].label}
+              {t(`category.${c}.label`)}
             </FilterChip>
           ))}
         </div>
@@ -174,9 +173,7 @@ const HomePage: React.FC<HomePageProps> = ({
 
       {/* Empty state */}
       {grouped.length === 0 && (
-        <div className="text-center py-16 text-gray-500">
-          No games match your search.
-        </div>
+        <div className="text-center py-16 text-gray-500">{t('home.empty')}</div>
       )}
 
       {/* Sections */}
@@ -186,24 +183,26 @@ const HomePage: React.FC<HomePageProps> = ({
             <div className="flex items-baseline gap-2 mb-4">
               <h2 className="text-xl md:text-2xl font-bold text-gray-900">
                 <span aria-hidden="true" className="mr-1.5">
-                  {CATEGORY_META[category].emoji}
+                  {CATEGORY_EMOJI[category]}
                 </span>
-                {CATEGORY_META[category].label}
+                {t(`category.${category}.label`)}
               </h2>
               <span className="text-sm text-gray-500">
-                {CATEGORY_META[category].description}
+                {t(`category.${category}.desc`)}
               </span>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
               {cgames.map((game) => {
                 const botUnsupported = isBotEnabled && !game.supportsBot && !game.solo;
+                const name = t(`game.${game.id}.name`);
+                const tagline = t(`game.${game.id}.tagline`);
                 return (
                   <button
                     key={game.id}
                     onClick={() => onSelectGame(game.id)}
                     disabled={botUnsupported}
-                    aria-label={`Play ${game.name}`}
+                    aria-label={`${t('card.play')} ${name}`}
                     className={`group relative overflow-hidden rounded-2xl bg-white border border-gray-200 shadow-sm hover:shadow-xl transition-all duration-300 text-left ${
                       botUnsupported
                         ? 'opacity-60 cursor-not-allowed'
@@ -226,27 +225,27 @@ const HomePage: React.FC<HomePageProps> = ({
                     <div className="p-5">
                       <div className="flex items-start justify-between gap-3 mb-2">
                         <h3 className="text-lg font-bold text-gray-900 leading-tight">
-                          {game.name}
+                          {name}
                         </h3>
                         <span
                           className={`shrink-0 text-xs font-semibold px-2 py-0.5 rounded-full border ${
                             difficultyStyles[game.difficulty]
                           }`}
                         >
-                          {game.difficulty}
+                          {t(`difficulty.${game.difficulty}`)}
                         </span>
                       </div>
                       <p className="text-sm text-gray-600 mb-4 min-h-[2.5rem]">
-                        {game.tagline}
+                        {tagline}
                       </p>
 
                       <div className="flex items-center justify-between">
                         <span className="text-xs font-medium text-gray-500">
                           {game.solo
-                            ? '1 player · solo'
+                            ? t('card.solo')
                             : botUnsupported
-                              ? 'Bot mode not available'
-                              : '2 players · same device'}
+                              ? t('card.bot_unavailable')
+                              : t('card.two_players_device')}
                         </span>
                         <span
                           className={`inline-flex items-center gap-1.5 text-sm font-semibold transition-colors ${
@@ -255,7 +254,7 @@ const HomePage: React.FC<HomePageProps> = ({
                               : 'text-blue-600 group-hover:text-blue-700'
                           }`}
                         >
-                          Play
+                          {t('card.play')}
                           <Play className="w-4 h-4 fill-current transition-transform group-hover:translate-x-0.5" />
                         </span>
                       </div>
@@ -269,7 +268,7 @@ const HomePage: React.FC<HomePageProps> = ({
       </div>
 
       <p className="text-center text-xs text-gray-500 mt-12">
-        Switch between 2 Players and Play vs Bot at any time.
+        {t('home.footer_tip')}
       </p>
     </div>
   );
