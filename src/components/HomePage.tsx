@@ -17,6 +17,7 @@ const CATEGORY_EMOJI: Record<GameCategory, string> = {
   puzzle: '🧩',
   arcade: '🕹️',
   educational: '🎓',
+  art: '🎨',
 };
 
 const CATEGORY_ORDER: GameCategory[] = [
@@ -25,6 +26,7 @@ const CATEGORY_ORDER: GameCategory[] = [
   'dice',
   'arcade',
   'puzzle',
+  'art',
   'educational',
 ];
 

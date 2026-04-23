@@ -51,6 +51,11 @@ import Catch from './components/games/Catch';
 import BubbleShooter from './components/games/BubbleShooter';
 import NineMensMorris from './components/games/NineMensMorris';
 import Dominoes from './components/games/Dominoes';
+// Art activities
+import DoodlePad from './components/games/DoodlePad';
+import PixelArt from './components/games/PixelArt';
+import Spin from './components/games/Spin';
+import Sticker from './components/games/Sticker';
 // New educational
 import Hangman from './components/games/Hangman';
 import WordSearch from './components/games/WordSearch';
@@ -431,6 +436,56 @@ const AVAILABLE_GAMES: Game[] = [
     category: 'card',
   },
 
+  // Art & creativity
+  {
+    id: 'doodle',
+    name: 'Doodle Pad',
+    description: 'Free-form drawing',
+    tagline: 'Free-form drawing with colors and brushes.',
+    icon: '✏️',
+    gradient: 'from-pink-400 to-rose-500',
+    difficulty: 'Easy',
+    supportsBot: false,
+    solo: true,
+    category: 'art',
+  },
+  {
+    id: 'pixel',
+    name: 'Pixel Art',
+    description: 'Grid-based pixel painter',
+    tagline: 'Paint on a 16×16 grid, pixel by pixel.',
+    icon: '🟦',
+    gradient: 'from-sky-400 to-indigo-500',
+    difficulty: 'Easy',
+    supportsBot: false,
+    solo: true,
+    category: 'art',
+  },
+  {
+    id: 'spin',
+    name: 'Spin',
+    description: 'Kaleidoscope drawing',
+    tagline: 'Draw kaleidoscope patterns with radial symmetry.',
+    icon: '🌀',
+    gradient: 'from-fuchsia-500 to-purple-700',
+    difficulty: 'Easy',
+    supportsBot: false,
+    solo: true,
+    category: 'art',
+  },
+  {
+    id: 'sticker',
+    name: 'Sticker',
+    description: 'Stamp emoji stickers',
+    tagline: 'Stamp colorful stickers on a blank canvas.',
+    icon: '🌟',
+    gradient: 'from-amber-300 to-orange-500',
+    difficulty: 'Easy',
+    supportsBot: false,
+    solo: true,
+    category: 'art',
+  },
+
   // Puzzle
   {
     id: 'memory',
@@ -628,6 +683,10 @@ function App() {
       case 'bubble': return <BubbleShooter isBotEnabled={isBotEnabled} />;
       case 'morris': return <NineMensMorris isBotEnabled={isBotEnabled} />;
       case 'dominoes': return <Dominoes isBotEnabled={isBotEnabled} />;
+      case 'doodle': return <DoodlePad isBotEnabled={isBotEnabled} />;
+      case 'pixel': return <PixelArt isBotEnabled={isBotEnabled} />;
+      case 'spin': return <Spin isBotEnabled={isBotEnabled} />;
+      case 'sticker': return <Sticker isBotEnabled={isBotEnabled} />;
       case 'hangman': return <Hangman isBotEnabled={isBotEnabled} />;
       case 'word-search': return <WordSearch isBotEnabled={isBotEnabled} />;
       case 'math-quiz': return <MathQuiz isBotEnabled={isBotEnabled} />;
