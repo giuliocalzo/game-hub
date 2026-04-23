@@ -1,5 +1,6 @@
 import React, { useState, useCallback, useEffect, useRef } from 'react';
 import { DamaPosition, DamaPiece } from '../../types/games';
+import StatusBar, { StatusTone } from '../shared/StatusBar';
 
 interface DamaProps {
   isBotEnabled: boolean;
@@ -420,17 +421,19 @@ const Dama: React.FC<DamaProps> = ({ isBotEnabled }) => {
     return `Current player: ${currentPlayer}`;
   };
 
+  const statusTone: StatusTone = gameStatus.includes('must')
+    ? 'warning'
+    : gameStatus.includes('captured')
+      ? 'success'
+      : isBotEnabled && currentPlayer === 'black'
+        ? 'purple'
+        : 'neutral';
+
   return (
-    <div className="flex flex-col items-center space-y-6">
-      <div className={`text-lg font-semibold ${
-        gameStatus.includes('must') ? 'text-orange-600' : 
-        gameStatus.includes('captured') ? 'text-green-600' :
-        isBotEnabled && currentPlayer === 'black' ? 'text-purple-600' : 'text-gray-700'
-      }`}>
-        {getStatusMessage()}
-      </div>
-      
-      <div className="grid grid-cols-8 gap-0 border-2 border-gray-800 bg-white">
+    <div className="flex flex-col items-center gap-5">
+      <StatusBar tone={statusTone}>{getStatusMessage()}</StatusBar>
+
+      <div className="grid grid-cols-8 gap-0 border-4 border-amber-900/60 rounded-lg overflow-hidden shadow-lg">
         {board.map((row, rowIndex) =>
           row.map((piece, colIndex) => (
             <div
@@ -457,8 +460,8 @@ const Dama: React.FC<DamaProps> = ({ isBotEnabled }) => {
         )}
       </div>
       
-      <div className="text-sm text-gray-600 max-w-md text-center">
-        <p>Captures are mandatory! Kings can move in all diagonal directions.</p>
+      <div className="text-sm text-gray-500 max-w-md text-center leading-relaxed">
+        <p>Captures are mandatory. Kings can move diagonally in any direction.</p>
         <p>Reach the opposite end to promote your piece to a king.</p>
       </div>
     </div>

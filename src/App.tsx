@@ -2,15 +2,53 @@ import { useState, useEffect } from 'react';
 import { Gamepad2 } from 'lucide-react';
 import HomePage from './components/HomePage';
 import GameShell from './components/GameShell';
+import { Game } from './types/games';
+
+// Existing games
 import Chess from './components/games/Chess';
 import Dama from './components/games/Dama';
 import Tris from './components/games/Tris';
 import SnakesAndLadders from './components/games/SnakesAndLadders';
 import Backgammon from './components/games/Backgammon';
 import Uno from './components/games/Uno';
-import { Game } from './types/games';
+// New board/strategy
+import ConnectFour from './components/games/ConnectFour';
+import Reversi from './components/games/Reversi';
+import Gomoku from './components/games/Gomoku';
+import DotsAndBoxes from './components/games/DotsAndBoxes';
+import Mancala from './components/games/Mancala';
+import Battleship from './components/games/Battleship';
+import Ludo from './components/games/Ludo';
+// New card
+import GoFish from './components/games/GoFish';
+import CrazyEights from './components/games/CrazyEights';
+import War from './components/games/War';
+import Solitaire from './components/games/Solitaire';
+// New dice
+import Pig from './components/games/Pig';
+import Yahtzee from './components/games/Yahtzee';
+// New puzzle
+import Memory from './components/games/Memory';
+import Game2048 from './components/games/Game2048';
+import Minesweeper from './components/games/Minesweeper';
+import FifteenPuzzle from './components/games/FifteenPuzzle';
+import Sudoku from './components/games/Sudoku';
+import Nonogram from './components/games/Nonogram';
+// New arcade
+import Snake from './components/games/Snake';
+import Simon from './components/games/Simon';
+import WhackAMole from './components/games/WhackAMole';
+import Tetris from './components/games/Tetris';
+import FlappyBird from './components/games/FlappyBird';
+// New educational
+import Hangman from './components/games/Hangman';
+import WordSearch from './components/games/WordSearch';
+import MathQuiz from './components/games/MathQuiz';
+import FlagsQuiz from './components/games/FlagsQuiz';
+import TypingPractice from './components/games/TypingPractice';
 
 const AVAILABLE_GAMES: Game[] = [
+  // Board / strategy
   {
     id: 'tris',
     name: 'Tic-Tac-Toe',
@@ -20,26 +58,18 @@ const AVAILABLE_GAMES: Game[] = [
     gradient: 'from-sky-400 to-blue-500',
     difficulty: 'Easy',
     supportsBot: true,
+    category: 'board',
   },
   {
-    id: 'snakes-and-ladders',
-    name: 'Snakes & Ladders',
-    description: 'Roll dice and climb to victory',
-    tagline: 'Roll the dice, climb the ladders, dodge the snakes!',
-    icon: '🎲',
-    gradient: 'from-emerald-400 to-green-600',
+    id: 'connect-four',
+    name: 'Connect Four',
+    description: 'Drop discs, line up four',
+    tagline: 'Drop, match four, win. Classic for all ages.',
+    icon: '🔴',
+    gradient: 'from-blue-500 to-indigo-600',
     difficulty: 'Easy',
     supportsBot: true,
-  },
-  {
-    id: 'uno',
-    name: 'UNO',
-    description: 'Match colors and numbers in this fast-paced card game',
-    tagline: 'Match colors and numbers — don\u2019t forget to shout UNO!',
-    icon: '🃏',
-    gradient: 'from-rose-500 to-orange-500',
-    difficulty: 'Medium',
-    supportsBot: true,
+    category: 'board',
   },
   {
     id: 'dama',
@@ -50,26 +80,387 @@ const AVAILABLE_GAMES: Game[] = [
     gradient: 'from-rose-400 to-red-600',
     difficulty: 'Medium',
     supportsBot: true,
+    category: 'board',
+  },
+  {
+    id: 'reversi',
+    name: 'Reversi',
+    description: 'Flip opponent discs',
+    tagline: 'Sandwich your opponent and flip the board.',
+    icon: '⚪',
+    gradient: 'from-emerald-600 to-emerald-800',
+    difficulty: 'Medium',
+    supportsBot: true,
+    category: 'board',
+  },
+  {
+    id: 'gomoku',
+    name: 'Gomoku',
+    description: 'Five stones in a row',
+    tagline: 'Like tic-tac-toe, but you need five in a row.',
+    icon: '⚫',
+    gradient: 'from-amber-500 to-yellow-600',
+    difficulty: 'Medium',
+    supportsBot: true,
+    category: 'board',
+  },
+  {
+    id: 'dots-boxes',
+    name: 'Dots & Boxes',
+    description: 'Close squares to score',
+    tagline: 'Draw the last side of a box to claim it.',
+    icon: '🔲',
+    gradient: 'from-sky-300 to-blue-500',
+    difficulty: 'Easy',
+    supportsBot: true,
+    category: 'board',
+  },
+  {
+    id: 'mancala',
+    name: 'Mancala',
+    description: 'Ancient sow-and-capture game',
+    tagline: 'Sow stones around the pits. Land in your store for a bonus turn.',
+    icon: '🪨',
+    gradient: 'from-amber-400 to-yellow-700',
+    difficulty: 'Medium',
+    supportsBot: true,
+    category: 'board',
   },
   {
     id: 'backgammon',
     name: 'Backgammon',
-    description: 'Race your pieces home in this classic strategy game',
+    description: 'Race your pieces home',
     tagline: 'Race your pieces home with a bit of dice luck.',
     icon: '🎯',
-    gradient: 'from-amber-500 to-yellow-600',
+    gradient: 'from-amber-600 to-yellow-800',
     difficulty: 'Hard',
     supportsBot: true,
+    category: 'board',
+  },
+  {
+    id: 'battleship',
+    name: 'Battleship',
+    description: 'Sink the enemy fleet',
+    tagline: 'Guess cells on the hidden grid and sink the fleet.',
+    icon: '🚢',
+    gradient: 'from-blue-600 to-indigo-800',
+    difficulty: 'Medium',
+    supportsBot: true,
+    category: 'board',
+  },
+  {
+    id: 'ludo',
+    name: 'Ludo',
+    description: 'Race all four tokens home',
+    tagline: 'Roll dice, race your four tokens home.',
+    icon: '🎲',
+    gradient: 'from-rose-500 to-amber-500',
+    difficulty: 'Easy',
+    supportsBot: true,
+    category: 'board',
   },
   {
     id: 'chess',
     name: 'Chess',
-    description: 'Strategic board game with pieces and tactics',
+    description: 'Strategic board game',
     tagline: 'The ultimate strategy game. Plan your moves!',
     icon: '♔',
     gradient: 'from-slate-600 to-slate-800',
     difficulty: 'Hard',
     supportsBot: true,
+    category: 'board',
+  },
+  {
+    id: 'snakes-and-ladders',
+    name: 'Snakes & Ladders',
+    description: 'Roll dice and climb to victory',
+    tagline: 'Roll the dice, climb ladders, dodge snakes!',
+    icon: '🐍',
+    gradient: 'from-emerald-400 to-green-600',
+    difficulty: 'Easy',
+    supportsBot: true,
+    category: 'board',
+  },
+
+  // Card games
+  {
+    id: 'uno',
+    name: 'UNO',
+    description: 'Match colors and numbers',
+    tagline: "Match colors and numbers — don\u2019t forget to shout UNO!",
+    icon: '🃏',
+    gradient: 'from-rose-500 to-orange-500',
+    difficulty: 'Medium',
+    supportsBot: true,
+    category: 'card',
+  },
+  {
+    id: 'go-fish',
+    name: 'Go Fish',
+    description: 'Collect sets of four',
+    tagline: 'Ask for ranks you hold. Collect four of a kind.',
+    icon: '🐟',
+    gradient: 'from-sky-400 to-blue-600',
+    difficulty: 'Easy',
+    supportsBot: true,
+    category: 'card',
+  },
+  {
+    id: 'crazy-eights',
+    name: 'Crazy Eights',
+    description: 'Match suit or rank',
+    tagline: 'Match suit or rank. Eights are wild!',
+    icon: '8️⃣',
+    gradient: 'from-purple-500 to-indigo-600',
+    difficulty: 'Easy',
+    supportsBot: true,
+    category: 'card',
+  },
+  {
+    id: 'war',
+    name: 'War',
+    description: 'Higher card wins',
+    tagline: 'Pure luck: higher card wins the pile.',
+    icon: '⚔️',
+    gradient: 'from-rose-500 to-red-700',
+    difficulty: 'Easy',
+    supportsBot: true,
+    category: 'card',
+  },
+  {
+    id: 'solitaire',
+    name: 'Solitaire',
+    description: 'Klondike card solitaire',
+    tagline: 'The classic Klondike. Play by yourself.',
+    icon: '🂱',
+    gradient: 'from-emerald-500 to-teal-700',
+    difficulty: 'Medium',
+    supportsBot: false,
+    solo: true,
+    category: 'card',
+  },
+
+  // Dice
+  {
+    id: 'pig',
+    name: 'Pig',
+    description: 'Bank before rolling a 1',
+    tagline: 'Push your luck. First to 100 wins.',
+    icon: '🐷',
+    gradient: 'from-pink-400 to-rose-500',
+    difficulty: 'Easy',
+    supportsBot: true,
+    category: 'dice',
+  },
+  {
+    id: 'yahtzee',
+    name: 'Yahtzee',
+    description: 'Dice combinations on a scorecard',
+    tagline: 'Roll for the best combinations.',
+    icon: '🎲',
+    gradient: 'from-amber-500 to-orange-600',
+    difficulty: 'Medium',
+    supportsBot: false,
+    solo: true,
+    category: 'dice',
+  },
+
+  // Arcade
+  {
+    id: 'snake',
+    name: 'Snake',
+    description: 'Grow without crashing',
+    tagline: 'Eat the apples, don\u2019t hit yourself.',
+    icon: '🐍',
+    gradient: 'from-emerald-500 to-green-700',
+    difficulty: 'Easy',
+    supportsBot: false,
+    solo: true,
+    category: 'arcade',
+  },
+  {
+    id: 'tetris',
+    name: 'Tetris',
+    description: 'Stack blocks, clear lines',
+    tagline: 'Rotate, drop, clear. Addictive classic.',
+    icon: '🧱',
+    gradient: 'from-cyan-500 to-blue-600',
+    difficulty: 'Medium',
+    supportsBot: false,
+    solo: true,
+    category: 'arcade',
+  },
+  {
+    id: 'flappy',
+    name: 'Flappy Bird',
+    description: 'Tap to fly through gaps',
+    tagline: 'Tap to flap. Dodge the pipes.',
+    icon: '🐤',
+    gradient: 'from-yellow-300 to-orange-400',
+    difficulty: 'Hard',
+    supportsBot: false,
+    solo: true,
+    category: 'arcade',
+  },
+  {
+    id: 'simon',
+    name: 'Simon',
+    description: 'Memorize the color sequence',
+    tagline: 'Watch and repeat the flashing colors.',
+    icon: '🔴',
+    gradient: 'from-emerald-500 via-yellow-400 to-rose-500',
+    difficulty: 'Medium',
+    supportsBot: false,
+    solo: true,
+    category: 'arcade',
+  },
+  {
+    id: 'whack',
+    name: 'Whack-a-Mole',
+    description: 'Tap moles as they pop up',
+    tagline: 'Tap moles before they disappear.',
+    icon: '🐹',
+    gradient: 'from-amber-400 to-yellow-600',
+    difficulty: 'Easy',
+    supportsBot: false,
+    solo: true,
+    category: 'arcade',
+  },
+
+  // Puzzle
+  {
+    id: 'memory',
+    name: 'Memory',
+    description: 'Flip and match pairs',
+    tagline: 'Flip cards, remember pairs.',
+    icon: '🧠',
+    gradient: 'from-indigo-500 to-purple-600',
+    difficulty: 'Easy',
+    supportsBot: false,
+    solo: true,
+    category: 'puzzle',
+  },
+  {
+    id: '2048',
+    name: '2048',
+    description: 'Combine tiles to reach 2048',
+    tagline: 'Slide tiles. Matching numbers merge.',
+    icon: '🔢',
+    gradient: 'from-amber-500 to-orange-600',
+    difficulty: 'Medium',
+    supportsBot: false,
+    solo: true,
+    category: 'puzzle',
+  },
+  {
+    id: 'minesweeper',
+    name: 'Minesweeper',
+    description: 'Clear the field, avoid mines',
+    tagline: 'Use the numbers to deduce where the mines are.',
+    icon: '💣',
+    gradient: 'from-stone-400 to-stone-600',
+    difficulty: 'Medium',
+    supportsBot: false,
+    solo: true,
+    category: 'puzzle',
+  },
+  {
+    id: 'fifteen',
+    name: '15 Puzzle',
+    description: 'Slide tiles into order',
+    tagline: 'Rearrange tiles 1 to 15.',
+    icon: '🔲',
+    gradient: 'from-indigo-400 to-purple-500',
+    difficulty: 'Easy',
+    supportsBot: false,
+    solo: true,
+    category: 'puzzle',
+  },
+  {
+    id: 'sudoku',
+    name: 'Sudoku',
+    description: 'Fill the grid with 1–9',
+    tagline: 'Classic 9×9 number logic puzzle.',
+    icon: '🧮',
+    gradient: 'from-gray-600 to-gray-800',
+    difficulty: 'Hard',
+    supportsBot: false,
+    solo: true,
+    category: 'puzzle',
+  },
+  {
+    id: 'nonogram',
+    name: 'Nonogram',
+    description: 'Reveal the hidden picture',
+    tagline: 'Use the number clues to paint the picture.',
+    icon: '🎨',
+    gradient: 'from-fuchsia-500 to-pink-600',
+    difficulty: 'Medium',
+    supportsBot: false,
+    solo: true,
+    category: 'puzzle',
+  },
+
+  // Educational
+  {
+    id: 'hangman',
+    name: 'Hangman',
+    description: 'Guess the word, letter by letter',
+    tagline: 'Save the stick figure by guessing right.',
+    icon: '🪢',
+    gradient: 'from-slate-500 to-slate-700',
+    difficulty: 'Easy',
+    supportsBot: false,
+    solo: true,
+    category: 'educational',
+  },
+  {
+    id: 'word-search',
+    name: 'Word Search',
+    description: 'Find hidden words',
+    tagline: 'Find words hidden in the letter grid.',
+    icon: '🔍',
+    gradient: 'from-blue-400 to-indigo-500',
+    difficulty: 'Easy',
+    supportsBot: false,
+    solo: true,
+    category: 'educational',
+  },
+  {
+    id: 'math-quiz',
+    name: 'Math Quiz',
+    description: 'Fast-paced math questions',
+    tagline: 'Solve 10 questions before time runs out.',
+    icon: '➕',
+    gradient: 'from-emerald-500 to-teal-600',
+    difficulty: 'Medium',
+    supportsBot: false,
+    solo: true,
+    category: 'educational',
+  },
+  {
+    id: 'flags-quiz',
+    name: 'Flags Quiz',
+    description: 'Identify country flags',
+    tagline: 'Spot the country from its flag.',
+    icon: '🏳️',
+    gradient: 'from-rose-400 to-red-600',
+    difficulty: 'Easy',
+    supportsBot: false,
+    solo: true,
+    category: 'educational',
+  },
+  {
+    id: 'typing',
+    name: 'Typing Practice',
+    description: 'WPM & accuracy trainer',
+    tagline: 'Type sentences to build speed and accuracy.',
+    icon: '⌨️',
+    gradient: 'from-gray-500 to-gray-700',
+    difficulty: 'Easy',
+    supportsBot: false,
+    solo: true,
+    category: 'educational',
   },
 ];
 
@@ -81,7 +472,6 @@ function App() {
   const [isBotEnabled, setIsBotEnabled] = useState<boolean>(false);
   const [restartKey, setRestartKey] = useState<number>(0);
 
-  // Keep page title in sync — nice touch for tabs.
   useEffect(() => {
     const active = AVAILABLE_GAMES.find((g) => g.id === activeGameId);
     document.title =
@@ -92,20 +482,42 @@ function App() {
 
   const renderGame = (gameId: string) => {
     switch (gameId) {
-      case 'chess':
-        return <Chess isBotEnabled={isBotEnabled} />;
-      case 'dama':
-        return <Dama isBotEnabled={isBotEnabled} />;
-      case 'tris':
-        return <Tris isBotEnabled={isBotEnabled} />;
-      case 'snakes-and-ladders':
-        return <SnakesAndLadders isBotEnabled={isBotEnabled} />;
-      case 'backgammon':
-        return <Backgammon isBotEnabled={isBotEnabled} />;
-      case 'uno':
-        return <Uno isBotEnabled={isBotEnabled} />;
-      default:
-        return <div className="text-gray-600">Game not found.</div>;
+      case 'chess': return <Chess isBotEnabled={isBotEnabled} />;
+      case 'dama': return <Dama isBotEnabled={isBotEnabled} />;
+      case 'tris': return <Tris isBotEnabled={isBotEnabled} />;
+      case 'snakes-and-ladders': return <SnakesAndLadders isBotEnabled={isBotEnabled} />;
+      case 'backgammon': return <Backgammon isBotEnabled={isBotEnabled} />;
+      case 'uno': return <Uno isBotEnabled={isBotEnabled} />;
+      case 'connect-four': return <ConnectFour isBotEnabled={isBotEnabled} />;
+      case 'reversi': return <Reversi isBotEnabled={isBotEnabled} />;
+      case 'gomoku': return <Gomoku isBotEnabled={isBotEnabled} />;
+      case 'dots-boxes': return <DotsAndBoxes isBotEnabled={isBotEnabled} />;
+      case 'mancala': return <Mancala isBotEnabled={isBotEnabled} />;
+      case 'battleship': return <Battleship isBotEnabled={isBotEnabled} />;
+      case 'ludo': return <Ludo isBotEnabled={isBotEnabled} />;
+      case 'go-fish': return <GoFish isBotEnabled={isBotEnabled} />;
+      case 'crazy-eights': return <CrazyEights isBotEnabled={isBotEnabled} />;
+      case 'war': return <War isBotEnabled={isBotEnabled} />;
+      case 'solitaire': return <Solitaire isBotEnabled={isBotEnabled} />;
+      case 'pig': return <Pig isBotEnabled={isBotEnabled} />;
+      case 'yahtzee': return <Yahtzee isBotEnabled={isBotEnabled} />;
+      case 'memory': return <Memory isBotEnabled={isBotEnabled} />;
+      case '2048': return <Game2048 isBotEnabled={isBotEnabled} />;
+      case 'minesweeper': return <Minesweeper isBotEnabled={isBotEnabled} />;
+      case 'fifteen': return <FifteenPuzzle isBotEnabled={isBotEnabled} />;
+      case 'sudoku': return <Sudoku isBotEnabled={isBotEnabled} />;
+      case 'nonogram': return <Nonogram isBotEnabled={isBotEnabled} />;
+      case 'snake': return <Snake isBotEnabled={isBotEnabled} />;
+      case 'tetris': return <Tetris isBotEnabled={isBotEnabled} />;
+      case 'flappy': return <FlappyBird isBotEnabled={isBotEnabled} />;
+      case 'simon': return <Simon isBotEnabled={isBotEnabled} />;
+      case 'whack': return <WhackAMole isBotEnabled={isBotEnabled} />;
+      case 'hangman': return <Hangman isBotEnabled={isBotEnabled} />;
+      case 'word-search': return <WordSearch isBotEnabled={isBotEnabled} />;
+      case 'math-quiz': return <MathQuiz isBotEnabled={isBotEnabled} />;
+      case 'flags-quiz': return <FlagsQuiz isBotEnabled={isBotEnabled} />;
+      case 'typing': return <TypingPractice isBotEnabled={isBotEnabled} />;
+      default: return <div className="text-gray-600">Game not found.</div>;
     }
   };
 
@@ -115,17 +527,12 @@ function App() {
     setView('game');
   };
 
-  const handleBackHome = () => {
-    setView('home');
-  };
+  const handleBackHome = () => setView('home');
 
-  const handleRestart = () => {
-    setRestartKey((k) => k + 1);
-  };
+  const handleRestart = () => setRestartKey((k) => k + 1);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50">
-      {/* Decorative background blobs */}
       <div
         aria-hidden="true"
         className="pointer-events-none fixed inset-0 overflow-hidden"
@@ -136,7 +543,6 @@ function App() {
       </div>
 
       <div className="relative">
-        {/* Header */}
         <header className="bg-white/70 backdrop-blur-md shadow-sm border-b border-white/60 sticky top-0 z-40">
           <div className="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
             <button
@@ -157,7 +563,6 @@ function App() {
           </div>
         </header>
 
-        {/* Main */}
         <main>
           {view === 'home' || !activeGame ? (
             <HomePage
@@ -173,7 +578,6 @@ function App() {
               onBack={handleBackHome}
               onRestart={handleRestart}
             >
-              {/* key forces the game to fully remount on restart / game switch */}
               <div key={`${activeGame.id}-${restartKey}`}>
                 {renderGame(activeGame.id)}
               </div>

@@ -1,6 +1,8 @@
 import React, { useState, useCallback, useEffect, useRef } from 'react';
 import { Dice1, Dice2, Dice3, Dice4, Dice5, Dice6 } from 'lucide-react';
 import { BackgammonGameState, BackgammonPiece, BackgammonMove } from '../../types/games';
+import StatusBar, { StatusTone } from '../shared/StatusBar';
+import WinOverlay from '../shared/WinOverlay';
 
 interface BackgammonProps {
   isBotEnabled: boolean;
@@ -8,7 +10,7 @@ interface BackgammonProps {
 
 const Backgammon: React.FC<BackgammonProps> = ({ isBotEnabled }) => {
   const [gameState, setGameState] = useState<BackgammonGameState>(initializeGame());
-  const [gameStatus, setGameStatus] = useState<string>('');
+  const [gameStatus] = useState<string>('');
   const [isRolling, setIsRolling] = useState(false);
   const botTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
@@ -424,23 +426,24 @@ const Backgammon: React.FC<BackgammonProps> = ({ isBotEnabled }) => {
     );
   };
 
+  const statusTone: StatusTone = gameState.winner
+    ? 'success'
+    : isBotEnabled && gameState.currentPlayer === 'black'
+      ? 'purple'
+      : 'neutral';
+
   return (
-    <div className="flex flex-col items-center space-y-6">
-      <div className={`text-lg font-semibold ${
-        gameState.winner ? 'text-green-600' : 
-        isBotEnabled && gameState.currentPlayer === 'black' ? 'text-purple-600' : 'text-gray-700'
-      }`}>
-        {getStatusMessage()}
-      </div>
-      
-      <div className="flex items-center space-x-4">
+    <div className="flex flex-col items-center gap-5">
+      <StatusBar tone={statusTone}>{getStatusMessage()}</StatusBar>
+
+      <div className="flex items-center gap-4 flex-wrap justify-center">
         <button
           onClick={rollDice}
           disabled={isRolling || gameState.winner !== null || gameState.availableMoves.length > 0 || (isBotEnabled && gameState.currentPlayer === 'black')}
-          className={`flex items-center space-x-2 px-6 py-3 rounded-lg text-white font-semibold transition-all ${
+          className={`inline-flex items-center gap-2 px-6 py-3 rounded-xl text-white font-semibold shadow-md transition-all ${
             isRolling || gameState.winner || gameState.availableMoves.length > 0 || (isBotEnabled && gameState.currentPlayer === 'black')
-              ? 'bg-gray-400 cursor-not-allowed' 
-              : 'bg-blue-500 hover:bg-blue-600 active:scale-95'
+              ? 'bg-gray-400 cursor-not-allowed'
+              : 'bg-gradient-to-r from-amber-500 to-orange-500 hover:brightness-110 active:scale-95'
           }`}
         >
           <span>Roll Dice</span>
@@ -459,7 +462,7 @@ const Backgammon: React.FC<BackgammonProps> = ({ isBotEnabled }) => {
       </div>
       
       {/* Game Board */}
-      <div className="bg-amber-100 border-4 border-amber-800 rounded-lg p-4">
+      <div className="relative bg-amber-100 border-4 border-amber-800 rounded-xl p-4 shadow-lg">
         {/* Top half */}
         <div className="flex space-x-1 mb-4">
           {Array.from({ length: 12 }).map((_, i) => renderPoint(12 + i, true))}
@@ -514,11 +517,18 @@ const Backgammon: React.FC<BackgammonProps> = ({ isBotEnabled }) => {
         <div className="flex space-x-1">
           {Array.from({ length: 12 }).map((_, i) => renderPoint(11 - i, false))}
         </div>
+
+        {gameState.winner && (
+          <WinOverlay
+            title={`${gameState.winner === 'white' ? 'White' : 'Black'} wins!`}
+            subtitle="All pieces borne off."
+          />
+        )}
       </div>
-      
-      <div className="text-sm text-gray-600 max-w-2xl text-center">
-        <p>Move your pieces around the board and bear them off to win. Hit opponent pieces to send them to the bar.</p>
-        <p>You must use all dice rolls if possible. Doubles let you move 4 times!</p>
+
+      <div className="text-xs md:text-sm text-gray-500 max-w-2xl text-center leading-relaxed">
+        <p>Move pieces around and bear them off to win. Hitting an opponent sends them to the bar.</p>
+        <p>Use all dice rolls when possible. Doubles let you move four times.</p>
       </div>
     </div>
   );

@@ -1,6 +1,6 @@
-import React from 'react';
-import { Bot, Users, Sparkles, Play } from 'lucide-react';
-import { Game } from '../types/games';
+import React, { useMemo, useState } from 'react';
+import { Bot, Users, Sparkles, Play, Search } from 'lucide-react';
+import { Game, GameCategory } from '../types/games';
 
 interface HomePageProps {
   games: Game[];
@@ -15,20 +15,77 @@ const difficultyStyles: Record<Game['difficulty'], string> = {
   Hard: 'bg-rose-100 text-rose-700 border-rose-200',
 };
 
+const CATEGORY_META: Record<
+  GameCategory,
+  { label: string; emoji: string; description: string }
+> = {
+  board: { label: 'Board & strategy', emoji: '♟️', description: 'Think, plan, outsmart.' },
+  card: { label: 'Card games', emoji: '🃏', description: 'Match, collect, and swap.' },
+  dice: { label: 'Dice games', emoji: '🎲', description: 'Roll your luck.' },
+  puzzle: { label: 'Puzzles', emoji: '🧩', description: 'Solo challenges.' },
+  arcade: { label: 'Arcade & reflex', emoji: '🕹️', description: 'Quick reactions.' },
+  educational: { label: 'Learn & play', emoji: '🎓', description: 'Sneaky learning.' },
+};
+
+const CATEGORY_ORDER: GameCategory[] = [
+  'board',
+  'card',
+  'dice',
+  'arcade',
+  'puzzle',
+  'educational',
+];
+
+type Filter = 'all' | GameCategory;
+
 const HomePage: React.FC<HomePageProps> = ({
   games,
   isBotEnabled,
   onToggleBot,
   onSelectGame,
 }) => {
+  const [filter, setFilter] = useState<Filter>('all');
+  const [query, setQuery] = useState('');
+
+  const availableCategories = useMemo(() => {
+    const set = new Set(games.map((g) => g.category));
+    return CATEGORY_ORDER.filter((c) => set.has(c));
+  }, [games]);
+
+  const filtered = useMemo(() => {
+    const q = query.trim().toLowerCase();
+    return games.filter((g) => {
+      if (filter !== 'all' && g.category !== filter) return false;
+      if (!q) return true;
+      return (
+        g.name.toLowerCase().includes(q) ||
+        g.description.toLowerCase().includes(q) ||
+        g.tagline.toLowerCase().includes(q)
+      );
+    });
+  }, [games, filter, query]);
+
+  const grouped = useMemo(() => {
+    const byCat = new Map<GameCategory, Game[]>();
+    filtered.forEach((g) => {
+      const arr = byCat.get(g.category) ?? [];
+      arr.push(g);
+      byCat.set(g.category, arr);
+    });
+    return CATEGORY_ORDER.filter((c) => byCat.has(c)).map((c) => ({
+      category: c,
+      games: byCat.get(c)!,
+    }));
+  }, [filtered]);
+
   return (
     <div className="max-w-6xl mx-auto px-4 py-10 md:py-14">
       {/* Hero */}
-      <div className="text-center mb-10 md:mb-14">
+      <div className="text-center mb-8 md:mb-10">
         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/70 backdrop-blur border border-white shadow-sm mb-5">
           <Sparkles className="w-4 h-4 text-amber-500" />
           <span className="text-sm font-medium text-gray-700">
-            Fun, safe games for every kid
+            {games.length}+ fun games in one place
           </span>
         </div>
         <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-gray-900 mb-4">
@@ -38,13 +95,13 @@ const HomePage: React.FC<HomePageProps> = ({
           </span>
         </h1>
         <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-          Six classic games, one colorful home. Play with a friend on the same
-          device, or challenge our friendly bot.
+          Classic board games, card games, puzzles and arcade fun — all in one
+          colorful home for kids.
         </p>
       </div>
 
       {/* Mode toggle */}
-      <div className="flex justify-center mb-10">
+      <div className="flex justify-center mb-6">
         <div
           role="radiogroup"
           aria-label="Game mode"
@@ -79,83 +136,164 @@ const HomePage: React.FC<HomePageProps> = ({
         </div>
       </div>
 
-      {/* Game cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
-        {games.map((game) => {
-          const botUnsupported = isBotEnabled && !game.supportsBot;
-          return (
-            <button
-              key={game.id}
-              onClick={() => onSelectGame(game.id)}
-              disabled={botUnsupported}
-              aria-label={`Play ${game.name}`}
-              className={`group relative overflow-hidden rounded-2xl bg-white border border-gray-200 shadow-sm hover:shadow-xl transition-all duration-300 text-left ${
-                botUnsupported
-                  ? 'opacity-60 cursor-not-allowed'
-                  : 'hover:-translate-y-1 focus:outline-none focus:ring-4 focus:ring-blue-200'
-              }`}
+      {/* Search + category filter */}
+      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-8">
+        <div className="relative flex-1 max-w-md">
+          <Search className="w-4 h-4 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2" />
+          <input
+            type="search"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="Search games..."
+            aria-label="Search games"
+            className="w-full pl-9 pr-3 py-2.5 rounded-full bg-white border border-gray-200 shadow-sm text-sm focus:outline-none focus:ring-2 focus:ring-blue-300"
+          />
+        </div>
+        <div
+          role="tablist"
+          aria-label="Category filter"
+          className="flex flex-wrap gap-1.5"
+        >
+          <FilterChip active={filter === 'all'} onClick={() => setFilter('all')}>
+            All
+          </FilterChip>
+          {availableCategories.map((c) => (
+            <FilterChip
+              key={c}
+              active={filter === c}
+              onClick={() => setFilter(c)}
             >
-              {/* Colored top banner */}
-              <div
-                className={`relative h-32 bg-gradient-to-br ${game.gradient} flex items-center justify-center overflow-hidden`}
-              >
-                <div className="absolute -right-6 -top-6 w-24 h-24 rounded-full bg-white/15 blur-2xl" />
-                <div className="absolute -left-8 -bottom-8 w-32 h-32 rounded-full bg-white/10" />
-                <span
-                  className="text-7xl md:text-8xl drop-shadow-lg transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3"
-                  aria-hidden="true"
-                >
-                  {game.icon}
-                </span>
-              </div>
-
-              {/* Body */}
-              <div className="p-5">
-                <div className="flex items-start justify-between gap-3 mb-2">
-                  <h3 className="text-lg font-bold text-gray-900 leading-tight">
-                    {game.name}
-                  </h3>
-                  <span
-                    className={`shrink-0 text-xs font-semibold px-2 py-0.5 rounded-full border ${
-                      difficultyStyles[game.difficulty]
-                    }`}
-                  >
-                    {game.difficulty}
-                  </span>
-                </div>
-                <p className="text-sm text-gray-600 mb-4 min-h-[2.5rem]">
-                  {game.tagline}
-                </p>
-
-                <div className="flex items-center justify-between">
-                  <span className="text-xs font-medium text-gray-500">
-                    {botUnsupported ? 'Bot mode not available' : '2 players · same device'}
-                  </span>
-                  <span
-                    className={`inline-flex items-center gap-1.5 text-sm font-semibold transition-colors ${
-                      botUnsupported
-                        ? 'text-gray-400'
-                        : 'text-blue-600 group-hover:text-blue-700'
-                    }`}
-                  >
-                    Play
-                    <Play className="w-4 h-4 fill-current transition-transform group-hover:translate-x-0.5" />
-                  </span>
-                </div>
-              </div>
-            </button>
-          );
-        })}
+              <span aria-hidden="true" className="mr-1">
+                {CATEGORY_META[c].emoji}
+              </span>
+              {CATEGORY_META[c].label}
+            </FilterChip>
+          ))}
+        </div>
       </div>
 
-      {/* Footer hint */}
-      <p className="text-center text-xs text-gray-500 mt-10">
-        Tip: switch between <span className="font-medium">2 Players</span> and{' '}
-        <span className="font-medium">Play vs Bot</span> at any time from the
-        home screen.
+      {/* Empty state */}
+      {grouped.length === 0 && (
+        <div className="text-center py-16 text-gray-500">
+          No games match your search.
+        </div>
+      )}
+
+      {/* Sections */}
+      <div className="space-y-10">
+        {grouped.map(({ category, games: cgames }) => (
+          <section key={category}>
+            <div className="flex items-baseline gap-2 mb-4">
+              <h2 className="text-xl md:text-2xl font-bold text-gray-900">
+                <span aria-hidden="true" className="mr-1.5">
+                  {CATEGORY_META[category].emoji}
+                </span>
+                {CATEGORY_META[category].label}
+              </h2>
+              <span className="text-sm text-gray-500">
+                {CATEGORY_META[category].description}
+              </span>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
+              {cgames.map((game) => {
+                const botUnsupported = isBotEnabled && !game.supportsBot && !game.solo;
+                return (
+                  <button
+                    key={game.id}
+                    onClick={() => onSelectGame(game.id)}
+                    disabled={botUnsupported}
+                    aria-label={`Play ${game.name}`}
+                    className={`group relative overflow-hidden rounded-2xl bg-white border border-gray-200 shadow-sm hover:shadow-xl transition-all duration-300 text-left ${
+                      botUnsupported
+                        ? 'opacity-60 cursor-not-allowed'
+                        : 'hover:-translate-y-1 focus:outline-none focus:ring-4 focus:ring-blue-200'
+                    }`}
+                  >
+                    <div
+                      className={`relative h-32 bg-gradient-to-br ${game.gradient} flex items-center justify-center overflow-hidden`}
+                    >
+                      <div className="absolute -right-6 -top-6 w-24 h-24 rounded-full bg-white/15 blur-2xl" />
+                      <div className="absolute -left-8 -bottom-8 w-32 h-32 rounded-full bg-white/10" />
+                      <span
+                        className="text-7xl md:text-8xl drop-shadow-lg transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3"
+                        aria-hidden="true"
+                      >
+                        {game.icon}
+                      </span>
+                    </div>
+
+                    <div className="p-5">
+                      <div className="flex items-start justify-between gap-3 mb-2">
+                        <h3 className="text-lg font-bold text-gray-900 leading-tight">
+                          {game.name}
+                        </h3>
+                        <span
+                          className={`shrink-0 text-xs font-semibold px-2 py-0.5 rounded-full border ${
+                            difficultyStyles[game.difficulty]
+                          }`}
+                        >
+                          {game.difficulty}
+                        </span>
+                      </div>
+                      <p className="text-sm text-gray-600 mb-4 min-h-[2.5rem]">
+                        {game.tagline}
+                      </p>
+
+                      <div className="flex items-center justify-between">
+                        <span className="text-xs font-medium text-gray-500">
+                          {game.solo
+                            ? '1 player · solo'
+                            : botUnsupported
+                              ? 'Bot mode not available'
+                              : '2 players · same device'}
+                        </span>
+                        <span
+                          className={`inline-flex items-center gap-1.5 text-sm font-semibold transition-colors ${
+                            botUnsupported
+                              ? 'text-gray-400'
+                              : 'text-blue-600 group-hover:text-blue-700'
+                          }`}
+                        >
+                          Play
+                          <Play className="w-4 h-4 fill-current transition-transform group-hover:translate-x-0.5" />
+                        </span>
+                      </div>
+                    </div>
+                  </button>
+                );
+              })}
+            </div>
+          </section>
+        ))}
+      </div>
+
+      <p className="text-center text-xs text-gray-500 mt-12">
+        Switch between 2 Players and Play vs Bot at any time.
       </p>
     </div>
   );
 };
+
+interface FilterChipProps {
+  active: boolean;
+  onClick: () => void;
+  children: React.ReactNode;
+}
+
+const FilterChip: React.FC<FilterChipProps> = ({ active, onClick, children }) => (
+  <button
+    role="tab"
+    aria-selected={active}
+    onClick={onClick}
+    className={`px-3 py-1.5 rounded-full text-xs font-semibold border transition-colors ${
+      active
+        ? 'bg-gray-900 text-white border-gray-900'
+        : 'bg-white text-gray-700 border-gray-200 hover:border-gray-300'
+    }`}
+  >
+    {children}
+  </button>
+);
 
 export default HomePage;

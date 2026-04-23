@@ -1,6 +1,7 @@
 import React, { useState, useCallback, useEffect, useRef } from 'react';
-import { Shuffle, RotateCcw } from 'lucide-react';
+import { Shuffle } from 'lucide-react';
 import { UnoCard, UnoPlayer, UnoGameState } from '../../types/games';
+import StatusBar, { StatusTone } from '../shared/StatusBar';
 
 interface UnoProps {
   isBotEnabled: boolean;
@@ -332,15 +333,17 @@ const Uno: React.FC<UnoProps> = ({ isBotEnabled }) => {
   const humanPlayer = gameState.players[0];
   const botPlayer = gameState.players[1];
 
+  const unoTone: StatusTone = gameState.winner
+    ? 'success'
+    : gameState.gamePhase === 'color-selection'
+      ? 'purple'
+      : isBotEnabled && gameState.currentPlayerIndex === 1
+        ? 'info'
+        : 'neutral';
+
   return (
     <div className="flex flex-col items-center space-y-6">
-      <div className={`text-lg font-semibold ${
-        gameState.winner ? 'text-green-600' : 
-        gameState.gamePhase === 'color-selection' ? 'text-purple-600' :
-        isBotEnabled && gameState.currentPlayerIndex === 1 ? 'text-blue-600' : 'text-gray-700'
-      }`}>
-        {getStatusMessage()}
-      </div>
+      <StatusBar tone={unoTone}>{getStatusMessage()}</StatusBar>
 
       {/* Color Selection Modal */}
       {gameState.gamePhase === 'color-selection' && (

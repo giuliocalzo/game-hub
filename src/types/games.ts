@@ -1,3 +1,11 @@
+export type GameCategory =
+  | 'board'
+  | 'card'
+  | 'dice'
+  | 'puzzle'
+  | 'arcade'
+  | 'educational';
+
 export interface Game {
   id: string;
   name: string;
@@ -11,6 +19,10 @@ export interface Game {
   tagline: string;
   /** Whether this game supports a bot/AI opponent */
   supportsBot: boolean;
+  /** Which section the game appears under on the home page */
+  category: GameCategory;
+  /** Whether the game is single-player only (hides 2P hint) */
+  solo?: boolean;
 }
 
 export interface ChessPosition {

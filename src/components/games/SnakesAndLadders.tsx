@@ -1,6 +1,8 @@
 import React, { useState, useCallback } from 'react';
 import { Dice6 } from 'lucide-react';
 import { SnakesAndLaddersPlayer } from '../../types/games';
+import StatusBar from '../shared/StatusBar';
+import WinOverlay from '../shared/WinOverlay';
 
 interface SnakesAndLaddersProps {
   isBotEnabled: boolean;
@@ -143,56 +145,69 @@ const SnakesAndLadders: React.FC<SnakesAndLaddersProps> = ({ isBotEnabled }) => 
     return squares;
   };
 
+  const activePlayerName = isBotEnabled && currentPlayerIndex === 1
+    ? 'Bot Player'
+    : gameBoard[currentPlayerIndex].name;
+
   return (
-    <div className="flex flex-col items-center space-y-6">
-      {winner ? (
-        <div className="text-2xl font-bold text-green-600">
-          🎉 {winner} Wins! 🎉
-        </div>
-      ) : (
-        <div className="text-lg font-semibold text-gray-700">
-          Current turn: <span className="text-blue-600">
-            {isBotEnabled && currentPlayerIndex === 1 ? 'Bot Player' : gameBoard[currentPlayerIndex].name}
-          </span>
-        </div>
-      )}
-      
-      <div className="flex items-center space-x-4">
+    <div className="flex flex-col items-center gap-5">
+      <StatusBar tone={winner ? 'success' : isBotEnabled && currentPlayerIndex === 1 ? 'purple' : 'info'}>
+        {winner ? `${winner} reached 100 — victory!` : `${activePlayerName}'s turn`}
+      </StatusBar>
+
+      <div className="flex items-center gap-4">
         <button
           onClick={rollDice}
           disabled={isRolling || !!winner || (isBotEnabled && currentPlayerIndex === 1)}
-          className={`flex items-center space-x-2 px-6 py-3 rounded-lg text-white font-semibold transition-all ${
+          className={`inline-flex items-center gap-2 px-6 py-3 rounded-xl text-white font-semibold shadow-md transition-all ${
             isRolling || winner || (isBotEnabled && currentPlayerIndex === 1)
-              ? 'bg-gray-400 cursor-not-allowed' 
-              : 'bg-blue-500 hover:bg-blue-600 active:scale-95'
+              ? 'bg-gray-400 cursor-not-allowed'
+              : 'bg-gradient-to-r from-emerald-500 to-teal-500 hover:brightness-110 active:scale-95'
           }`}
         >
           <Dice6 className={`w-5 h-5 ${isRolling ? 'animate-spin' : ''}`} />
           <span>Roll Dice</span>
         </button>
-        
+
         {diceValue && (
-          <div className="flex items-center justify-center w-12 h-12 bg-white border-2 border-gray-300 rounded-lg text-2xl font-bold">
+          <div className="flex items-center justify-center w-14 h-14 bg-white border-2 border-emerald-200 rounded-xl text-3xl font-extrabold text-emerald-700 shadow-sm">
             {diceValue}
           </div>
         )}
       </div>
-      
-      <div className="bg-white p-4 rounded-lg shadow-lg border-2 border-gray-200">
-        <div className="grid grid-cols-1 gap-1">
-          {getBoardSquares()}
+
+      <div className="relative">
+        <div className="bg-white p-3 md:p-4 rounded-2xl shadow-lg border border-gray-200">
+          <div className="grid grid-cols-1 gap-1">{getBoardSquares()}</div>
         </div>
+        {winner && (
+          <WinOverlay
+            title={`${winner} wins!`}
+            subtitle="First to 100 takes the crown."
+          />
+        )}
       </div>
-      
-      <div className="flex space-x-4">
-        {gameBoard.map((player, index) => (
-          <div key={player.id} className="flex items-center space-x-2">
-            <div className={`w-4 h-4 rounded-full ${player.color}`} />
-            <span className="text-sm font-medium">
-              {isBotEnabled && index === 1 ? 'Bot Player' : player.name}: {player.position}
-            </span>
-          </div>
-        ))}
+
+      <div className="flex gap-4 flex-wrap justify-center">
+        {gameBoard.map((player, index) => {
+          const label = isBotEnabled && index === 1 ? 'Bot Player' : player.name;
+          const isActive = index === currentPlayerIndex && !winner;
+          return (
+            <div
+              key={player.id}
+              className={`flex items-center gap-2 px-3 py-1.5 rounded-full border text-sm font-medium ${
+                isActive
+                  ? 'bg-white border-blue-300 shadow ring-2 ring-blue-100'
+                  : 'bg-white/70 border-gray-200'
+              }`}
+            >
+              <div className={`w-3.5 h-3.5 rounded-full ${player.color}`} />
+              <span className="text-gray-700">
+                {label}: <span className="font-bold">{player.position}</span>
+              </span>
+            </div>
+          );
+        })}
       </div>
     </div>
   );

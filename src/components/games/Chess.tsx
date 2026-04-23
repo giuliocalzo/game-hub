@@ -1,6 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import { useEffect, useRef } from 'react';
 import { ChessPosition, ChessPiece } from '../../types/games';
+import StatusBar, { StatusTone } from '../shared/StatusBar';
 
 interface ChessProps {
   isBotEnabled: boolean;
@@ -368,37 +369,41 @@ const Chess: React.FC<ChessProps> = ({ isBotEnabled }) => {
     return `Current player: ${currentPlayer}`;
   };
 
+  const statusTone: StatusTone = gameStatus.includes('check')
+    ? 'warning'
+    : isBotEnabled && currentPlayer === 'black'
+      ? 'purple'
+      : 'neutral';
+
   return (
-    <div className="flex flex-col items-center space-y-6">
-      <div className={`text-lg font-semibold ${
-        gameStatus.includes('check') ? 'text-red-600' : 
-        isBotEnabled && currentPlayer === 'black' ? 'text-purple-600' : 'text-gray-700'
-      }`}>
-        {getStatusMessage()}
-      </div>
-      
-      <div className="grid grid-cols-8 gap-0 border-2 border-gray-800 bg-white">
+    <div className="flex flex-col items-center gap-5">
+      <StatusBar tone={statusTone}>{getStatusMessage()}</StatusBar>
+
+      <div className="grid grid-cols-8 gap-0 border-4 border-stone-800 rounded-lg overflow-hidden shadow-lg">
         {board.map((row, rowIndex) =>
           row.map((piece, colIndex) => (
             <div
               key={`${rowIndex}-${colIndex}`}
               onClick={() => handleSquareClick(rowIndex, colIndex)}
               className={`
-                w-12 h-12 flex items-center justify-center cursor-pointer text-2xl font-bold transition-colors
-                ${(rowIndex + colIndex) % 2 === 0 ? 'bg-amber-100' : 'bg-amber-700'}
-                ${selectedSquare?.row === rowIndex && selectedSquare?.col === colIndex ? 'ring-4 ring-blue-400' : ''}
+                w-11 h-11 md:w-12 md:h-12 flex items-center justify-center cursor-pointer text-3xl transition-all
+                ${(rowIndex + colIndex) % 2 === 0 ? 'bg-stone-100' : 'bg-stone-500'}
+                ${selectedSquare?.row === rowIndex && selectedSquare?.col === colIndex ? 'ring-4 ring-blue-400 ring-inset' : ''}
                 hover:brightness-110
               `}
             >
-              {piece && getPieceSymbol(piece)}
+              {piece && (
+                <span className={piece.color === 'white' ? 'text-white drop-shadow-sm' : 'text-gray-900'}>
+                  {getPieceSymbol(piece)}
+                </span>
+              )}
             </div>
           ))
         )}
       </div>
-      
-      <div className="text-sm text-gray-600 max-w-md text-center">
-        <p>Click a piece to select it, then click a valid square to move.</p>
-        <p>The bot follows proper chess rules including check detection.</p>
+
+      <div className="text-xs md:text-sm text-gray-500 max-w-md text-center leading-relaxed">
+        Click a piece to select it, then click a valid square to move.
       </div>
     </div>
   );
