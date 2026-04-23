@@ -249,6 +249,25 @@ const en: Dict = {
     'Type sentences to build speed and accuracy.',
   'game.typing.instructions':
     'Type the sentence exactly as shown. Your WPM and accuracy update as you go.',
+
+  // Typing practice — UI strings
+  'typing.placeholder': 'Start typing here…',
+  'typing.initial': 'Start typing to begin.',
+  'typing.progress': 'Typing… {typed}/{total}',
+  'typing.done_status': 'Done in {elapsed}s · {wpm} WPM · {accuracy}% accuracy',
+  'typing.done_title': '{wpm} WPM',
+  'typing.done_subtitle': '{accuracy}% accuracy in {elapsed}s',
+  'typing.new_sentence': 'New sentence',
+  'typing.errors': 'Errors',
+  'typing.length': 'Length',
+
+  // Word search — UI strings
+  'wordSearch.theme': 'Theme {n}',
+  'wordSearch.progress': 'Found: {found} / {total}',
+  'wordSearch.done_status': 'All words found!',
+  'wordSearch.done_title': 'Solved!',
+  'wordSearch.done_subtitle': 'You found every word.',
+  'wordSearch.new_puzzle': 'New puzzle',
 };
 
 const it: Dict = {
@@ -490,6 +509,23 @@ const it: Dict = {
     'Digita le frasi per migliorare velocità e precisione.',
   'game.typing.instructions':
     'Digita la frase esattamente come mostrata. Parole al minuto e precisione si aggiornano mentre scrivi.',
+
+  'typing.placeholder': 'Inizia a scrivere qui…',
+  'typing.initial': 'Inizia a scrivere per cominciare.',
+  'typing.progress': 'Sto scrivendo… {typed}/{total}',
+  'typing.done_status': 'Fatto in {elapsed}s · {wpm} PPM · {accuracy}% precisione',
+  'typing.done_title': '{wpm} PPM',
+  'typing.done_subtitle': '{accuracy}% di precisione in {elapsed}s',
+  'typing.new_sentence': 'Nuova frase',
+  'typing.errors': 'Errori',
+  'typing.length': 'Lunghezza',
+
+  'wordSearch.theme': 'Tema {n}',
+  'wordSearch.progress': 'Trovate: {found} / {total}',
+  'wordSearch.done_status': 'Tutte le parole trovate!',
+  'wordSearch.done_title': 'Risolto!',
+  'wordSearch.done_subtitle': 'Hai trovato tutte le parole.',
+  'wordSearch.new_puzzle': 'Nuovo puzzle',
 };
 
 const de: Dict = {
@@ -746,6 +782,23 @@ const de: Dict = {
     'Tippe Sätze und baue Geschwindigkeit & Genauigkeit aus.',
   'game.typing.instructions':
     'Tippe den Satz genau wie gezeigt. WPM und Genauigkeit aktualisieren sich live.',
+
+  'typing.placeholder': 'Hier beginnen zu tippen…',
+  'typing.initial': 'Tippe los, um zu starten.',
+  'typing.progress': 'Tippe… {typed}/{total}',
+  'typing.done_status': 'Fertig in {elapsed}s · {wpm} WPM · {accuracy}% Genauigkeit',
+  'typing.done_title': '{wpm} WPM',
+  'typing.done_subtitle': '{accuracy}% Genauigkeit in {elapsed}s',
+  'typing.new_sentence': 'Neuer Satz',
+  'typing.errors': 'Fehler',
+  'typing.length': 'Länge',
+
+  'wordSearch.theme': 'Thema {n}',
+  'wordSearch.progress': 'Gefunden: {found} / {total}',
+  'wordSearch.done_status': 'Alle Wörter gefunden!',
+  'wordSearch.done_title': 'Gelöst!',
+  'wordSearch.done_subtitle': 'Du hast alle Wörter gefunden.',
+  'wordSearch.new_puzzle': 'Neues Rätsel',
 };
 
 export const TRANSLATIONS: Record<Lang, Dict> = { en, it, de };

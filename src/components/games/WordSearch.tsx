@@ -1,13 +1,8 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import StatusBar, { StatusTone } from '../shared/StatusBar';
 import WinOverlay from '../shared/WinOverlay';
-
-const WORD_POOLS: string[][] = [
-  ['apple', 'grape', 'mango', 'lemon', 'peach', 'berry'],
-  ['tiger', 'koala', 'eagle', 'whale', 'shark', 'zebra'],
-  ['plane', 'train', 'truck', 'boat', 'bike', 'rocket'],
-  ['castle', 'dragon', 'wizard', 'forest', 'pirate', 'legend'],
-];
+import { useTranslation } from '../../i18n/I18nContext';
+import { WORD_SEARCH_POOLS } from '../../i18n/content';
 
 const SIZE = 12;
 const DIRS: Array<[number, number]> = [
@@ -21,7 +16,7 @@ const build = (words: string[]) => {
   const upperWords = words.map((w) => w.toUpperCase());
 
   for (const w of upperWords) {
-    for (let attempt = 0; attempt < 200; attempt++) {
+    for (let attempt = 0; attempt < 300; attempt++) {
       const [dr, dc] = DIRS[Math.floor(Math.random() * DIRS.length)];
       const r0 = Math.floor(Math.random() * SIZE);
       const c0 = Math.floor(Math.random() * SIZE);
@@ -51,17 +46,27 @@ const build = (words: string[]) => {
 };
 
 const WordSearch: React.FC<{ isBotEnabled: boolean }> = () => {
-  const [pool, setPool] = useState<string[]>(() => WORD_POOLS[0]);
-  const [data, setData] = useState(() => build(WORD_POOLS[0]));
+  const { t, lang } = useTranslation();
+  const pools = WORD_SEARCH_POOLS[lang];
+  const [themeIndex, setThemeIndex] = useState(0);
+  const pool = pools[themeIndex] ?? pools[0];
+  const [data, setData] = useState(() => build(pool));
   const [found, setFound] = useState<Set<string>>(new Set());
   const [selected, setSelected] = useState<Array<[number, number]>>([]);
 
-  const newPuzzle = useCallback((p: string[]) => {
-    setPool(p);
-    setData(build(p));
+  const newPuzzle = useCallback((idx: number) => {
+    setThemeIndex(idx);
+    setData(build(pools[idx]));
     setFound(new Set());
     setSelected([]);
-  }, []);
+  }, [pools]);
+
+  // On language change, rebuild the puzzle with the current theme index in the new language.
+  useEffect(() => {
+    setData(build(pools[themeIndex] ?? pools[0]));
+    setFound(new Set());
+    setSelected([]);
+  }, [lang]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const foundCells = useMemo(() => {
     const set = new Set<string>();
@@ -78,7 +83,7 @@ const WordSearch: React.FC<{ isBotEnabled: boolean }> = () => {
     const reversed = letters.split('').reverse().join('');
     const match = pool
       .map((w) => w.toUpperCase())
-      .find((w) => (w === letters || w === reversed));
+      .find((w) => w === letters || w === reversed);
     if (match && !found.has(match)) {
       const next = new Set(found);
       next.add(match);
@@ -89,7 +94,6 @@ const WordSearch: React.FC<{ isBotEnabled: boolean }> = () => {
 
   const won = found.size === pool.length;
 
-  // Click-based selection: click start, then click end; if in line, highlight.
   const handleClick = (r: number, c: number) => {
     if (won) return;
     if (selected.length === 0) {
@@ -105,7 +109,6 @@ const WordSearch: React.FC<{ isBotEnabled: boolean }> = () => {
         const cells: Array<[number, number]> = [];
         for (let i = 0; i < len; i++) cells.push([sr + dr * i, sc + dc * i]);
         setSelected(cells);
-        // commit after a tick to show selection briefly
         setTimeout(commitSelection, 10);
       } else {
         setSelected([[r, c]]);
@@ -113,40 +116,38 @@ const WordSearch: React.FC<{ isBotEnabled: boolean }> = () => {
     }
   };
 
-  useEffect(() => {
-    newPuzzle(WORD_POOLS[0]);
-  }, [newPuzzle]);
-
   const inSelection = (r: number, c: number) =>
     selected.some(([sr, sc]) => sr === r && sc === c);
 
   const tone: StatusTone = won ? 'success' : 'info';
 
   return (
-    <div className="flex flex-col items-center gap-5">
+    <div className="flex flex-col items-center gap-5" lang={lang}>
       <div className="flex gap-2 flex-wrap justify-center">
-        {WORD_POOLS.map((p, i) => (
+        {pools.map((_, i) => (
           <button
             key={i}
-            onClick={() => newPuzzle(p)}
+            onClick={() => newPuzzle(i)}
             className={`px-3 py-1.5 rounded-full text-xs font-semibold border ${
-              pool === p
-                ? 'bg-gray-900 text-white border-gray-900'
+              themeIndex === i
+                ? 'bg-gray-900 text-white border-gray-900 dark:bg-gray-100 dark:text-gray-900 dark:border-gray-100'
                 : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border-gray-200 dark:border-gray-700'
             }`}
           >
-            Theme {i + 1}
+            {t('wordSearch.theme', { n: i + 1 })}
           </button>
         ))}
       </div>
 
       <StatusBar tone={tone}>
-        {won ? 'All words found!' : `Found: ${found.size} / ${pool.length}`}
+        {won
+          ? t('wordSearch.done_status')
+          : t('wordSearch.progress', { found: found.size, total: pool.length })}
       </StatusBar>
 
       <div className="relative">
         <div
-          className="p-2 rounded-2xl bg-gradient-to-br from-indigo-100 to-blue-100 shadow-inner grid gap-0.5"
+          className="p-2 rounded-2xl bg-gradient-to-br from-indigo-100 to-blue-100 dark:from-indigo-500/20 dark:to-blue-500/20 shadow-inner grid gap-0.5"
           style={{ gridTemplateColumns: `repeat(${SIZE}, 26px)` }}
         >
           {data.grid.map((row, r) =>
@@ -161,7 +162,7 @@ const WordSearch: React.FC<{ isBotEnabled: boolean }> = () => {
                     isFound
                       ? 'bg-emerald-400 text-white'
                       : isSel
-                        ? 'bg-yellow-300 text-gray-900 dark:text-gray-100'
+                        ? 'bg-yellow-300 text-gray-900'
                         : 'bg-white dark:bg-gray-800 hover:bg-blue-50 dark:hover:bg-blue-500/20 text-gray-700 dark:text-gray-300'
                   }`}
                 >
@@ -173,10 +174,10 @@ const WordSearch: React.FC<{ isBotEnabled: boolean }> = () => {
         </div>
         {won && (
           <WinOverlay
-            title="Solved!"
-            subtitle="You found every word."
-            onPlayAgain={() => newPuzzle(pool)}
-            playAgainLabel="New puzzle"
+            title={t('wordSearch.done_title')}
+            subtitle={t('wordSearch.done_subtitle')}
+            onPlayAgain={() => newPuzzle(themeIndex)}
+            playAgainLabel={t('wordSearch.new_puzzle')}
           />
         )}
       </div>
@@ -187,7 +188,7 @@ const WordSearch: React.FC<{ isBotEnabled: boolean }> = () => {
             key={w}
             className={`text-sm px-2 py-1 rounded ${
               found.has(w.toUpperCase())
-                ? 'line-through text-emerald-600 bg-emerald-50'
+                ? 'line-through text-emerald-600 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-500/10'
                 : 'bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300'
             }`}
           >
@@ -195,7 +196,6 @@ const WordSearch: React.FC<{ isBotEnabled: boolean }> = () => {
           </span>
         ))}
       </div>
-
     </div>
   );
 };
