@@ -7,8 +7,23 @@
     <meta name="description" content="GameHub — fun, safe classic games for kids. Play Tic-Tac-Toe, Checkers, Chess, UNO, Snakes & Ladders, and Backgammon on the same device or against a friendly bot." />
     <meta name="theme-color" content="#6366f1" />
     <title>GameHub — fun games for kids</title>
+    <script>
+      // No-flash theme init: read saved preference (or system) before React renders.
+      (function () {
+        try {
+          var saved = localStorage.getItem('gamehub.theme');
+          var dark =
+            saved === 'dark' ||
+            ((!saved || saved === 'system') &&
+              window.matchMedia &&
+              window.matchMedia('(prefers-color-scheme: dark)').matches);
+          if (dark) document.documentElement.classList.add('dark');
+          document.documentElement.style.colorScheme = dark ? 'dark' : 'light';
+        } catch (e) {}
+      })();
+    </script>
   </head>
-  <body>
+  <body class="bg-gray-50 dark:bg-gray-950">
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

@@ -127,13 +127,13 @@ const Pig: React.FC<PigProps> = ({ isBotEnabled }) => {
         />
       </div>
 
-      <div className="relative w-28 h-28 flex items-center justify-center rounded-2xl bg-white border border-gray-200 shadow-inner">
+      <div className="relative w-28 h-28 flex items-center justify-center rounded-2xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-inner">
         {DieIcon ? (
           <DieIcon
-            className={`w-20 h-20 text-gray-800 ${rolling ? 'animate-spin' : ''}`}
+            className={`w-20 h-20 text-gray-800 dark:text-gray-200 ${rolling ? 'animate-spin' : ''}`}
           />
         ) : (
-          <span className="text-sm text-gray-400">Roll to start</span>
+          <span className="text-sm text-gray-400 dark:text-gray-500">Roll to start</span>
         )}
         {winner !== null && (
           <WinOverlay
@@ -174,15 +174,15 @@ const PlayerCard: React.FC<{
 }> = ({ label, total, live, active, tone }) => (
   <div
     className={`flex-1 rounded-2xl p-3 border-2 transition-all ${
-      active ? 'border-blue-300 shadow ring-2 ring-blue-100 bg-white' : 'border-gray-200 bg-white/70'
+      active ? 'border-blue-300 shadow ring-2 ring-blue-100 bg-white dark:bg-gray-800' : 'border-gray-200 dark:border-gray-700 bg-white/70 dark:bg-gray-800/70'
     }`}
   >
     <div className={`text-xs font-semibold bg-gradient-to-r ${tone} bg-clip-text text-transparent`}>
       {label}
     </div>
-    <div className="text-3xl font-extrabold text-gray-900 mt-1">{total}</div>
-    <div className="text-xs text-gray-500">
-      this turn: <span className="font-semibold text-gray-700">{live}</span>
+    <div className="text-3xl font-extrabold text-gray-900 dark:text-gray-100 mt-1">{total}</div>
+    <div className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">
+      this turn: <span className="font-semibold text-gray-700 dark:text-gray-300">{live}</span>
     </div>
   </div>
 );

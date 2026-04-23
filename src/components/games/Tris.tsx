@@ -126,7 +126,7 @@ const Tris: React.FC<TrisProps> = ({ isBotEnabled }) => {
           active={!board.winner && board.currentPlayer === 'X'}
           color="blue"
         />
-        <div className="text-xs font-semibold text-gray-400">
+        <div className="text-xs font-semibold text-gray-400 dark:text-gray-500">
           {scores.ties > 0 ? `Ties: ${scores.ties}` : 'VS'}
         </div>
         <PlayerChip
@@ -145,7 +145,7 @@ const Tris: React.FC<TrisProps> = ({ isBotEnabled }) => {
             ? 'bg-emerald-50 text-emerald-700 border-emerald-200'
             : isBotTurn
               ? 'bg-purple-50 text-purple-700 border-purple-200'
-              : 'bg-gray-50 text-gray-600 border-gray-200'
+              : 'bg-gray-50 dark:bg-gray-800/60 text-gray-600 dark:text-gray-400 dark:text-gray-500 border-gray-200 dark:border-gray-700'
         }`}
         aria-live="polite"
       >
@@ -171,7 +171,7 @@ const Tris: React.FC<TrisProps> = ({ isBotEnabled }) => {
                 onClick={() => handleSquareClick(index)}
                 disabled={!clickable}
                 aria-label={`Square ${index + 1}${square ? `, ${square}` : ', empty'}`}
-                className={`relative w-20 h-20 md:w-24 md:h-24 rounded-xl bg-white shadow-sm flex items-center justify-center text-5xl md:text-6xl font-extrabold transition-all duration-200
+                className={`relative w-20 h-20 md:w-24 md:h-24 rounded-xl bg-white dark:bg-gray-800 shadow-sm flex items-center justify-center text-5xl md:text-6xl font-extrabold transition-all duration-200
                   ${clickable ? 'cursor-pointer hover:shadow-md hover:-translate-y-0.5 active:scale-95' : 'cursor-default'}
                   ${isWinning ? 'ring-4 ring-emerald-400 bg-emerald-50' : ''}
                   ${isLast && !isWinning ? 'ring-2 ring-blue-200' : ''}
@@ -194,16 +194,16 @@ const Tris: React.FC<TrisProps> = ({ isBotEnabled }) => {
         {/* Win overlay */}
         {board.winner && (
           <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-            <div className="pointer-events-auto bg-white/95 backdrop-blur rounded-2xl shadow-xl border border-gray-200 px-6 py-5 text-center animate-fadeIn">
+            <div className="pointer-events-auto bg-white/95 dark:bg-gray-800/95 backdrop-blur rounded-2xl shadow-xl border border-gray-200 dark:border-gray-700 px-6 py-5 text-center animate-fadeIn">
               <div className="flex items-center justify-center gap-2 text-amber-500 mb-1">
                 <Sparkles className="w-5 h-5" />
                 <Trophy className="w-6 h-6" />
                 <Sparkles className="w-5 h-5" />
               </div>
-              <div className="text-xl font-bold text-gray-900">
+              <div className="text-xl font-bold text-gray-900 dark:text-gray-100">
                 {board.winner === 'tie' ? "It's a tie!" : `${board.winner} wins!`}
               </div>
-              <p className="text-sm text-gray-500 mt-1">
+              <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500 mt-1">
                 {board.winner === 'tie' ? 'Try again?' : 'Nice moves.'}
               </p>
               <button
@@ -251,8 +251,8 @@ const PlayerChip: React.FC<PlayerChipProps> = ({ label, mark, score, active, col
     <div
       className={`flex-1 flex items-center gap-3 p-2.5 rounded-xl border transition-all ${
         active
-          ? 'bg-white border-gray-300 shadow-md ring-2 ring-offset-1 ring-blue-200'
-          : 'bg-white/70 border-gray-200 opacity-80'
+          ? 'bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-600 shadow-md ring-2 ring-offset-1 ring-blue-200'
+          : 'bg-white/70 dark:bg-gray-800/70 border-gray-200 dark:border-gray-700 opacity-80'
       }`}
     >
       <div
@@ -261,8 +261,8 @@ const PlayerChip: React.FC<PlayerChipProps> = ({ label, mark, score, active, col
         {mark}
       </div>
       <div className="flex-1 min-w-0">
-        <div className="text-xs text-gray-500 truncate">{label}</div>
-        <div className="text-sm font-bold text-gray-800">Wins: {score}</div>
+        <div className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500 truncate">{label}</div>
+        <div className="text-sm font-bold text-gray-800 dark:text-gray-200">Wins: {score}</div>
       </div>
     </div>
   );

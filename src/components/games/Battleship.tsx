@@ -180,9 +180,9 @@ const MiniBoard: React.FC<{
   remaining: number;
 }> = ({ title, board, hideShips, onFire, remaining }) => (
   <div>
-    <div className="text-sm font-semibold text-gray-700 mb-1 flex items-center justify-between">
+    <div className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-1 flex items-center justify-between">
       <span>{title}</span>
-      <span className="text-xs text-gray-500">Ships left: {remaining}</span>
+      <span className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">Ships left: {remaining}</span>
     </div>
     <div
       className="grid p-1 rounded-lg bg-gradient-to-br from-blue-500 to-indigo-600"
@@ -201,7 +201,7 @@ const MiniBoard: React.FC<{
                 shot === 'hit'
                   ? 'bg-rose-500 text-white'
                   : shot === 'miss'
-                    ? 'bg-white/60 text-gray-600'
+                    ? 'bg-white/60 dark:bg-gray-800/60 text-gray-600 dark:text-gray-400 dark:text-gray-500'
                     : showShip
                       ? 'bg-gray-700'
                       : 'bg-blue-400/80 hover:bg-blue-300'

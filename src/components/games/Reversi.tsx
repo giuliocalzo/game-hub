@@ -140,14 +140,14 @@ const Reversi: React.FC<{ isBotEnabled: boolean }> = ({ isBotEnabled }) => {
                   {cell && (
                     <div
                       className={`w-7 h-7 md:w-9 md:h-9 rounded-full ${
-                        cell === 'B' ? 'bg-gray-900' : 'bg-white'
+                        cell === 'B' ? 'bg-gray-900' : 'bg-white dark:bg-gray-800'
                       } shadow`}
                     />
                   )}
                   {!cell && isLegal && !gameOver && (
                     <div
                       className={`w-3 h-3 rounded-full ${
-                        turn === 'B' ? 'bg-gray-900/40' : 'bg-white/60'
+                        turn === 'B' ? 'bg-gray-900/40' : 'bg-white/60 dark:bg-gray-800/60'
                       }`}
                     />
                   )}

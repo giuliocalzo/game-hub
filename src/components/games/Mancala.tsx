@@ -211,7 +211,7 @@ const Pit: React.FC<{ count: number; onClick: () => void; disabled: boolean }> =
     onClick={onClick}
     disabled={disabled}
     className={`w-14 h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center text-lg font-bold shadow-inner transition-all ${
-      disabled ? 'bg-amber-100 text-amber-700 cursor-not-allowed' : 'bg-white text-amber-800 hover:bg-amber-50 active:scale-95'
+      disabled ? 'bg-amber-100 text-amber-700 cursor-not-allowed' : 'bg-white dark:bg-gray-800 text-amber-800 hover:bg-amber-50 active:scale-95'
     }`}
   >
     {count}
@@ -219,7 +219,7 @@ const Pit: React.FC<{ count: number; onClick: () => void; disabled: boolean }> =
 );
 
 const Store: React.FC<{ label: string; count: number }> = ({ label, count }) => (
-  <div className="w-16 md:w-20 h-32 md:h-40 rounded-3xl bg-white shadow-inner flex flex-col items-center justify-center border-2 border-amber-400">
+  <div className="w-16 md:w-20 h-32 md:h-40 rounded-3xl bg-white dark:bg-gray-800 shadow-inner flex flex-col items-center justify-center border-2 border-amber-400">
     <div className="text-xs text-amber-700 font-semibold">{label}</div>
     <div className="text-3xl font-extrabold text-amber-800">{count}</div>
   </div>

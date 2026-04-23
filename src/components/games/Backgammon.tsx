@@ -403,7 +403,7 @@ const Backgammon: React.FC<BackgammonProps> = ({ isBotEnabled }) => {
                 key={i}
                 className={`
                   w-8 h-4 rounded-full border border-gray-600 mb-0.5
-                  ${piece.color === 'white' ? 'bg-white' : 'bg-gray-800'}
+                  ${piece.color === 'white' ? 'bg-white dark:bg-gray-800' : 'bg-gray-800'}
                 `}
                 style={{
                   marginTop: isTop ? `${i * 4}px` : `-${i * 4}px`,
@@ -455,7 +455,7 @@ const Backgammon: React.FC<BackgammonProps> = ({ isBotEnabled }) => {
         </div>
         
         {gameState.availableMoves.length > 0 && (
-          <div className="text-sm text-gray-600">
+          <div className="text-sm text-gray-600 dark:text-gray-400 dark:text-gray-500">
             Moves: {gameState.availableMoves.join(', ')}
           </div>
         )}
@@ -481,7 +481,7 @@ const Backgammon: React.FC<BackgammonProps> = ({ isBotEnabled }) => {
               {gameState.whiteBar > 0 && (
                 <div className="flex flex-col">
                   {Array.from({ length: Math.min(gameState.whiteBar, 3) }).map((_, i) => (
-                    <div key={i} className="w-6 h-3 bg-white rounded-full border border-gray-600 mb-0.5" />
+                    <div key={i} className="w-6 h-3 bg-white dark:bg-gray-800 rounded-full border border-gray-600 mb-0.5" />
                   ))}
                   {gameState.whiteBar > 3 && (
                     <div className="text-xs text-white font-bold">{gameState.whiteBar}</div>

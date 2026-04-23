@@ -216,13 +216,13 @@ const Tetris: React.FC<{ isBotEnabled: boolean }> = () => {
       <div className="flex gap-2">
         <button
           onClick={() => setRunning((r) => !r)}
-          className="px-4 py-2 rounded-lg bg-white border border-gray-200 text-sm font-semibold shadow hover:bg-gray-50"
+          className="px-4 py-2 rounded-lg bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-sm font-semibold shadow hover:bg-gray-50 dark:hover:bg-gray-700 dark:bg-gray-800/60"
         >
           {running ? 'Pause' : 'Start'}
         </button>
         <button
           onClick={reset}
-          className="px-4 py-2 rounded-lg bg-white border border-gray-200 text-sm font-semibold shadow hover:bg-gray-50"
+          className="px-4 py-2 rounded-lg bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-sm font-semibold shadow hover:bg-gray-50 dark:hover:bg-gray-700 dark:bg-gray-800/60"
         >
           Reset
         </button>

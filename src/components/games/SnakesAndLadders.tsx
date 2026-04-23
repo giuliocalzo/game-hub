@@ -91,7 +91,7 @@ const SnakesAndLadders: React.FC<SnakesAndLaddersProps> = ({ isBotEnabled }) => 
     
     return (
       <div className="relative w-full h-full flex items-center justify-center">
-        <span className="text-xs font-medium text-gray-700">{squareNumber}</span>
+        <span className="text-xs font-medium text-gray-700 dark:text-gray-300">{squareNumber}</span>
         {playersHere.map((player, index) => (
           <div
             key={player.id}
@@ -128,7 +128,7 @@ const SnakesAndLadders: React.FC<SnakesAndLaddersProps> = ({ isBotEnabled }) => 
         rowSquares.push(
           <div
             key={squareNumber}
-            className={`w-8 h-8 border border-gray-300 relative ${
+            className={`w-8 h-8 border border-gray-300 dark:border-gray-600 relative ${
               (row + col) % 2 === 0 ? 'bg-amber-50' : 'bg-amber-100'
             }`}
           >
@@ -170,14 +170,14 @@ const SnakesAndLadders: React.FC<SnakesAndLaddersProps> = ({ isBotEnabled }) => 
         </button>
 
         {diceValue && (
-          <div className="flex items-center justify-center w-14 h-14 bg-white border-2 border-emerald-200 rounded-xl text-3xl font-extrabold text-emerald-700 shadow-sm">
+          <div className="flex items-center justify-center w-14 h-14 bg-white dark:bg-gray-800 border-2 border-emerald-200 rounded-xl text-3xl font-extrabold text-emerald-700 shadow-sm">
             {diceValue}
           </div>
         )}
       </div>
 
       <div className="relative">
-        <div className="bg-white p-3 md:p-4 rounded-2xl shadow-lg border border-gray-200">
+        <div className="bg-white dark:bg-gray-800 p-3 md:p-4 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700">
           <div className="grid grid-cols-1 gap-1">{getBoardSquares()}</div>
         </div>
         {winner && (
@@ -197,12 +197,12 @@ const SnakesAndLadders: React.FC<SnakesAndLaddersProps> = ({ isBotEnabled }) => 
               key={player.id}
               className={`flex items-center gap-2 px-3 py-1.5 rounded-full border text-sm font-medium ${
                 isActive
-                  ? 'bg-white border-blue-300 shadow ring-2 ring-blue-100'
-                  : 'bg-white/70 border-gray-200'
+                  ? 'bg-white dark:bg-gray-800 border-blue-300 shadow ring-2 ring-blue-100'
+                  : 'bg-white/70 dark:bg-gray-800/70 border-gray-200 dark:border-gray-700'
               }`}
             >
               <div className={`w-3.5 h-3.5 rounded-full ${player.color}`} />
-              <span className="text-gray-700">
+              <span className="text-gray-700 dark:text-gray-300">
                 {label}: <span className="font-bold">{player.position}</span>
               </span>
             </div>

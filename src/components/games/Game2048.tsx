@@ -67,8 +67,8 @@ const hasMoves = (grid: Grid): boolean => {
 
 const TILE_STYLES: Record<number, string> = {
   0: 'bg-gray-200 text-transparent',
-  2: 'bg-amber-50 text-gray-700',
-  4: 'bg-amber-100 text-gray-700',
+  2: 'bg-amber-50 text-gray-700 dark:text-gray-300',
+  4: 'bg-amber-100 text-gray-700 dark:text-gray-300',
   8: 'bg-orange-300 text-white',
   16: 'bg-orange-400 text-white',
   32: 'bg-orange-500 text-white',
@@ -236,7 +236,7 @@ const ArrowBtn: React.FC<{ onClick: () => void; children: React.ReactNode }> = (
 }) => (
   <button
     onClick={onClick}
-    className="w-12 h-12 rounded-xl bg-white border border-gray-200 shadow text-xl font-bold active:scale-95"
+    className="w-12 h-12 rounded-xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow text-xl font-bold active:scale-95"
   >
     {children}
   </button>

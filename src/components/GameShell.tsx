@@ -30,7 +30,7 @@ const GameShell: React.FC<GameShellProps> = ({
         <div className="flex items-center gap-3">
           <button
             onClick={onBack}
-            className="inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-white border border-gray-200 shadow-sm hover:bg-gray-50 active:scale-95 transition text-gray-700 font-medium focus:outline-none focus:ring-2 focus:ring-blue-300"
+            className="inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-white border border-gray-200 shadow-sm hover:bg-gray-50 active:scale-95 transition text-gray-700 font-medium focus:outline-none focus:ring-2 focus:ring-blue-300 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-200 dark:hover:bg-gray-700 dark:focus:ring-blue-500/40"
             aria-label={t('shell.back_aria')}
           >
             <ArrowLeft className="w-4 h-4" />
@@ -44,10 +44,10 @@ const GameShell: React.FC<GameShellProps> = ({
               {game.icon}
             </span>
             <div>
-              <h2 className="text-xl md:text-2xl font-bold text-gray-900 leading-tight">
+              <h2 className="text-xl md:text-2xl font-bold text-gray-900 leading-tight dark:text-gray-100">
                 {name}
               </h2>
-              <p className="text-xs text-gray-500 hidden sm:block">{tagline}</p>
+              <p className="text-xs text-gray-500 hidden sm:block dark:text-gray-400">{tagline}</p>
             </div>
           </div>
         </div>
@@ -56,8 +56,8 @@ const GameShell: React.FC<GameShellProps> = ({
           <span
             className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold border ${
               showingBot
-                ? 'bg-purple-50 text-purple-700 border-purple-200'
-                : 'bg-blue-50 text-blue-700 border-blue-200'
+                ? 'bg-purple-50 text-purple-700 border-purple-200 dark:bg-purple-500/20 dark:text-purple-200 dark:border-purple-500/30'
+                : 'bg-blue-50 text-blue-700 border-blue-200 dark:bg-blue-500/20 dark:text-blue-200 dark:border-blue-500/30'
             }`}
           >
             {showingBot ? (
@@ -82,11 +82,11 @@ const GameShell: React.FC<GameShellProps> = ({
       </div>
 
       {/* Game surface */}
-      <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg border border-gray-200 p-5 md:p-8">
+      <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg border border-gray-200 p-5 md:p-8 dark:bg-gray-800/80 dark:border-gray-700 dark:shadow-black/40">
         {children}
 
         {/* Translated "how to play" — lives here so every game is covered */}
-        <p className="mt-6 pt-4 border-t border-gray-100 text-xs md:text-sm text-gray-500 text-center max-w-xl mx-auto whitespace-pre-line">
+        <p className="mt-6 pt-4 border-t border-gray-100 text-xs md:text-sm text-gray-500 text-center max-w-xl mx-auto whitespace-pre-line dark:border-gray-700 dark:text-gray-400">
           {t(`game.${game.id}.instructions`)}
         </p>
       </div>

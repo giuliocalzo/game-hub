@@ -17,14 +17,20 @@ const WinOverlay: React.FC<WinOverlayProps> = ({
   playAgainLabel = 'Play again',
 }) => (
   <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-20">
-    <div className="pointer-events-auto bg-white/95 backdrop-blur rounded-2xl shadow-xl border border-gray-200 px-6 py-5 text-center animate-fadeIn max-w-xs">
-      <div className="flex items-center justify-center gap-2 text-amber-500 mb-1">
+    <div className="pointer-events-auto bg-white/95 backdrop-blur rounded-2xl shadow-xl border border-gray-200 px-6 py-5 text-center animate-fadeIn max-w-xs dark:bg-gray-800/95 dark:border-gray-700">
+      <div className="flex items-center justify-center gap-2 text-amber-500 mb-1 dark:text-amber-300">
         <Sparkles className="w-5 h-5" />
-        {tie ? <Handshake className="w-6 h-6 text-blue-500" /> : <Trophy className="w-6 h-6" />}
+        {tie ? (
+          <Handshake className="w-6 h-6 text-blue-500 dark:text-blue-300" />
+        ) : (
+          <Trophy className="w-6 h-6" />
+        )}
         <Sparkles className="w-5 h-5" />
       </div>
-      <div className="text-xl font-bold text-gray-900">{title}</div>
-      {subtitle && <p className="text-sm text-gray-500 mt-1">{subtitle}</p>}
+      <div className="text-xl font-bold text-gray-900 dark:text-gray-100">{title}</div>
+      {subtitle && (
+        <p className="text-sm text-gray-500 mt-1 dark:text-gray-400">{subtitle}</p>
+      )}
       {onPlayAgain && (
         <button
           onClick={onPlayAgain}

@@ -41,7 +41,7 @@ const build = (d: Difficulty): Cell[][] => {
 
 const COLOR_FOR_NUM = [
   '', 'text-blue-600', 'text-emerald-600', 'text-rose-600', 'text-purple-700',
-  'text-orange-600', 'text-teal-600', 'text-gray-800', 'text-gray-600',
+  'text-orange-600', 'text-teal-600', 'text-gray-800 dark:text-gray-200', 'text-gray-600 dark:text-gray-400 dark:text-gray-500',
 ];
 
 const Minesweeper: React.FC<{ isBotEnabled: boolean }> = () => {
@@ -122,7 +122,7 @@ const Minesweeper: React.FC<{ isBotEnabled: boolean }> = () => {
             className={`px-3 py-1.5 rounded-full text-xs font-semibold border ${
               difficulty === d
                 ? 'bg-gray-900 text-white border-gray-900'
-                : 'bg-white text-gray-700 border-gray-200'
+                : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border-gray-200 dark:border-gray-700'
             }`}
           >
             {d}

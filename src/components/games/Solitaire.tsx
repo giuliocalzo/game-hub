@@ -202,11 +202,11 @@ const Solitaire: React.FC<{ isBotEnabled: boolean }> = () => {
       className={`w-10 h-14 md:w-12 md:h-16 rounded-md border-2 flex items-center justify-center text-xs md:text-sm font-bold shadow-sm ${
         !c.faceUp
           ? 'bg-gradient-to-br from-indigo-500 to-purple-700 border-white'
-          : 'bg-white border-gray-300'
+          : 'bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-600'
       } ${opts?.selected ? 'ring-2 ring-yellow-300 -translate-y-1' : ''}`}
     >
       {c.faceUp && (
-        <span className={isRed(c.suit) ? 'text-rose-500' : 'text-gray-900'}>
+        <span className={isRed(c.suit) ? 'text-rose-500' : 'text-gray-900 dark:text-gray-100'}>
           {labelOf(c.rank)}{c.suit}
         </span>
       )}
@@ -224,12 +224,12 @@ const Solitaire: React.FC<{ isBotEnabled: boolean }> = () => {
         <div className="flex flex-col gap-2">
           <button onClick={clickStock} aria-label="Stock">
             {s.stock.length ? cardEl({ ...s.stock[0], faceUp: false }) : (
-              <div className="w-10 h-14 md:w-12 md:h-16 rounded-md border-2 border-dashed border-gray-300 text-xs text-gray-400 flex items-center justify-center">↻</div>
+              <div className="w-10 h-14 md:w-12 md:h-16 rounded-md border-2 border-dashed border-gray-300 dark:border-gray-600 text-xs text-gray-400 dark:text-gray-500 flex items-center justify-center">↻</div>
             )}
           </button>
           <button onClick={clickWaste} className="relative" aria-label="Waste">
             {s.waste.length ? cardEl(s.waste[s.waste.length - 1], { selected: sel?.type === 'waste' }) : (
-              <div className="w-10 h-14 md:w-12 md:h-16 rounded-md border-2 border-dashed border-gray-300" />
+              <div className="w-10 h-14 md:w-12 md:h-16 rounded-md border-2 border-dashed border-gray-300 dark:border-gray-600" />
             )}
           </button>
         </div>
@@ -246,7 +246,7 @@ const Solitaire: React.FC<{ isBotEnabled: boolean }> = () => {
               aria-label={`Foundation ${i + 1}`}
             >
               {f.length ? cardEl(f[f.length - 1], { selected: sel?.type === 'foundation' && sel.i === i }) : (
-                <div className="w-10 h-14 md:w-12 md:h-16 rounded-md border-2 border-dashed border-gray-300 text-xs text-gray-400 flex items-center justify-center">A</div>
+                <div className="w-10 h-14 md:w-12 md:h-16 rounded-md border-2 border-dashed border-gray-300 dark:border-gray-600 text-xs text-gray-400 dark:text-gray-500 flex items-center justify-center">A</div>
               )}
             </button>
           ))}
@@ -260,7 +260,7 @@ const Solitaire: React.FC<{ isBotEnabled: boolean }> = () => {
             {col.length === 0 ? (
               <button
                 onClick={() => clickTableau(ci, 0)}
-                className="w-10 h-14 md:w-12 md:h-16 rounded-md border-2 border-dashed border-gray-300"
+                className="w-10 h-14 md:w-12 md:h-16 rounded-md border-2 border-dashed border-gray-300 dark:border-gray-600"
               />
             ) : (
               col.map((c, idx) => (
@@ -284,7 +284,7 @@ const Solitaire: React.FC<{ isBotEnabled: boolean }> = () => {
       <div className="flex gap-2 mt-2">
         <button
           onClick={reset}
-          className="px-4 py-2 rounded-lg bg-white border border-gray-200 text-sm font-semibold shadow hover:bg-gray-50"
+          className="px-4 py-2 rounded-lg bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-sm font-semibold shadow hover:bg-gray-50 dark:hover:bg-gray-700 dark:bg-gray-800/60"
         >
           New deal
         </button>

@@ -85,7 +85,7 @@ const Fifteen: React.FC<{ isBotEnabled: boolean }> = () => {
               className={`w-16 h-16 md:w-20 md:h-20 rounded-xl flex items-center justify-center text-2xl md:text-3xl font-extrabold transition-all ${
                 v === 0
                   ? 'bg-transparent cursor-default'
-                  : 'bg-white text-indigo-700 shadow hover:-translate-y-0.5 active:scale-95'
+                  : 'bg-white dark:bg-gray-800 text-indigo-700 shadow hover:-translate-y-0.5 active:scale-95'
               }`}
             >
               {v !== 0 && v}
@@ -104,7 +104,7 @@ const Fifteen: React.FC<{ isBotEnabled: boolean }> = () => {
 
       <button
         onClick={reset}
-        className="px-4 py-2 rounded-lg bg-white border border-gray-200 text-sm font-semibold shadow hover:bg-gray-50"
+        className="px-4 py-2 rounded-lg bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-sm font-semibold shadow hover:bg-gray-50 dark:hover:bg-gray-700 dark:bg-gray-800/60"
       >
         Shuffle
       </button>

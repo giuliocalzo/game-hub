@@ -203,15 +203,15 @@ const Ludo: React.FC<{ isBotEnabled: boolean }> = ({ isBotEnabled }) => {
         >
           Roll
         </button>
-        <div className="w-14 h-14 rounded-xl bg-white border border-gray-200 flex items-center justify-center shadow-inner">
-          {DieIcon ? <DieIcon className={`w-10 h-10 text-gray-800 ${rolling ? 'animate-spin' : ''}`} /> : <span className="text-xs text-gray-400">–</span>}
+        <div className="w-14 h-14 rounded-xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 flex items-center justify-center shadow-inner">
+          {DieIcon ? <DieIcon className={`w-10 h-10 text-gray-800 dark:text-gray-200 ${rolling ? 'animate-spin' : ''}`} /> : <span className="text-xs text-gray-400 dark:text-gray-500">–</span>}
         </div>
       </div>
 
       <div className="relative grid grid-cols-2 gap-6 w-full max-w-2xl">
         {players.map((p, pi) => (
-          <div key={pi} className={`rounded-2xl border-2 p-3 ${pi === turn && winner === null ? 'border-blue-300 ring-2 ring-blue-100 bg-white' : 'border-gray-200 bg-white/70'}`}>
-            <div className="text-sm font-bold text-gray-800 mb-2 flex items-center gap-2">
+          <div key={pi} className={`rounded-2xl border-2 p-3 ${pi === turn && winner === null ? 'border-blue-300 ring-2 ring-blue-100 bg-white dark:bg-gray-800' : 'border-gray-200 dark:border-gray-700 bg-white/70 dark:bg-gray-800/70'}`}>
+            <div className="text-sm font-bold text-gray-800 dark:text-gray-200 mb-2 flex items-center gap-2">
               <span className={`w-3 h-3 rounded-full ${p.color}`} />
               {p.name}
             </div>

@@ -108,8 +108,8 @@ const Sudoku: React.FC<{ isBotEnabled: boolean }> = () => {
     const sel = selected && selected[0] === r && selected[1] === c;
     const v = board[r][c];
     const wrong = !fixed[r][c] && v !== 0 && v !== data.solution[r][c];
-    return `${sel ? 'bg-blue-200' : wrong ? 'bg-rose-50' : 'bg-white'} ${
-      fixed[r][c] ? 'text-gray-900' : 'text-blue-600'
+    return `${sel ? 'bg-blue-200' : wrong ? 'bg-rose-50' : 'bg-white dark:bg-gray-800'} ${
+      fixed[r][c] ? 'text-gray-900 dark:text-gray-100' : 'text-blue-600'
     }`;
   };
 
@@ -121,7 +121,7 @@ const Sudoku: React.FC<{ isBotEnabled: boolean }> = () => {
             key={d}
             onClick={() => reset(d)}
             className={`px-3 py-1.5 rounded-full text-xs font-semibold border ${
-              diff === d ? 'bg-gray-900 text-white border-gray-900' : 'bg-white text-gray-700 border-gray-200'
+              diff === d ? 'bg-gray-900 text-white border-gray-900' : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border-gray-200 dark:border-gray-700'
             }`}
           >
             {d}
@@ -141,8 +141,8 @@ const Sudoku: React.FC<{ isBotEnabled: boolean }> = () => {
           >
             {board.map((row, r) =>
               row.map((v, c) => {
-                const borderR = (c + 1) % 3 === 0 && c < N - 1 ? 'border-r-2 border-gray-900' : 'border-r border-gray-300';
-                const borderB = (r + 1) % 3 === 0 && r < N - 1 ? 'border-b-2 border-gray-900' : 'border-b border-gray-300';
+                const borderR = (c + 1) % 3 === 0 && c < N - 1 ? 'border-r-2 border-gray-900' : 'border-r border-gray-300 dark:border-gray-600';
+                const borderB = (r + 1) % 3 === 0 && r < N - 1 ? 'border-b-2 border-gray-900' : 'border-b border-gray-300 dark:border-gray-600';
                 return (
                   <button
                     key={`${r}-${c}`}
@@ -171,7 +171,7 @@ const Sudoku: React.FC<{ isBotEnabled: boolean }> = () => {
           <button
             key={n}
             onClick={() => selected && setCell(selected[0], selected[1], n)}
-            className="w-12 h-10 rounded-lg bg-white border border-gray-200 text-sm font-bold shadow-sm hover:bg-blue-50"
+            className="w-12 h-10 rounded-lg bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-sm font-bold shadow-sm hover:bg-blue-50 dark:hover:bg-blue-500/20"
           >
             {n === 0 ? '⌫' : n}
           </button>

@@ -99,7 +99,7 @@ const Nonogram: React.FC<{ isBotEnabled: boolean }> = () => {
             key={p.name}
             onClick={() => reset(i)}
             className={`px-3 py-1.5 rounded-full text-xs font-semibold border ${
-              idx === i ? 'bg-gray-900 text-white border-gray-900' : 'bg-white text-gray-700 border-gray-200'
+              idx === i ? 'bg-gray-900 text-white border-gray-900' : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border-gray-200 dark:border-gray-700'
             }`}
           >
             {p.name}
@@ -118,7 +118,7 @@ const Nonogram: React.FC<{ isBotEnabled: boolean }> = () => {
         >
           <div />
           {colHints.map((hs, i) => (
-            <div key={i} className="flex flex-col items-center justify-end pb-1 text-xs text-gray-700 font-semibold">
+            <div key={i} className="flex flex-col items-center justify-end pb-1 text-xs text-gray-700 dark:text-gray-300 font-semibold">
               {hs.map((v, k) => (
                 <div key={k}>{v}</div>
               ))}
@@ -126,19 +126,19 @@ const Nonogram: React.FC<{ isBotEnabled: boolean }> = () => {
           ))}
           {grid.map((row, r) => (
             <React.Fragment key={r}>
-              <div className="flex items-center justify-end pr-2 text-xs text-gray-700 font-semibold">
+              <div className="flex items-center justify-end pr-2 text-xs text-gray-700 dark:text-gray-300 font-semibold">
                 {rowHints[r].join(' ')}
               </div>
               {row.map((v, c) => {
-                const major = (c + 1) % 5 === 0 && c < SIZE - 1 ? 'border-r-2 border-gray-700' : 'border-r border-gray-300';
-                const majorB = (r + 1) % 5 === 0 && r < SIZE - 1 ? 'border-b-2 border-gray-700' : 'border-b border-gray-300';
+                const major = (c + 1) % 5 === 0 && c < SIZE - 1 ? 'border-r-2 border-gray-700' : 'border-r border-gray-300 dark:border-gray-600';
+                const majorB = (r + 1) % 5 === 0 && r < SIZE - 1 ? 'border-b-2 border-gray-700' : 'border-b border-gray-300 dark:border-gray-600';
                 return (
                   <button
                     key={c}
                     onClick={(e) => click(r, c, e)}
                     onContextMenu={(e) => { e.preventDefault(); click(r, c, e); }}
                     className={`w-9 h-9 ${major} ${majorB} text-lg font-bold flex items-center justify-center ${
-                      v === 1 ? 'bg-gray-900 text-white' : v === -1 ? 'bg-white text-rose-500' : 'bg-white hover:bg-blue-50'
+                      v === 1 ? 'bg-gray-900 text-white' : v === -1 ? 'bg-white dark:bg-gray-800 text-rose-500' : 'bg-white dark:bg-gray-800 hover:bg-blue-50 dark:hover:bg-blue-500/20'
                     }`}
                   >
                     {v === -1 ? '✕' : ''}

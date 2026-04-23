@@ -64,9 +64,9 @@ const TypingPractice: React.FC<{ isBotEnabled: boolean }> = () => {
             : 'Start typing to begin.'}
       </StatusBar>
 
-      <div className="relative w-full max-w-xl p-5 rounded-2xl bg-white border border-gray-200 shadow-md font-mono text-lg tracking-wide leading-relaxed">
+      <div className="relative w-full max-w-xl p-5 rounded-2xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-md font-mono text-lg tracking-wide leading-relaxed">
         {target.split('').map((ch, i) => {
-          let cls = 'text-gray-400';
+          let cls = 'text-gray-400 dark:text-gray-500';
           if (i < typed.length) {
             cls = typed[i] === ch ? 'text-emerald-600' : 'text-rose-500 underline';
           }
@@ -93,10 +93,10 @@ const TypingPractice: React.FC<{ isBotEnabled: boolean }> = () => {
         onChange={(e) => onChange(e.target.value)}
         placeholder="Start typing here…"
         disabled={done}
-        className="w-full max-w-xl px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-blue-400 focus:outline-none font-mono"
+        className="w-full max-w-xl px-4 py-3 rounded-xl border-2 border-gray-200 dark:border-gray-700 focus:border-blue-400 focus:outline-none font-mono"
       />
 
-      <div className="flex gap-3 text-sm text-gray-600">
+      <div className="flex gap-3 text-sm text-gray-600 dark:text-gray-400 dark:text-gray-500">
         <span>Errors: <strong>{errors}</strong></span>
         <span>·</span>
         <span>Length: <strong>{target.length}</strong></span>
@@ -104,7 +104,7 @@ const TypingPractice: React.FC<{ isBotEnabled: boolean }> = () => {
 
       <button
         onClick={reset}
-        className="px-4 py-2 rounded-lg bg-white border border-gray-200 text-sm font-semibold shadow hover:bg-gray-50"
+        className="px-4 py-2 rounded-lg bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-sm font-semibold shadow hover:bg-gray-50 dark:hover:bg-gray-700 dark:bg-gray-800/60"
       >
         New sentence
       </button>

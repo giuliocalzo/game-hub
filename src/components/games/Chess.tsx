@@ -393,7 +393,7 @@ const Chess: React.FC<ChessProps> = ({ isBotEnabled }) => {
               `}
             >
               {piece && (
-                <span className={piece.color === 'white' ? 'text-white drop-shadow-sm' : 'text-gray-900'}>
+                <span className={piece.color === 'white' ? 'text-white drop-shadow-sm' : 'text-gray-900 dark:text-gray-100'}>
                   {getPieceSymbol(piece)}
                 </span>
               )}

@@ -348,21 +348,21 @@ const Uno: React.FC<UnoProps> = ({ isBotEnabled }) => {
       {/* Color Selection Modal */}
       {gameState.gamePhase === 'color-selection' && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white p-6 rounded-lg shadow-lg">
+          <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
             <h4 className="text-lg font-bold mb-4 text-center">Choose a Color</h4>
             <div className="grid grid-cols-2 gap-6">
               {(['red', 'blue', 'green', 'yellow'] as const).map(color => (
                 <button
                   key={color}
                   onClick={() => handleColorSelection(color)}
-                  className={`w-20 h-20 rounded-xl border-3 border-white hover:border-gray-200 transition-all shadow-lg hover:scale-105 ${
+                  className={`w-20 h-20 rounded-xl border-3 border-white hover:border-gray-200 dark:border-gray-700 transition-all shadow-lg hover:scale-105 ${
                     color === 'red' ? 'bg-red-500' :
                     color === 'blue' ? 'bg-blue-500' :
                     color === 'green' ? 'bg-green-500' :
                     'bg-yellow-400'
                   }`}
                 >
-                  <div className="w-full h-full rounded-lg bg-white bg-opacity-20 flex items-center justify-center">
+                  <div className="w-full h-full rounded-lg bg-white dark:bg-gray-800 bg-opacity-20 flex items-center justify-center">
                     <span className="text-white font-bold text-lg capitalize">{color[0]}</span>
                   </div>
                 </button>
@@ -376,7 +376,7 @@ const Uno: React.FC<UnoProps> = ({ isBotEnabled }) => {
       <div className="flex flex-col items-center space-y-6">
         {/* Bot Player Area */}
         <div className="flex flex-col items-center space-y-3">
-          <div className="text-lg font-semibold text-gray-700">
+          <div className="text-lg font-semibold text-gray-700 dark:text-gray-300">
             {isBotEnabled ? 'Bot Player' : 'Player 2'}
           </div>
           <div className="flex space-x-1">
@@ -390,12 +390,12 @@ const Uno: React.FC<UnoProps> = ({ isBotEnabled }) => {
               </div>
             ))}
             {botPlayer.cards.length > 8 && (
-              <div className="flex items-center justify-center w-12 h-18 bg-gray-200 rounded-lg border-2 border-gray-300 text-gray-600 font-bold">
+              <div className="flex items-center justify-center w-12 h-18 bg-gray-200 rounded-lg border-2 border-gray-300 dark:border-gray-600 text-gray-600 dark:text-gray-400 dark:text-gray-500 font-bold">
                 +{botPlayer.cards.length - 8}
               </div>
             )}
           </div>
-          <div className="text-sm text-gray-500">{botPlayer.cards.length} cards</div>
+          <div className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500">{botPlayer.cards.length} cards</div>
         </div>
 
         {/* Center Area */}
@@ -408,12 +408,12 @@ const Uno: React.FC<UnoProps> = ({ isBotEnabled }) => {
               className={`w-20 h-28 rounded-xl border-3 flex items-center justify-center font-bold text-white transition-all shadow-lg ${
                 gameState.gamePhase === 'playing' && gameState.currentPlayerIndex === 0 && !(isBotEnabled && gameState.currentPlayerIndex === 1)
                   ? 'bg-gradient-to-br from-gray-600 to-gray-800 border-gray-400 hover:from-gray-500 hover:to-gray-700 cursor-pointer hover:scale-105'
-                  : 'bg-gradient-to-br from-gray-400 to-gray-500 border-gray-300 cursor-not-allowed opacity-60'
+                  : 'bg-gradient-to-br from-gray-400 to-gray-500 border-gray-300 dark:border-gray-600 cursor-not-allowed opacity-60'
               }`}
             >
               <Shuffle className="w-8 h-8" />
             </button>
-            <span className="text-sm font-medium text-gray-600">{gameState.deck.length} cards</span>
+            <span className="text-sm font-medium text-gray-600 dark:text-gray-400 dark:text-gray-500">{gameState.deck.length} cards</span>
           </div>
 
           {/* Top Card */}
@@ -434,7 +434,7 @@ const Uno: React.FC<UnoProps> = ({ isBotEnabled }) => {
 
         {/* Human Player Cards */}
         <div className="flex flex-col items-center space-y-4">
-          <div className="text-lg font-semibold text-gray-700">
+          <div className="text-lg font-semibold text-gray-700 dark:text-gray-300">
             Your Cards ({humanPlayer.cards.length})
           </div>
           <div className="flex flex-wrap gap-3 max-w-5xl justify-center">
@@ -448,7 +448,7 @@ const Uno: React.FC<UnoProps> = ({ isBotEnabled }) => {
                 } ${
                   canPlayCard(card, gameState.topCard, gameState.currentColor) && gameState.currentPlayerIndex === 0 && gameState.gamePhase === 'playing'
                     ? 'border-yellow-300 shadow-yellow-200 cursor-pointer hover:scale-110 hover:shadow-xl'
-                    : 'border-gray-300 cursor-not-allowed opacity-60'
+                    : 'border-gray-300 dark:border-gray-600 cursor-not-allowed opacity-60'
                 }`}
               >
                 {getCardSymbol(card)}

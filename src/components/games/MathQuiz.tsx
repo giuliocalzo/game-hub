@@ -101,7 +101,7 @@ const MathQuiz: React.FC<{ isBotEnabled: boolean }> = () => {
             key={l}
             onClick={() => reset(l)}
             className={`px-3 py-1.5 rounded-full text-xs font-semibold border ${
-              level === l ? 'bg-gray-900 text-white border-gray-900' : 'bg-white text-gray-700 border-gray-200'
+              level === l ? 'bg-gray-900 text-white border-gray-900' : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border-gray-200 dark:border-gray-700'
             }`}
           >
             {l}
@@ -115,8 +115,8 @@ const MathQuiz: React.FC<{ isBotEnabled: boolean }> = () => {
           : `Question ${asked + 1}/${QUESTIONS} · Score ${score} · Time ${timeLeft}s`}
       </StatusBar>
 
-      <div className="relative w-full max-w-md p-6 rounded-2xl bg-white border border-gray-200 shadow-lg text-center">
-        <div className="text-5xl font-extrabold text-gray-900 mb-4">
+      <div className="relative w-full max-w-md p-6 rounded-2xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-lg text-center">
+        <div className="text-5xl font-extrabold text-gray-900 dark:text-gray-100 mb-4">
           {q.a} {q.op} {q.b} = ?
         </div>
         <input
@@ -127,9 +127,9 @@ const MathQuiz: React.FC<{ isBotEnabled: boolean }> = () => {
           onKeyDown={(e) => e.key === 'Enter' && submit()}
           disabled={done}
           placeholder="Your answer"
-          className="w-40 text-center px-3 py-2 rounded-xl border-2 border-gray-200 focus:border-blue-400 focus:outline-none text-xl font-bold"
+          className="w-40 text-center px-3 py-2 rounded-xl border-2 border-gray-200 dark:border-gray-700 focus:border-blue-400 focus:outline-none text-xl font-bold"
         />
-        <div className="mt-3 text-sm text-gray-600">{feedback}</div>
+        <div className="mt-3 text-sm text-gray-600 dark:text-gray-400 dark:text-gray-500">{feedback}</div>
         <button
           onClick={submit}
           disabled={done || !input}

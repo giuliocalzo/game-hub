@@ -135,7 +135,7 @@ const Gomoku: React.FC<{ isBotEnabled: boolean }> = ({ isBotEnabled }) => {
                   {cell && (
                     <div
                       className={`absolute inset-[2px] rounded-full ${
-                        cell === 'B' ? 'bg-gray-900' : 'bg-white border border-gray-400'
+                        cell === 'B' ? 'bg-gray-900' : 'bg-white dark:bg-gray-800 border border-gray-400'
                       } ${isWin(r, c) ? 'ring-2 ring-emerald-400' : ''}`}
                     />
                   )}

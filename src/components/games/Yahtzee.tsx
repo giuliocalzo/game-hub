@@ -116,11 +116,11 @@ const Yahtzee: React.FC<{ isBotEnabled: boolean }> = () => {
               className={`w-14 h-14 md:w-16 md:h-16 rounded-xl flex items-center justify-center border-2 transition ${
                 keep[i]
                   ? 'border-emerald-500 bg-emerald-50'
-                  : 'border-gray-200 bg-white hover:border-blue-300'
+                  : 'border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 hover:border-blue-300 dark:hover:border-blue-400'
               }`}
               aria-label={`Die ${i + 1} showing ${v}${keep[i] ? ', kept' : ''}`}
             >
-              <Icon className="w-10 h-10 text-gray-800" />
+              <Icon className="w-10 h-10 text-gray-800 dark:text-gray-200" />
             </button>
           );
         })}
@@ -145,15 +145,15 @@ const Yahtzee: React.FC<{ isBotEnabled: boolean }> = () => {
               disabled={filled || !rolledThisTurn || done}
               className={`flex items-center justify-between px-3 py-2 rounded-lg border text-sm transition ${
                 filled
-                  ? 'bg-gray-100 border-gray-200 text-gray-500'
+                  ? 'bg-gray-100 dark:bg-gray-700 border-gray-200 dark:border-gray-700 text-gray-500 dark:text-gray-400 dark:text-gray-500'
                   : rolledThisTurn
-                    ? 'bg-white border-gray-200 hover:border-blue-300 text-gray-800'
-                    : 'bg-white border-gray-200 text-gray-400'
+                    ? 'bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-400 text-gray-800 dark:text-gray-200'
+                    : 'bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700 text-gray-400 dark:text-gray-500'
               }`}
             >
               <span>
                 <span className="font-semibold">{c.label}</span>
-                <span className="text-gray-400 ml-1 text-xs">{c.hint}</span>
+                <span className="text-gray-400 dark:text-gray-500 ml-1 text-xs">{c.hint}</span>
               </span>
               <span className="font-bold">
                 {filled ? scores[c.id] : preview !== null ? `+${preview}` : '—'}

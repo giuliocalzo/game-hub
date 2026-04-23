@@ -88,7 +88,7 @@ const Hangman: React.FC<{ isBotEnabled: boolean }> = () => {
       </svg>
 
       <div
-        className="text-3xl md:text-4xl font-extrabold tracking-widest uppercase text-gray-900 bg-white/80 px-5 py-3 rounded-xl border border-gray-200 shadow-sm"
+        className="text-3xl md:text-4xl font-extrabold tracking-widest uppercase text-gray-900 dark:text-gray-100 bg-white/80 dark:bg-gray-800/80 px-5 py-3 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm"
         aria-live="polite"
       >
         {masked}
@@ -108,7 +108,7 @@ const Hangman: React.FC<{ isBotEnabled: boolean }> = () => {
                   ? correct
                     ? 'bg-emerald-500 text-white'
                     : 'bg-rose-400 text-white'
-                  : 'bg-white border border-gray-200 hover:bg-gray-50 active:scale-95 text-gray-800'
+                  : 'bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 dark:bg-gray-800/60 active:scale-95 text-gray-800 dark:text-gray-200'
               }`}
             >
               {ch}

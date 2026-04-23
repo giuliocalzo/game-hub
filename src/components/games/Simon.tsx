@@ -123,7 +123,7 @@ const Simon: React.FC<{ isBotEnabled: boolean }> = () => {
       </div>
 
       <div className="flex items-center gap-4">
-        <div className="text-sm text-gray-600">
+        <div className="text-sm text-gray-600 dark:text-gray-400 dark:text-gray-500">
           Current: <span className="font-bold">{Math.max(0, sequence.length - (status === 'over' ? 1 : 0))}</span> · Best: <span className="font-bold">{best}</span>
         </div>
         {status !== 'playing' && (

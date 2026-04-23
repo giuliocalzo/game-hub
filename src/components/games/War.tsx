@@ -92,7 +92,7 @@ const War: React.FC<{ isBotEnabled: boolean }> = () => {
 
       <div className="flex items-center justify-around w-full max-w-md gap-4">
         <PlayerPile label="Player 1" count={p1.length} card={played.p1} face />
-        <div className="text-3xl font-extrabold text-gray-500">VS</div>
+        <div className="text-3xl font-extrabold text-gray-500 dark:text-gray-400 dark:text-gray-500">VS</div>
         <PlayerPile label="Player 2" count={p2.length} card={played.p2} face />
       </div>
 
@@ -123,21 +123,21 @@ const PlayerPile: React.FC<{
   face?: boolean;
 }> = ({ label, count, card }) => (
   <div className="flex flex-col items-center gap-2">
-    <div className="text-xs font-semibold text-gray-500">{label}</div>
-    <div className="relative w-24 h-32 rounded-xl bg-white border-2 border-gray-300 shadow flex items-center justify-center">
+    <div className="text-xs font-semibold text-gray-500 dark:text-gray-400 dark:text-gray-500">{label}</div>
+    <div className="relative w-24 h-32 rounded-xl bg-white dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-600 shadow flex items-center justify-center">
       {card ? (
         <div
           className={`text-3xl font-extrabold ${
-            card.suit === '♥' || card.suit === '♦' ? 'text-rose-500' : 'text-gray-900'
+            card.suit === '♥' || card.suit === '♦' ? 'text-rose-500' : 'text-gray-900 dark:text-gray-100'
           }`}
         >
           {(RANK_LABEL[card.rank] ?? card.rank) + card.suit}
         </div>
       ) : (
-        <div className="text-xs text-gray-400">No card</div>
+        <div className="text-xs text-gray-400 dark:text-gray-500">No card</div>
       )}
     </div>
-    <div className="text-xs text-gray-600">
+    <div className="text-xs text-gray-600 dark:text-gray-400 dark:text-gray-500">
       Cards: <span className="font-bold">{count}</span>
     </div>
   </div>

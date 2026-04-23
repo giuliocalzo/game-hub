@@ -89,14 +89,14 @@ const FlagsQuiz: React.FC<{ isBotEnabled: boolean }> = () => {
           const isRight = o.name === q.correct.name;
           const state =
             !locked
-              ? 'bg-white hover:bg-blue-50 border-gray-200'
+              ? 'bg-white dark:bg-gray-800 hover:bg-blue-50 dark:hover:bg-blue-500/20 border-gray-200 dark:border-gray-700'
               : picked && isRight
                 ? 'bg-emerald-500 text-white border-emerald-500'
                 : picked && !isRight
                   ? 'bg-rose-500 text-white border-rose-500'
                   : !picked && isRight
                     ? 'bg-emerald-100 border-emerald-300 text-emerald-800'
-                    : 'bg-white border-gray-200';
+                    : 'bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700';
           return (
             <button
               key={o.name}

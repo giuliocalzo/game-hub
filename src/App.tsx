@@ -3,6 +3,7 @@ import { Gamepad2 } from 'lucide-react';
 import HomePage from './components/HomePage';
 import GameShell from './components/GameShell';
 import LanguagePicker from './components/LanguagePicker';
+import ThemePicker from './components/ThemePicker';
 import { useTranslation } from './i18n/I18nContext';
 import { Game } from './types/games';
 
@@ -538,18 +539,18 @@ function App() {
   const handleRestart = () => setRestartKey((k) => k + 1);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 dark:from-gray-950 dark:via-slate-900 dark:to-gray-900 text-gray-900 dark:text-gray-100 transition-colors">
       <div
         aria-hidden="true"
         className="pointer-events-none fixed inset-0 overflow-hidden"
       >
-        <div className="absolute -top-24 -left-24 w-96 h-96 rounded-full bg-blue-200/40 blur-3xl" />
-        <div className="absolute top-1/3 -right-24 w-96 h-96 rounded-full bg-purple-200/40 blur-3xl" />
-        <div className="absolute bottom-0 left-1/3 w-96 h-96 rounded-full bg-pink-200/30 blur-3xl" />
+        <div className="absolute -top-24 -left-24 w-96 h-96 rounded-full bg-blue-200/40 blur-3xl dark:bg-blue-500/10" />
+        <div className="absolute top-1/3 -right-24 w-96 h-96 rounded-full bg-purple-200/40 blur-3xl dark:bg-purple-500/10" />
+        <div className="absolute bottom-0 left-1/3 w-96 h-96 rounded-full bg-pink-200/30 blur-3xl dark:bg-pink-500/10" />
       </div>
 
       <div className="relative">
-        <header className="bg-white/70 backdrop-blur-md shadow-sm border-b border-white/60 sticky top-0 z-40">
+        <header className="bg-white/70 backdrop-blur-md shadow-sm border-b border-white/60 sticky top-0 z-40 dark:bg-gray-900/70 dark:border-gray-800/60">
           <div className="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between gap-3">
             <button
               onClick={handleBackHome}
@@ -559,14 +560,15 @@ function App() {
               <span className="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 shadow-md group-hover:shadow-lg transition-shadow">
                 <Gamepad2 className="w-5 h-5 text-white" />
               </span>
-              <span className="text-2xl font-extrabold tracking-tight text-gray-900">
-                Game<span className="text-blue-600">Hub</span>
+              <span className="text-2xl font-extrabold tracking-tight text-gray-900 dark:text-gray-100">
+                Game<span className="text-blue-600 dark:text-blue-400">Hub</span>
               </span>
             </button>
-            <div className="flex items-center gap-3">
-              <span className="hidden md:block text-sm text-gray-500">
+            <div className="flex items-center gap-2 md:gap-3">
+              <span className="hidden lg:block text-sm text-gray-500 dark:text-gray-400">
                 {t('app.tagline')}
               </span>
+              <ThemePicker />
               <LanguagePicker />
             </div>
           </div>
@@ -594,7 +596,7 @@ function App() {
           )}
         </main>
 
-        <footer className="max-w-6xl mx-auto px-4 py-8 text-center text-xs text-gray-500">
+        <footer className="max-w-6xl mx-auto px-4 py-8 text-center text-xs text-gray-500 dark:text-gray-400">
           {t('app.footer')}
         </footer>
       </div>

@@ -42,6 +42,12 @@ const en: Dict = {
   // Language picker
   'lang.label': 'Language',
 
+  // Theme picker
+  'theme.label': 'Theme',
+  'theme.light': 'Light',
+  'theme.dark': 'Dark',
+  'theme.system': 'System',
+
   // Difficulty
   'difficulty.Easy': 'Easy',
   'difficulty.Medium': 'Medium',
@@ -279,6 +285,11 @@ const it: Dict = {
 
   'lang.label': 'Lingua',
 
+  'theme.label': 'Tema',
+  'theme.light': 'Chiaro',
+  'theme.dark': 'Scuro',
+  'theme.system': 'Sistema',
+
   'difficulty.Easy': 'Facile',
   'difficulty.Medium': 'Medio',
   'difficulty.Hard': 'Difficile',
@@ -514,6 +525,11 @@ const de: Dict = {
   'shell.restart_aria': 'Spiel neu starten',
 
   'lang.label': 'Sprache',
+
+  'theme.label': 'Design',
+  'theme.light': 'Hell',
+  'theme.dark': 'Dunkel',
+  'theme.system': 'System',
 
   'difficulty.Easy': 'Leicht',
   'difficulty.Medium': 'Mittel',

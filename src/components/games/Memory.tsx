@@ -114,7 +114,7 @@ const Memory: React.FC<MemoryProps> = () => {
             className={`px-3 py-1.5 rounded-full text-xs font-semibold border transition-colors ${
               difficulty === d
                 ? 'bg-gray-900 text-white border-gray-900'
-                : 'bg-white text-gray-700 border-gray-200 hover:border-gray-300'
+                : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:border-gray-600'
             }`}
           >
             {SIZES[d].label}
@@ -148,8 +148,8 @@ const Memory: React.FC<MemoryProps> = () => {
                     ?
                   </div>
                   <div
-                    className={`absolute inset-0 rounded-xl bg-white shadow-md flex items-center justify-center text-4xl md:text-5xl rotate-y-180 backface-hidden border ${
-                      card.matched ? 'border-emerald-400 ring-2 ring-emerald-300' : 'border-gray-200'
+                    className={`absolute inset-0 rounded-xl bg-white dark:bg-gray-800 shadow-md flex items-center justify-center text-4xl md:text-5xl rotate-y-180 backface-hidden border ${
+                      card.matched ? 'border-emerald-400 ring-2 ring-emerald-300' : 'border-gray-200 dark:border-gray-700'
                     }`}
                   >
                     {card.emoji}

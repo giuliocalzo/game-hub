@@ -167,7 +167,7 @@ const GoFish: React.FC<{ isBotEnabled: boolean }> = () => {
     <div className="flex flex-col items-center gap-5">
       <StatusBar tone={tone}>{log}</StatusBar>
 
-      <div className="flex justify-between w-full max-w-lg text-xs text-gray-600">
+      <div className="flex justify-between w-full max-w-lg text-xs text-gray-600 dark:text-gray-400 dark:text-gray-500">
         <div>
           Your books: <span className="font-bold">{youBooks.length}</span>
         </div>
@@ -192,8 +192,8 @@ const GoFish: React.FC<{ isBotEnabled: boolean }> = () => {
         {you.map((c) => (
           <div
             key={c.id}
-            className={`w-10 h-14 rounded border-2 bg-white flex items-center justify-center text-sm font-bold shadow ${
-              c.suit === '♥' || c.suit === '♦' ? 'text-rose-500 border-rose-200' : 'text-gray-900 border-gray-300'
+            className={`w-10 h-14 rounded border-2 bg-white dark:bg-gray-800 flex items-center justify-center text-sm font-bold shadow ${
+              c.suit === '♥' || c.suit === '♦' ? 'text-rose-500 border-rose-200' : 'text-gray-900 dark:text-gray-100 border-gray-300 dark:border-gray-600'
             }`}
           >
             {rankText(c.rank) + c.suit}
@@ -208,7 +208,7 @@ const GoFish: React.FC<{ isBotEnabled: boolean }> = () => {
             key={r}
             onClick={() => ask(r)}
             disabled={turn !== 'you' || done}
-            className="px-3 py-1.5 rounded-full text-xs font-semibold bg-white border border-gray-200 hover:bg-blue-50 hover:border-blue-300 disabled:opacity-50"
+            className="px-3 py-1.5 rounded-full text-xs font-semibold bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 hover:bg-blue-50 dark:hover:bg-blue-500/20 hover:border-blue-300 dark:hover:border-blue-400 disabled:opacity-50"
           >
             Ask for {rankText(r)}
           </button>

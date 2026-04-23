@@ -41,9 +41,9 @@ const HomePage: React.FC<HomePageProps> = ({
   const [query, setQuery] = useState('');
 
   const difficultyStyles: Record<Game['difficulty'], string> = {
-    Easy: 'bg-emerald-100 text-emerald-700 border-emerald-200',
-    Medium: 'bg-amber-100 text-amber-700 border-amber-200',
-    Hard: 'bg-rose-100 text-rose-700 border-rose-200',
+    Easy: 'bg-emerald-100 text-emerald-700 border-emerald-200 dark:bg-emerald-500/20 dark:text-emerald-200 dark:border-emerald-500/30',
+    Medium: 'bg-amber-100 text-amber-700 border-amber-200 dark:bg-amber-500/20 dark:text-amber-200 dark:border-amber-500/30',
+    Hard: 'bg-rose-100 text-rose-700 border-rose-200 dark:bg-rose-500/20 dark:text-rose-200 dark:border-rose-500/30',
   };
 
   const availableCategories = useMemo(() => {
@@ -84,19 +84,19 @@ const HomePage: React.FC<HomePageProps> = ({
     <div className="max-w-6xl mx-auto px-4 py-10 md:py-14">
       {/* Hero */}
       <div className="text-center mb-8 md:mb-10">
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/70 backdrop-blur border border-white shadow-sm mb-5">
-          <Sparkles className="w-4 h-4 text-amber-500" />
-          <span className="text-sm font-medium text-gray-700">
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/70 backdrop-blur border border-white shadow-sm mb-5 dark:bg-gray-800/60 dark:border-gray-700">
+          <Sparkles className="w-4 h-4 text-amber-500 dark:text-amber-300" />
+          <span className="text-sm font-medium text-gray-700 dark:text-gray-200">
             {t('home.badge', { count: games.length })}
           </span>
         </div>
-        <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-gray-900 mb-4">
+        <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-gray-900 mb-4 dark:text-gray-100">
           {t('home.title.pick')}
-          <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent">
+          <span className="bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 dark:from-blue-400 dark:via-indigo-400 dark:to-purple-400 bg-clip-text text-transparent">
             {' '}{t('home.title.play')}
           </span>
         </h1>
-        <p className="text-lg text-gray-600 max-w-2xl mx-auto">{t('home.subtitle')}</p>
+        <p className="text-lg text-gray-600 max-w-2xl mx-auto dark:text-gray-300">{t('home.subtitle')}</p>
       </div>
 
       {/* Mode toggle */}
@@ -104,7 +104,7 @@ const HomePage: React.FC<HomePageProps> = ({
         <div
           role="radiogroup"
           aria-label="Game mode"
-          className="inline-flex items-center p-1 bg-white rounded-full shadow-md border border-gray-200"
+          className="inline-flex items-center p-1 bg-white rounded-full shadow-md border border-gray-200 dark:bg-gray-800 dark:border-gray-700"
         >
           <button
             role="radio"
@@ -113,7 +113,7 @@ const HomePage: React.FC<HomePageProps> = ({
             className={`flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold transition-all ${
               !isBotEnabled
                 ? 'bg-gradient-to-r from-blue-500 to-indigo-500 text-white shadow-md'
-                : 'text-gray-600 hover:text-gray-900'
+                : 'text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white'
             }`}
           >
             <Users className="w-4 h-4" />
@@ -126,7 +126,7 @@ const HomePage: React.FC<HomePageProps> = ({
             className={`flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold transition-all ${
               isBotEnabled
                 ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-md'
-                : 'text-gray-600 hover:text-gray-900'
+                : 'text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white'
             }`}
           >
             <Bot className="w-4 h-4" />
@@ -138,14 +138,14 @@ const HomePage: React.FC<HomePageProps> = ({
       {/* Search + category filter */}
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-8">
         <div className="relative flex-1 max-w-md">
-          <Search className="w-4 h-4 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2" />
+          <Search className="w-4 h-4 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2 dark:text-gray-500" />
           <input
             type="search"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder={t('home.search.placeholder')}
             aria-label={t('home.search.placeholder')}
-            className="w-full pl-9 pr-3 py-2.5 rounded-full bg-white border border-gray-200 shadow-sm text-sm focus:outline-none focus:ring-2 focus:ring-blue-300"
+            className="w-full pl-9 pr-3 py-2.5 rounded-full bg-white border border-gray-200 shadow-sm text-sm focus:outline-none focus:ring-2 focus:ring-blue-300 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-100 dark:placeholder-gray-500 dark:focus:ring-blue-500/40"
           />
         </div>
         <div
@@ -173,7 +173,7 @@ const HomePage: React.FC<HomePageProps> = ({
 
       {/* Empty state */}
       {grouped.length === 0 && (
-        <div className="text-center py-16 text-gray-500">{t('home.empty')}</div>
+        <div className="text-center py-16 text-gray-500 dark:text-gray-400">{t('home.empty')}</div>
       )}
 
       {/* Sections */}
@@ -181,13 +181,13 @@ const HomePage: React.FC<HomePageProps> = ({
         {grouped.map(({ category, games: cgames }) => (
           <section key={category}>
             <div className="flex items-baseline gap-2 mb-4">
-              <h2 className="text-xl md:text-2xl font-bold text-gray-900">
+              <h2 className="text-xl md:text-2xl font-bold text-gray-900 dark:text-gray-100">
                 <span aria-hidden="true" className="mr-1.5">
                   {CATEGORY_EMOJI[category]}
                 </span>
                 {t(`category.${category}.label`)}
               </h2>
-              <span className="text-sm text-gray-500">
+              <span className="text-sm text-gray-500 dark:text-gray-400">
                 {t(`category.${category}.desc`)}
               </span>
             </div>
@@ -203,10 +203,10 @@ const HomePage: React.FC<HomePageProps> = ({
                     onClick={() => onSelectGame(game.id)}
                     disabled={botUnsupported}
                     aria-label={`${t('card.play')} ${name}`}
-                    className={`group relative overflow-hidden rounded-2xl bg-white border border-gray-200 shadow-sm hover:shadow-xl transition-all duration-300 text-left ${
+                    className={`group relative overflow-hidden rounded-2xl bg-white border border-gray-200 shadow-sm hover:shadow-xl transition-all duration-300 text-left dark:bg-gray-800 dark:border-gray-700 dark:shadow-black/40 ${
                       botUnsupported
                         ? 'opacity-60 cursor-not-allowed'
-                        : 'hover:-translate-y-1 focus:outline-none focus:ring-4 focus:ring-blue-200'
+                        : 'hover:-translate-y-1 focus:outline-none focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-500/40'
                     }`}
                   >
                     <div
@@ -224,7 +224,7 @@ const HomePage: React.FC<HomePageProps> = ({
 
                     <div className="p-5">
                       <div className="flex items-start justify-between gap-3 mb-2">
-                        <h3 className="text-lg font-bold text-gray-900 leading-tight">
+                        <h3 className="text-lg font-bold text-gray-900 leading-tight dark:text-gray-100">
                           {name}
                         </h3>
                         <span
@@ -235,12 +235,12 @@ const HomePage: React.FC<HomePageProps> = ({
                           {t(`difficulty.${game.difficulty}`)}
                         </span>
                       </div>
-                      <p className="text-sm text-gray-600 mb-4 min-h-[2.5rem]">
+                      <p className="text-sm text-gray-600 mb-4 min-h-[2.5rem] dark:text-gray-400">
                         {tagline}
                       </p>
 
                       <div className="flex items-center justify-between">
-                        <span className="text-xs font-medium text-gray-500">
+                        <span className="text-xs font-medium text-gray-500 dark:text-gray-400">
                           {game.solo
                             ? t('card.solo')
                             : botUnsupported
@@ -250,8 +250,8 @@ const HomePage: React.FC<HomePageProps> = ({
                         <span
                           className={`inline-flex items-center gap-1.5 text-sm font-semibold transition-colors ${
                             botUnsupported
-                              ? 'text-gray-400'
-                              : 'text-blue-600 group-hover:text-blue-700'
+                              ? 'text-gray-400 dark:text-gray-500'
+                              : 'text-blue-600 group-hover:text-blue-700 dark:text-blue-400 dark:group-hover:text-blue-300'
                           }`}
                         >
                           {t('card.play')}
@@ -267,7 +267,7 @@ const HomePage: React.FC<HomePageProps> = ({
         ))}
       </div>
 
-      <p className="text-center text-xs text-gray-500 mt-12">
+      <p className="text-center text-xs text-gray-500 mt-12 dark:text-gray-400">
         {t('home.footer_tip')}
       </p>
     </div>
@@ -287,8 +287,8 @@ const FilterChip: React.FC<FilterChipProps> = ({ active, onClick, children }) =>
     onClick={onClick}
     className={`px-3 py-1.5 rounded-full text-xs font-semibold border transition-colors ${
       active
-        ? 'bg-gray-900 text-white border-gray-900'
-        : 'bg-white text-gray-700 border-gray-200 hover:border-gray-300'
+        ? 'bg-gray-900 text-white border-gray-900 dark:bg-gray-100 dark:text-gray-900 dark:border-gray-100'
+        : 'bg-white text-gray-700 border-gray-200 hover:border-gray-300 dark:bg-gray-800 dark:text-gray-200 dark:border-gray-700 dark:hover:border-gray-600'
     }`}
   >
     {children}

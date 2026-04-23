@@ -163,8 +163,8 @@ const CrazyEights: React.FC<{ isBotEnabled: boolean }> = () => {
       : `Your turn · suit: ${activeSuit}${top?.rank === 8 ? ' (chosen)' : ''}`;
 
   const cardClass = (c: Card) =>
-    `w-11 h-16 rounded border-2 bg-white flex items-center justify-center text-sm font-bold shadow ${
-      c.suit === '♥' || c.suit === '♦' ? 'text-rose-500 border-rose-200' : 'text-gray-900 border-gray-300'
+    `w-11 h-16 rounded border-2 bg-white dark:bg-gray-800 flex items-center justify-center text-sm font-bold shadow ${
+      c.suit === '♥' || c.suit === '♦' ? 'text-rose-500 border-rose-200' : 'text-gray-900 dark:text-gray-100 border-gray-300 dark:border-gray-600'
     }`;
 
   return (
@@ -185,8 +185,8 @@ const CrazyEights: React.FC<{ isBotEnabled: boolean }> = () => {
         </div>
         {top && (
           <div
-            className={`w-14 h-20 rounded border-2 bg-white flex items-center justify-center text-xl font-bold shadow-lg ${
-              top.suit === '♥' || top.suit === '♦' ? 'text-rose-500 border-rose-200' : 'text-gray-900 border-gray-300'
+            className={`w-14 h-20 rounded border-2 bg-white dark:bg-gray-800 flex items-center justify-center text-xl font-bold shadow-lg ${
+              top.suit === '♥' || top.suit === '♦' ? 'text-rose-500 border-rose-200' : 'text-gray-900 dark:text-gray-100 border-gray-300 dark:border-gray-600'
             }`}
           >
             {rankText(top.rank) + (top.rank === 8 ? (activeSuit ?? '') : top.suit)}
@@ -197,15 +197,15 @@ const CrazyEights: React.FC<{ isBotEnabled: boolean }> = () => {
       {/* Suit picker */}
       {picking && (
         <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
-          <div className="bg-white rounded-2xl p-5 shadow-xl text-center">
-            <div className="mb-3 font-bold text-gray-800">Choose a suit</div>
+          <div className="bg-white dark:bg-gray-800 rounded-2xl p-5 shadow-xl text-center">
+            <div className="mb-3 font-bold text-gray-800 dark:text-gray-200">Choose a suit</div>
             <div className="grid grid-cols-4 gap-2">
               {(['♠', '♥', '♦', '♣'] as Suit[]).map((s) => (
                 <button
                   key={s}
                   onClick={() => pickSuit(s)}
                   className={`w-14 h-14 rounded-xl text-3xl shadow ${
-                    s === '♥' || s === '♦' ? 'bg-rose-50 text-rose-500' : 'bg-gray-50 text-gray-900'
+                    s === '♥' || s === '♦' ? 'bg-rose-50 text-rose-500' : 'bg-gray-50 dark:bg-gray-800/60 text-gray-900 dark:text-gray-100'
                   } hover:brightness-110`}
                 >
                   {s}
@@ -239,7 +239,7 @@ const CrazyEights: React.FC<{ isBotEnabled: boolean }> = () => {
         <button
           onClick={() => drawAndMaybePlay('you')}
           disabled={turn !== 'you' || !!winner}
-          className="px-4 py-2 rounded-lg bg-white border border-gray-200 text-sm font-semibold shadow hover:bg-gray-50 disabled:opacity-50"
+          className="px-4 py-2 rounded-lg bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-sm font-semibold shadow hover:bg-gray-50 dark:hover:bg-gray-700 dark:bg-gray-800/60 disabled:opacity-50"
         >
           Draw
         </button>

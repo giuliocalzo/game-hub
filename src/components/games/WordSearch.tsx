@@ -132,7 +132,7 @@ const WordSearch: React.FC<{ isBotEnabled: boolean }> = () => {
             className={`px-3 py-1.5 rounded-full text-xs font-semibold border ${
               pool === p
                 ? 'bg-gray-900 text-white border-gray-900'
-                : 'bg-white text-gray-700 border-gray-200'
+                : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border-gray-200 dark:border-gray-700'
             }`}
           >
             Theme {i + 1}
@@ -161,8 +161,8 @@ const WordSearch: React.FC<{ isBotEnabled: boolean }> = () => {
                     isFound
                       ? 'bg-emerald-400 text-white'
                       : isSel
-                        ? 'bg-yellow-300 text-gray-900'
-                        : 'bg-white hover:bg-blue-50 text-gray-700'
+                        ? 'bg-yellow-300 text-gray-900 dark:text-gray-100'
+                        : 'bg-white dark:bg-gray-800 hover:bg-blue-50 dark:hover:bg-blue-500/20 text-gray-700 dark:text-gray-300'
                   }`}
                 >
                   {ch}
@@ -188,7 +188,7 @@ const WordSearch: React.FC<{ isBotEnabled: boolean }> = () => {
             className={`text-sm px-2 py-1 rounded ${
               found.has(w.toUpperCase())
                 ? 'line-through text-emerald-600 bg-emerald-50'
-                : 'bg-white border border-gray-200 text-gray-700'
+                : 'bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300'
             }`}
           >
             {w}
