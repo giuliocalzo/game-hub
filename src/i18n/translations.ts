@@ -250,6 +250,17 @@ const en: Dict = {
   'game.typing.instructions':
     'Type the sentence exactly as shown. Your WPM and accuracy update as you go.',
 
+  // Toy-Theater-inspired additions
+  'game.bubble.name': 'Bubble Shooter',
+  'game.bubble.tagline': 'Aim and pop clusters of matching bubbles.',
+  'game.bubble.instructions': 'Move the mouse to aim, click to shoot. Match three or more bubbles of the same color to pop them.',
+  'game.morris.name': "Nine Men's Morris",
+  'game.morris.tagline': 'Ancient mill game — form three in a row to capture.',
+  'game.morris.instructions': 'Place nine stones each, then move along lines. Forming a mill (three in a row) lets you remove an opponent\u2019s stone. When you have only three stones, you can "fly" to any empty point.',
+  'game.dominoes.name': 'Dominoes',
+  'game.dominoes.tagline': 'Match the ends and empty your hand first.',
+  'game.dominoes.instructions': 'Play a tile whose end matches either end of the chain. Draw from the boneyard when you can\u2019t play. First to empty their hand wins.',
+
   // New arcade games
   'game.pong.name': 'Pong',
   'game.pong.tagline': 'Classic paddle duel. Bounce the ball past your opponent.',
@@ -526,6 +537,16 @@ const it: Dict = {
     'Digita le frasi per migliorare velocità e precisione.',
   'game.typing.instructions':
     'Digita la frase esattamente come mostrata. Parole al minuto e precisione si aggiornano mentre scrivi.',
+
+  'game.bubble.name': 'Spara Bolle',
+  'game.bubble.tagline': 'Mira e fai scoppiare gruppi di bolle dello stesso colore.',
+  'game.bubble.instructions': 'Muovi il mouse per mirare, clicca per sparare. Unisci tre o più bolle dello stesso colore per farle scoppiare.',
+  'game.morris.name': 'Tria / Mulino',
+  'game.morris.tagline': 'Gioco del mulino — allinea tre pedine per catturare.',
+  'game.morris.instructions': 'Posiziona nove pedine, poi muovile lungo le linee. Formando un "mulino" (tre in fila) puoi rimuovere una pedina avversaria. Con sole tre pedine rimaste puoi "volare" in qualunque punto.',
+  'game.dominoes.name': 'Domino',
+  'game.dominoes.tagline': 'Abbina i numeri e svuota la mano per primo.',
+  'game.dominoes.instructions': 'Gioca una tessera i cui numeri corrispondono alle estremità della catena. Pesca dal mazzetto quando non puoi giocare. Vince chi svuota la mano per primo.',
 
   'game.pong.name': 'Pong',
   'game.pong.tagline': 'Duello di racchette classico. Fai passare la pallina oltre l\u2019avversario.',
@@ -815,6 +836,16 @@ const de: Dict = {
     'Tippe Sätze und baue Geschwindigkeit & Genauigkeit aus.',
   'game.typing.instructions':
     'Tippe den Satz genau wie gezeigt. WPM und Genauigkeit aktualisieren sich live.',
+
+  'game.bubble.name': 'Bubble Shooter',
+  'game.bubble.tagline': 'Zielen und Blasen gleicher Farbe zum Platzen bringen.',
+  'game.bubble.instructions': 'Mit der Maus zielen, zum Schießen klicken. Drei oder mehr Blasen derselben Farbe verbinden, um sie platzen zu lassen.',
+  'game.morris.name': 'Mühle',
+  'game.morris.tagline': 'Alter Mühle-Klassiker — drei in einer Reihe schlägt.',
+  'game.morris.instructions': 'Platziere neun Steine, dann ziehe entlang der Linien. Eine "Mühle" (drei in einer Reihe) erlaubt dir, einen gegnerischen Stein zu entfernen. Mit nur drei Steinen darfst du zu jedem freien Punkt "fliegen".',
+  'game.dominoes.name': 'Domino',
+  'game.dominoes.tagline': 'Verbinde gleiche Augen und leere deine Hand zuerst.',
+  'game.dominoes.instructions': 'Lege einen Stein, dessen Ende zu einem Ende der Kette passt. Ziehe aus dem Stapel, wenn du nicht legen kannst. Wer zuerst die Hand leert, gewinnt.',
 
   'game.pong.name': 'Pong',
   'game.pong.tagline': 'Klassisches Schläger-Duell. Bring den Ball am Gegner vorbei.',

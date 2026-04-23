@@ -48,6 +48,9 @@ import Breakout from './components/games/Breakout';
 import DinoRun from './components/games/DinoRun';
 import ReactionTime from './components/games/ReactionTime';
 import Catch from './components/games/Catch';
+import BubbleShooter from './components/games/BubbleShooter';
+import NineMensMorris from './components/games/NineMensMorris';
+import Dominoes from './components/games/Dominoes';
 // New educational
 import Hangman from './components/games/Hangman';
 import WordSearch from './components/games/WordSearch';
@@ -393,6 +396,40 @@ const AVAILABLE_GAMES: Game[] = [
     solo: true,
     category: 'arcade',
   },
+  {
+    id: 'bubble',
+    name: 'Bubble Shooter',
+    description: 'Aim and pop bubbles',
+    tagline: 'Aim and pop clusters of matching bubbles.',
+    icon: '🫧',
+    gradient: 'from-cyan-400 to-blue-600',
+    difficulty: 'Easy',
+    supportsBot: false,
+    solo: true,
+    category: 'arcade',
+  },
+  {
+    id: 'morris',
+    name: "Nine Men's Morris",
+    description: 'Mill strategy game',
+    tagline: 'Ancient mill game — form three in a row to capture.',
+    icon: '🪨',
+    gradient: 'from-amber-700 to-stone-700',
+    difficulty: 'Medium',
+    supportsBot: true,
+    category: 'board',
+  },
+  {
+    id: 'dominoes',
+    name: 'Dominoes',
+    description: 'Match ends and empty your hand',
+    tagline: 'Match the ends and empty your hand first.',
+    icon: '🀰',
+    gradient: 'from-stone-500 to-stone-800',
+    difficulty: 'Medium',
+    supportsBot: true,
+    category: 'card',
+  },
 
   // Puzzle
   {
@@ -588,6 +625,9 @@ function App() {
       case 'dino': return <DinoRun isBotEnabled={isBotEnabled} />;
       case 'reaction': return <ReactionTime isBotEnabled={isBotEnabled} />;
       case 'catch': return <Catch isBotEnabled={isBotEnabled} />;
+      case 'bubble': return <BubbleShooter isBotEnabled={isBotEnabled} />;
+      case 'morris': return <NineMensMorris isBotEnabled={isBotEnabled} />;
+      case 'dominoes': return <Dominoes isBotEnabled={isBotEnabled} />;
       case 'hangman': return <Hangman isBotEnabled={isBotEnabled} />;
       case 'word-search': return <WordSearch isBotEnabled={isBotEnabled} />;
       case 'math-quiz': return <MathQuiz isBotEnabled={isBotEnabled} />;
