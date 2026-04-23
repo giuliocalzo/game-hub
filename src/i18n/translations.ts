@@ -250,6 +250,23 @@ const en: Dict = {
   'game.typing.instructions':
     'Type the sentence exactly as shown. Your WPM and accuracy update as you go.',
 
+  // New arcade games
+  'game.pong.name': 'Pong',
+  'game.pong.tagline': 'Classic paddle duel. Bounce the ball past your opponent.',
+  'game.pong.instructions': 'Move with ↑ ↓ (or W/S). In 2-player mode the right paddle uses I/K. First to 5 wins.',
+  'game.breakout.name': 'Breakout',
+  'game.breakout.tagline': 'Smash every brick with the bouncing ball.',
+  'game.breakout.instructions': 'Move with ← → or mouse. Space or tap to launch the ball. Three lives — clear every brick to win.',
+  'game.dino.name': 'Dino Run',
+  'game.dino.tagline': 'Endless runner — jump over the cacti.',
+  'game.dino.instructions': 'Tap, click, or press space to jump. The game speeds up the longer you survive.',
+  'game.reaction.name': 'Reaction Time',
+  'game.reaction.tagline': 'Measure your reflexes in milliseconds.',
+  'game.reaction.instructions': 'Wait for the button to turn green, then tap as fast as you can. Tap too early and the round resets.',
+  'game.catch.name': 'Catch',
+  'game.catch.tagline': 'Catch the fruit — dodge the bombs!',
+  'game.catch.instructions': 'Move the basket with ← → or by dragging. Catch fruit to score, dodge bombs, and don\u2019t drop good items.',
+
   // Typing practice — UI strings
   'typing.placeholder': 'Start typing here…',
   'typing.initial': 'Start typing to begin.',
@@ -509,6 +526,22 @@ const it: Dict = {
     'Digita le frasi per migliorare velocità e precisione.',
   'game.typing.instructions':
     'Digita la frase esattamente come mostrata. Parole al minuto e precisione si aggiornano mentre scrivi.',
+
+  'game.pong.name': 'Pong',
+  'game.pong.tagline': 'Duello di racchette classico. Fai passare la pallina oltre l\u2019avversario.',
+  'game.pong.instructions': 'Muovi con ↑ ↓ (o W/S). In 2 giocatori la racchetta destra usa I/K. Primo a 5 vince.',
+  'game.breakout.name': 'Arkanoid',
+  'game.breakout.tagline': 'Distruggi tutti i mattoni con la pallina.',
+  'game.breakout.instructions': 'Muovi con ← → o il mouse. Spazio o tocca per lanciare la pallina. Tre vite — rompi tutti i mattoni per vincere.',
+  'game.dino.name': 'Corsa del Dino',
+  'game.dino.tagline': 'Corsa senza fine — salta i cactus.',
+  'game.dino.instructions': 'Tocca, clicca o premi spazio per saltare. La velocità aumenta più sopravvivi.',
+  'game.reaction.name': 'Tempo di Reazione',
+  'game.reaction.tagline': 'Misura i tuoi riflessi in millisecondi.',
+  'game.reaction.instructions': 'Aspetta che il pulsante diventi verde, poi tocca il più in fretta possibile. Se tocchi troppo presto si ricomincia.',
+  'game.catch.name': 'Acchiappa la Frutta',
+  'game.catch.tagline': 'Prendi la frutta — schiva le bombe!',
+  'game.catch.instructions': 'Muovi il cesto con ← → o trascinando. Prendi la frutta per segnare, schiva le bombe e non far cadere la frutta.',
 
   'typing.placeholder': 'Inizia a scrivere qui…',
   'typing.initial': 'Inizia a scrivere per cominciare.',
@@ -782,6 +815,22 @@ const de: Dict = {
     'Tippe Sätze und baue Geschwindigkeit & Genauigkeit aus.',
   'game.typing.instructions':
     'Tippe den Satz genau wie gezeigt. WPM und Genauigkeit aktualisieren sich live.',
+
+  'game.pong.name': 'Pong',
+  'game.pong.tagline': 'Klassisches Schläger-Duell. Bring den Ball am Gegner vorbei.',
+  'game.pong.instructions': 'Steuerung mit ↑ ↓ (oder W/S). Im 2-Spieler-Modus nutzt der rechte Schläger I/K. Erster auf 5 gewinnt.',
+  'game.breakout.name': 'Breakout',
+  'game.breakout.tagline': 'Zerstöre alle Steine mit dem Ball.',
+  'game.breakout.instructions': 'Bewege mit ← → oder der Maus. Leertaste oder Tippen schießt den Ball ab. Drei Leben — zerstöre alle Steine, um zu gewinnen.',
+  'game.dino.name': 'Dino-Lauf',
+  'game.dino.tagline': 'Endloser Lauf — spring über die Kakteen.',
+  'game.dino.instructions': 'Tippen, klicken oder Leertaste zum Springen. Das Spiel wird schneller, je länger du durchhältst.',
+  'game.reaction.name': 'Reaktionszeit',
+  'game.reaction.tagline': 'Miss deine Reflexe in Millisekunden.',
+  'game.reaction.instructions': 'Warte bis der Knopf grün wird, dann so schnell wie möglich tippen. Zu früh und die Runde startet neu.',
+  'game.catch.name': 'Fangen',
+  'game.catch.tagline': 'Fang das Obst — weich den Bomben aus!',
+  'game.catch.instructions': 'Bewege den Korb mit ← → oder per Ziehen. Fang Obst für Punkte, meide Bomben und lass kein Obst fallen.',
 
   'typing.placeholder': 'Hier beginnen zu tippen…',
   'typing.initial': 'Tippe los, um zu starten.',

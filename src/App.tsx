@@ -43,6 +43,11 @@ import Simon from './components/games/Simon';
 import WhackAMole from './components/games/WhackAMole';
 import Tetris from './components/games/Tetris';
 import FlappyBird from './components/games/FlappyBird';
+import Pong from './components/games/Pong';
+import Breakout from './components/games/Breakout';
+import DinoRun from './components/games/DinoRun';
+import ReactionTime from './components/games/ReactionTime';
+import Catch from './components/games/Catch';
 // New educational
 import Hangman from './components/games/Hangman';
 import WordSearch from './components/games/WordSearch';
@@ -329,6 +334,65 @@ const AVAILABLE_GAMES: Game[] = [
     solo: true,
     category: 'arcade',
   },
+  {
+    id: 'pong',
+    name: 'Pong',
+    description: 'Classic paddle duel',
+    tagline: 'Classic paddle duel. Bounce the ball past your opponent.',
+    icon: '🏓',
+    gradient: 'from-slate-700 to-slate-900',
+    difficulty: 'Easy',
+    supportsBot: true,
+    category: 'arcade',
+  },
+  {
+    id: 'breakout',
+    name: 'Breakout',
+    description: 'Smash every brick',
+    tagline: 'Smash every brick with the bouncing ball.',
+    icon: '🧱',
+    gradient: 'from-fuchsia-500 to-pink-600',
+    difficulty: 'Medium',
+    supportsBot: false,
+    solo: true,
+    category: 'arcade',
+  },
+  {
+    id: 'dino',
+    name: 'Dino Run',
+    description: 'Endless runner',
+    tagline: 'Endless runner — jump over the cacti.',
+    icon: '🦖',
+    gradient: 'from-emerald-500 to-teal-600',
+    difficulty: 'Easy',
+    supportsBot: false,
+    solo: true,
+    category: 'arcade',
+  },
+  {
+    id: 'reaction',
+    name: 'Reaction Time',
+    description: 'Reflex test',
+    tagline: 'Measure your reflexes in milliseconds.',
+    icon: '⚡',
+    gradient: 'from-rose-500 to-red-600',
+    difficulty: 'Easy',
+    supportsBot: false,
+    solo: true,
+    category: 'arcade',
+  },
+  {
+    id: 'catch',
+    name: 'Catch',
+    description: 'Catch fruit, dodge bombs',
+    tagline: 'Catch the fruit — dodge the bombs!',
+    icon: '🧺',
+    gradient: 'from-orange-400 to-amber-600',
+    difficulty: 'Easy',
+    supportsBot: false,
+    solo: true,
+    category: 'arcade',
+  },
 
   // Puzzle
   {
@@ -519,6 +583,11 @@ function App() {
       case 'flappy': return <FlappyBird isBotEnabled={isBotEnabled} />;
       case 'simon': return <Simon isBotEnabled={isBotEnabled} />;
       case 'whack': return <WhackAMole isBotEnabled={isBotEnabled} />;
+      case 'pong': return <Pong isBotEnabled={isBotEnabled} />;
+      case 'breakout': return <Breakout isBotEnabled={isBotEnabled} />;
+      case 'dino': return <DinoRun isBotEnabled={isBotEnabled} />;
+      case 'reaction': return <ReactionTime isBotEnabled={isBotEnabled} />;
+      case 'catch': return <Catch isBotEnabled={isBotEnabled} />;
       case 'hangman': return <Hangman isBotEnabled={isBotEnabled} />;
       case 'word-search': return <WordSearch isBotEnabled={isBotEnabled} />;
       case 'math-quiz': return <MathQuiz isBotEnabled={isBotEnabled} />;
