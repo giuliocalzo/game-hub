@@ -177,7 +177,7 @@ const Pong: React.FC<PongProps> = ({ isBotEnabled }) => {
     <div className="flex flex-col items-center gap-5">
       <StatusBar tone={tone}>{status}</StatusBar>
 
-      <div className="relative w-full" style={{ maxWidth: W }}>
+      <div className="relative w-full" style={{ maxWidth: 960 }}>
         <svg
           viewBox={`0 0 ${W} ${H}`}
           className="w-full rounded-2xl shadow-xl"

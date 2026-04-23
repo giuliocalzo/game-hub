@@ -75,7 +75,7 @@ const PixelArt: React.FC<{ isBotEnabled: boolean }> = () => {
       >
         <div
           className="grid gap-0 bg-white dark:bg-gray-100"
-          style={{ gridTemplateColumns: `repeat(${SIZE}, minmax(0, 1fr))`, width: 'min(92vw, 480px)', aspectRatio: '1 / 1' }}
+          style={{ gridTemplateColumns: `repeat(${SIZE}, minmax(0, 1fr))`, width: 'min(92vw, 640px)', aspectRatio: '1 / 1' }}
         >
           {grid.map((c, i) => (
             <div

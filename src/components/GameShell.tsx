@@ -25,9 +25,9 @@ const GameShell: React.FC<GameShellProps> = ({
   const instructions = t(`game.${game.id}.instructions`);
 
   return (
-    <div className="max-w-6xl mx-auto px-2 sm:px-3 pt-2 pb-4">
+    <div className="max-w-7xl mx-auto px-1 sm:px-3 pt-2 pb-4">
       {/* Compact action bar */}
-      <div className="flex items-center justify-between gap-2 mb-2">
+      <div className="flex items-center justify-between gap-2 mb-2 px-1 sm:px-0">
         <div className="flex items-center gap-2 min-w-0">
           <button
             onClick={onBack}
@@ -84,7 +84,7 @@ const GameShell: React.FC<GameShellProps> = ({
       </div>
 
       {/* Game surface — tight frame, maximum play area */}
-      <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg border border-gray-200 p-2 sm:p-4 dark:bg-gray-800/80 dark:border-gray-700 dark:shadow-black/40">
+      <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg border border-gray-200 p-2 sm:p-4 md:p-5 dark:bg-gray-800/80 dark:border-gray-700 dark:shadow-black/40">
         {children}
       </div>
 

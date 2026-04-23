@@ -122,7 +122,7 @@ const FlappyBird: React.FC<{ isBotEnabled: boolean }> = () => {
         {over ? `Game over — Score ${score} · Best ${best}` : running ? `Score: ${score}` : 'Tap, click or press space to flap.'}
       </StatusBar>
 
-      <div className="relative" style={{ width: WIDTH, maxWidth: '100%' }}>
+      <div className="relative" style={{ width: 480, maxWidth: '100%' }}>
         <div
           onClick={flap}
           className="relative rounded-2xl overflow-hidden shadow-xl cursor-pointer select-none"

@@ -133,7 +133,7 @@ const DoodlePad: React.FC<{ isBotEnabled: boolean }> = () => {
         className="w-full rounded-2xl shadow-xl select-none touch-none cursor-crosshair"
         style={{
           background: '#ffffff',
-          maxWidth: W,
+          maxWidth: 900,
           aspectRatio: `${W} / ${H}`,
         }}
         onPointerDown={handleDown}

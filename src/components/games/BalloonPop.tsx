@@ -210,7 +210,7 @@ const BalloonPop: React.FC<{ isBotEnabled: boolean }> = () => {
         </div>
       </div>
 
-      <div className="relative w-full" style={{ maxWidth: W }}>
+      <div className="relative w-full" style={{ maxWidth: 960 }}>
         <svg
           viewBox={`0 0 ${W} ${H}`}
           className="w-full rounded-2xl shadow-xl select-none"

@@ -167,7 +167,7 @@ const Spin: React.FC<{ isBotEnabled: boolean }> = () => {
         className="w-full rounded-full shadow-xl touch-none cursor-crosshair"
         style={{
           background: 'radial-gradient(circle, #0f172a 0%, #020617 80%)',
-          maxWidth: SIZE,
+          maxWidth: 560,
           aspectRatio: '1 / 1',
         }}
         onPointerDown={handleDown}

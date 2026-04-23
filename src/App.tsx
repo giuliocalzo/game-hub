@@ -792,20 +792,23 @@ function App() {
 
       <div className="relative">
         <header className="bg-white/70 backdrop-blur-md shadow-sm border-b border-white/60 sticky top-0 z-40 dark:bg-gray-900/70 dark:border-gray-800/60">
-          <div className="max-w-6xl mx-auto px-3 py-2.5 flex items-center justify-between gap-3">
+          <div className="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between gap-3">
             <button
               onClick={handleBackHome}
-              className="flex items-center gap-2 group"
+              className="flex items-center gap-2.5 group"
               aria-label={t('shell.back_aria')}
             >
-              <span className="inline-flex items-center justify-center w-9 h-9 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 shadow-md group-hover:shadow-lg transition-shadow">
+              <span className="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 shadow-md group-hover:shadow-lg transition-shadow">
                 <Gamepad2 className="w-5 h-5 text-white" />
               </span>
-              <span className="text-xl font-extrabold tracking-tight text-gray-900 dark:text-gray-100">
+              <span className="text-2xl font-extrabold tracking-tight text-gray-900 dark:text-gray-100">
                 Game<span className="text-blue-600 dark:text-blue-400">Hub</span>
               </span>
             </button>
-            <div className="flex items-center gap-1.5 md:gap-2">
+            <div className="flex items-center gap-2 md:gap-3">
+              <span className="hidden lg:block text-sm text-gray-500 dark:text-gray-400">
+                {t('app.tagline')}
+              </span>
               <ThemePicker />
               <LanguagePicker />
             </div>
@@ -834,7 +837,7 @@ function App() {
           )}
         </main>
 
-        <footer className="max-w-6xl mx-auto px-4 py-4 text-center text-xs text-gray-400 dark:text-gray-500">
+        <footer className="max-w-6xl mx-auto px-4 py-8 text-center text-xs text-gray-500 dark:text-gray-400">
           {t('app.footer')}
         </footer>
       </div>

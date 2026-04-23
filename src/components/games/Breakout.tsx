@@ -171,7 +171,7 @@ const Breakout: React.FC<{ isBotEnabled: boolean }> = () => {
     <div className="flex flex-col items-center gap-5">
       <StatusBar tone={tone}>{status}</StatusBar>
 
-      <div className="relative w-full" style={{ maxWidth: W }}>
+      <div className="relative w-full" style={{ maxWidth: 720 }}>
         <svg
           viewBox={`0 0 ${W} ${H}`}
           className="w-full rounded-2xl shadow-xl cursor-pointer"

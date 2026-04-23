@@ -114,7 +114,7 @@ const Sticker: React.FC<{ isBotEnabled: boolean }> = () => {
         className="w-full rounded-2xl shadow-xl cursor-copy select-none"
         style={{
           background: 'linear-gradient(135deg, #fce7f3 0%, #e0e7ff 50%, #dcfce7 100%)',
-          maxWidth: W,
+          maxWidth: 900,
           aspectRatio: `${W} / ${H}`,
         }}
         onClick={handlePlace}
