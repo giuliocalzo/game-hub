@@ -56,6 +56,12 @@ import DoodlePad from './components/games/DoodlePad';
 import PixelArt from './components/games/PixelArt';
 import Spin from './components/games/Spin';
 import Sticker from './components/games/Sticker';
+
+import BalloonPop from './components/games/BalloonPop';
+import MakeTen from './components/games/MakeTen';
+import TellingTime from './components/games/TellingTime';
+import NumberPattern from './components/games/NumberPattern';
+import Subitize from './components/games/Subitize';
 // New educational
 import Hangman from './components/games/Hangman';
 import WordSearch from './components/games/WordSearch';
@@ -486,6 +492,68 @@ const AVAILABLE_GAMES: Game[] = [
     category: 'art',
   },
 
+  // Math
+  {
+    id: 'balloon-pop',
+    name: 'Balloon Pop',
+    description: 'Pop balloons that match the answer',
+    tagline: 'Solve the problem, pop the right balloon.',
+    icon: '🎈',
+    gradient: 'from-rose-400 to-pink-600',
+    difficulty: 'Easy',
+    supportsBot: false,
+    solo: true,
+    category: 'math',
+  },
+  {
+    id: 'make-ten',
+    name: 'Make Ten',
+    description: 'Pair cards that sum to the target',
+    tagline: 'Match pairs that add up to the target.',
+    icon: '🔟',
+    gradient: 'from-sky-400 to-blue-600',
+    difficulty: 'Easy',
+    supportsBot: false,
+    solo: true,
+    category: 'math',
+  },
+  {
+    id: 'telling-time',
+    name: 'Telling Time',
+    description: 'Read the clock face',
+    tagline: 'Pick the time shown on the clock.',
+    icon: '🕒',
+    gradient: 'from-yellow-400 to-orange-500',
+    difficulty: 'Easy',
+    supportsBot: false,
+    solo: true,
+    category: 'math',
+  },
+  {
+    id: 'number-pattern',
+    name: 'Number Pattern',
+    description: 'Find the missing number',
+    tagline: 'Spot the rule and fill the gap.',
+    icon: '🔢',
+    gradient: 'from-indigo-500 to-purple-600',
+    difficulty: 'Medium',
+    supportsBot: false,
+    solo: true,
+    category: 'math',
+  },
+  {
+    id: 'subitize',
+    name: 'Subitize',
+    description: 'Quick-count the dots',
+    tagline: 'Count the dots before they disappear.',
+    icon: '👁️',
+    gradient: 'from-cyan-400 to-teal-600',
+    difficulty: 'Easy',
+    supportsBot: false,
+    solo: true,
+    category: 'math',
+  },
+
   // Puzzle
   {
     id: 'memory',
@@ -687,6 +755,11 @@ function App() {
       case 'pixel': return <PixelArt isBotEnabled={isBotEnabled} />;
       case 'spin': return <Spin isBotEnabled={isBotEnabled} />;
       case 'sticker': return <Sticker isBotEnabled={isBotEnabled} />;
+      case 'balloon-pop': return <BalloonPop isBotEnabled={isBotEnabled} />;
+      case 'make-ten': return <MakeTen isBotEnabled={isBotEnabled} />;
+      case 'telling-time': return <TellingTime isBotEnabled={isBotEnabled} />;
+      case 'number-pattern': return <NumberPattern isBotEnabled={isBotEnabled} />;
+      case 'subitize': return <Subitize isBotEnabled={isBotEnabled} />;
       case 'hangman': return <Hangman isBotEnabled={isBotEnabled} />;
       case 'word-search': return <WordSearch isBotEnabled={isBotEnabled} />;
       case 'math-quiz': return <MathQuiz isBotEnabled={isBotEnabled} />;
@@ -719,23 +792,20 @@ function App() {
 
       <div className="relative">
         <header className="bg-white/70 backdrop-blur-md shadow-sm border-b border-white/60 sticky top-0 z-40 dark:bg-gray-900/70 dark:border-gray-800/60">
-          <div className="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between gap-3">
+          <div className="max-w-6xl mx-auto px-3 py-2.5 flex items-center justify-between gap-3">
             <button
               onClick={handleBackHome}
-              className="flex items-center gap-2.5 group"
+              className="flex items-center gap-2 group"
               aria-label={t('shell.back_aria')}
             >
-              <span className="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 shadow-md group-hover:shadow-lg transition-shadow">
+              <span className="inline-flex items-center justify-center w-9 h-9 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 shadow-md group-hover:shadow-lg transition-shadow">
                 <Gamepad2 className="w-5 h-5 text-white" />
               </span>
-              <span className="text-2xl font-extrabold tracking-tight text-gray-900 dark:text-gray-100">
+              <span className="text-xl font-extrabold tracking-tight text-gray-900 dark:text-gray-100">
                 Game<span className="text-blue-600 dark:text-blue-400">Hub</span>
               </span>
             </button>
-            <div className="flex items-center gap-2 md:gap-3">
-              <span className="hidden lg:block text-sm text-gray-500 dark:text-gray-400">
-                {t('app.tagline')}
-              </span>
+            <div className="flex items-center gap-1.5 md:gap-2">
               <ThemePicker />
               <LanguagePicker />
             </div>
@@ -764,7 +834,7 @@ function App() {
           )}
         </main>
 
-        <footer className="max-w-6xl mx-auto px-4 py-8 text-center text-xs text-gray-500 dark:text-gray-400">
+        <footer className="max-w-6xl mx-auto px-4 py-4 text-center text-xs text-gray-400 dark:text-gray-500">
           {t('app.footer')}
         </footer>
       </div>

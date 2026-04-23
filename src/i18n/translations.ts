@@ -38,6 +38,7 @@ const en: Dict = {
   'shell.restart': 'Restart',
   'shell.back_aria': 'Back to home',
   'shell.restart_aria': 'Restart game',
+  'shell.how_to_play': 'How to play',
 
   // Language picker
   'lang.label': 'Language',
@@ -68,6 +69,25 @@ const en: Dict = {
   'category.educational.desc': 'Sneaky learning.',
   'category.art.label': 'Art & creativity',
   'category.art.desc': 'Make something beautiful.',
+  'category.math.label': 'Math games',
+  'category.math.desc': 'Counting, calculation, and patterns.',
+
+  // Math activities
+  'game.balloon-pop.name': 'Balloon Pop',
+  'game.balloon-pop.tagline': 'Solve the problem, pop the right balloon.',
+  'game.balloon-pop.instructions': 'Read the math problem at the top. Balloons float up with numbers — click the one whose number equals the answer. Wrong pops cost points. Reach the goal before time runs out.',
+  'game.make-ten.name': 'Make Ten',
+  'game.make-ten.tagline': 'Match pairs that add up to the target.',
+  'game.make-ten.instructions': 'Click two cards that add up to the target (10, 20, or 100). Matched pairs stay face up. Clear all pairs in as few moves as possible.',
+  'game.telling-time.name': 'Telling Time',
+  'game.telling-time.tagline': 'Pick the time shown on the clock.',
+  'game.telling-time.instructions': 'Read the clock face, then choose the matching time from the four options. Pick a difficulty to practice o\u2019clock, half hours, quarter hours, or 5-minute marks.',
+  'game.number-pattern.name': 'Number Pattern',
+  'game.number-pattern.tagline': 'Spot the rule and fill the gap.',
+  'game.number-pattern.instructions': 'Look at the sequence and the rule shown above it. One number is missing — pick the value that keeps the pattern going.',
+  'game.subitize.name': 'Subitize',
+  'game.subitize.tagline': 'Count the dots before they disappear.',
+  'game.subitize.instructions': 'Dots flash on screen for a moment. When they disappear, pick how many you saw. Harder levels show more dots and flash faster.',
 
   // Art activities
   'game.doodle.name': 'Doodle Pad',
@@ -345,6 +365,7 @@ const it: Dict = {
   'shell.restart': 'Ricomincia',
   'shell.back_aria': 'Torna alla home',
   'shell.restart_aria': 'Ricomincia la partita',
+  'shell.how_to_play': 'Come si gioca',
 
   'lang.label': 'Lingua',
 
@@ -371,6 +392,25 @@ const it: Dict = {
   'category.educational.desc': 'Imparare senza accorgersene.',
   'category.art.label': 'Arte & creatività',
   'category.art.desc': 'Crea qualcosa di bello.',
+  'category.math.label': 'Giochi di matematica',
+  'category.math.desc': 'Contare, calcolare, scoprire schemi.',
+
+  // Math activities
+  'game.balloon-pop.name': 'Scoppia Palloncini',
+  'game.balloon-pop.tagline': 'Risolvi l\u2019operazione, scoppia il palloncino giusto.',
+  'game.balloon-pop.instructions': 'Leggi l\u2019operazione in alto. I palloncini salgono con dei numeri — clicca quello il cui numero è la risposta. Gli errori tolgono punti. Raggiungi l\u2019obiettivo prima che scada il tempo.',
+  'game.make-ten.name': 'Fai Dieci',
+  'game.make-ten.tagline': 'Accoppia le carte la cui somma dà il bersaglio.',
+  'game.make-ten.instructions': 'Clicca due carte che sommano al bersaglio (10, 20 o 100). Le coppie corrette restano scoperte. Completa il mazzo in meno mosse possibili.',
+  'game.telling-time.name': 'Leggi l\u2019Orologio',
+  'game.telling-time.tagline': 'Scegli l\u2019ora mostrata dall\u2019orologio.',
+  'game.telling-time.instructions': 'Guarda l\u2019orologio e scegli l\u2019ora giusta tra le quattro opzioni. Scegli la difficoltà per esercitarti con ore esatte, mezz\u2019ore, quarti d\u2019ora o minuti da cinque.',
+  'game.number-pattern.name': 'Schema Numerico',
+  'game.number-pattern.tagline': 'Scopri la regola e riempi lo spazio.',
+  'game.number-pattern.instructions': 'Osserva la sequenza e la regola mostrata sopra. Un numero manca — scegli il valore che continua lo schema.',
+  'game.subitize.name': 'Conta Veloce',
+  'game.subitize.tagline': 'Conta i punti prima che spariscano.',
+  'game.subitize.instructions': 'I puntini lampeggiano per un attimo sullo schermo. Quando spariscono, scegli quanti ne hai visti. I livelli più difficili mostrano più puntini e lampeggiano più in fretta.',
 
   'game.doodle.name': 'Blocco da Disegno',
   'game.doodle.tagline': 'Disegno libero con colori e pennelli.',
@@ -644,6 +684,7 @@ const de: Dict = {
   'shell.restart': 'Neu starten',
   'shell.back_aria': 'Zurück zur Startseite',
   'shell.restart_aria': 'Spiel neu starten',
+  'shell.how_to_play': 'Spielanleitung',
 
   'lang.label': 'Sprache',
 
@@ -670,6 +711,25 @@ const de: Dict = {
   'category.educational.desc': 'Heimliches Lernen.',
   'category.art.label': 'Kunst & Kreativität',
   'category.art.desc': 'Mach etwas Schönes.',
+  'category.math.label': 'Mathespiele',
+  'category.math.desc': 'Zählen, Rechnen und Muster.',
+
+  // Math activities
+  'game.balloon-pop.name': 'Ballon Platzen',
+  'game.balloon-pop.tagline': 'Rechne aus und triff den richtigen Ballon.',
+  'game.balloon-pop.instructions': 'Lies die Aufgabe oben. Ballons steigen mit Zahlen auf — klicke den mit der richtigen Antwort. Falsche Klicks kosten Punkte. Erreiche das Ziel, bevor die Zeit abläuft.',
+  'game.make-ten.name': 'Zehn Machen',
+  'game.make-ten.tagline': 'Finde Paare, die zusammen das Ziel ergeben.',
+  'game.make-ten.instructions': 'Klicke zwei Karten, die zusammen das Ziel (10, 20 oder 100) ergeben. Richtige Paare bleiben offen. Leere das Deck in möglichst wenigen Zügen.',
+  'game.telling-time.name': 'Uhrzeit Lesen',
+  'game.telling-time.tagline': 'Wähle die angezeigte Uhrzeit.',
+  'game.telling-time.instructions': 'Lies das Zifferblatt und wähle die passende Uhrzeit aus den vier Antworten. Wähle eine Schwierigkeitsstufe, um ganze Stunden, halbe, viertel Stunden oder 5-Minuten-Schritte zu üben.',
+  'game.number-pattern.name': 'Zahlenmuster',
+  'game.number-pattern.tagline': 'Erkenne die Regel und füll die Lücke.',
+  'game.number-pattern.instructions': 'Sieh dir die Folge und die Regel darüber an. Eine Zahl fehlt — wähle den Wert, der das Muster fortsetzt.',
+  'game.subitize.name': 'Blitz-Zählen',
+  'game.subitize.tagline': 'Zähle die Punkte, bevor sie verschwinden.',
+  'game.subitize.instructions': 'Punkte blitzen kurz auf. Wenn sie verschwinden, wähle, wie viele du gesehen hast. Höhere Stufen zeigen mehr Punkte und blitzen schneller.',
 
   'game.doodle.name': 'Zeichenblock',
   'game.doodle.tagline': 'Freies Zeichnen mit Farben und Pinseln.',

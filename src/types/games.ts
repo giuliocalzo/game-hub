@@ -5,7 +5,8 @@ export type GameCategory =
   | 'puzzle'
   | 'arcade'
   | 'educational'
-  | 'art';
+  | 'art'
+  | 'math';
 
 export interface Game {
   id: string;
