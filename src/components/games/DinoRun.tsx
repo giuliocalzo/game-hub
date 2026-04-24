@@ -34,6 +34,8 @@ const DinoRun: React.FC<{ isBotEnabled: boolean }> = () => {
   obsRef.current = obstacles;
   const speedRef = useRef(speed);
   speedRef.current = speed;
+  const scoreRef = useRef(score);
+  scoreRef.current = score;
 
   const reset = useCallback(() => {
     setY(GROUND - DINO.h);
@@ -55,6 +57,8 @@ const DinoRun: React.FC<{ isBotEnabled: boolean }> = () => {
     if (!running || over) return;
     let raf = 0;
     let tick = 0;
+    // Stagger the first spawn so one cactus appears quickly
+    let nextSpawnAt = 30;
     const loop = () => {
       tick++;
       // Physics
@@ -65,10 +69,12 @@ const DinoRun: React.FC<{ isBotEnabled: boolean }> = () => {
       });
       setVy((v) => (yRef.current + DINO.h >= GROUND ? v : v + GRAVITY));
 
-      // Obstacles
-      if (tick % Math.max(35, Math.floor(80 - speedRef.current * 3)) === 0) {
+      // Obstacles — spawn based on tick threshold, then set next threshold
+      if (tick >= nextSpawnAt) {
         const h = 20 + Math.floor(Math.random() * 25);
         setObstacles((o) => [...o, { x: W, w: 14, h, passed: false }]);
+        const gap = Math.max(45, Math.floor(95 - speedRef.current * 3));
+        nextSpawnAt = tick + gap + Math.floor(Math.random() * 40);
       }
       setObstacles((o) =>
         o
@@ -88,7 +94,7 @@ const DinoRun: React.FC<{ isBotEnabled: boolean }> = () => {
         ) {
           setOver(true);
           setRunning(false);
-          setBest((b) => Math.max(b, Math.floor(score)));
+          setBest((b) => Math.max(b, Math.floor(scoreRef.current)));
           return;
         }
         if (!ob.passed && ob.x + ob.w < DINO.x) {
@@ -106,7 +112,7 @@ const DinoRun: React.FC<{ isBotEnabled: boolean }> = () => {
     };
     raf = requestAnimationFrame(loop);
     return () => cancelAnimationFrame(raf);
-  }, [running, over, score]);
+  }, [running, over]);
 
   // Keyboard / click / tap
   useEffect(() => {
