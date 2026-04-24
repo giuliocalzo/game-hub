@@ -78,6 +78,10 @@ import PegSolitaire from './components/games/PegSolitaire';
 import Darts from './components/games/Darts';
 import Metronome from './components/games/Metronome';
 import NoteQuiz from './components/games/NoteQuiz';
+
+import Match3 from './components/games/Match3';
+import MahjongSolitaire from './components/games/MahjongSolitaire';
+import MathRunner from './components/games/MathRunner';
 // New educational
 import Hangman from './components/games/Hangman';
 import WordSearch from './components/games/WordSearch';
@@ -581,6 +585,18 @@ const AVAILABLE_GAMES: Game[] = [
     solo: true,
     category: 'math',
   },
+  {
+    id: 'math-runner',
+    name: 'Math Runner',
+    description: 'Pick the correct answer gate',
+    tagline: 'Steer into the correct answer before the wall!',
+    icon: '🏃',
+    gradient: 'from-blue-500 to-indigo-700',
+    difficulty: 'Medium',
+    supportsBot: false,
+    solo: true,
+    category: 'math',
+  },
 
   // Music
   {
@@ -789,6 +805,30 @@ const AVAILABLE_GAMES: Game[] = [
     solo: true,
     category: 'puzzle',
   },
+  {
+    id: 'match-3',
+    name: 'Match 3',
+    description: 'Swap gems to make 3 in a row',
+    tagline: 'Swap gems to line up three or more — score combos!',
+    icon: '💎',
+    gradient: 'from-sky-400 to-purple-600',
+    difficulty: 'Easy',
+    supportsBot: false,
+    solo: true,
+    category: 'puzzle',
+  },
+  {
+    id: 'mahjong',
+    name: 'Mahjong Solitaire',
+    description: 'Pair free tiles to clear the board',
+    tagline: 'Find matching pairs of open tiles to remove them.',
+    icon: '🀄',
+    gradient: 'from-emerald-600 to-green-800',
+    difficulty: 'Medium',
+    supportsBot: false,
+    solo: true,
+    category: 'puzzle',
+  },
 
   // Educational
   {
@@ -960,6 +1000,9 @@ function App() {
       case 'darts': return <Darts isBotEnabled={isBotEnabled} />;
       case 'metronome': return <Metronome isBotEnabled={isBotEnabled} />;
       case 'note-quiz': return <NoteQuiz isBotEnabled={isBotEnabled} />;
+      case 'match-3': return <Match3 isBotEnabled={isBotEnabled} />;
+      case 'mahjong': return <MahjongSolitaire isBotEnabled={isBotEnabled} />;
+      case 'math-runner': return <MathRunner isBotEnabled={isBotEnabled} />;
       case 'hangman': return <Hangman isBotEnabled={isBotEnabled} />;
       case 'word-search': return <WordSearch isBotEnabled={isBotEnabled} />;
       case 'math-quiz': return <MathQuiz isBotEnabled={isBotEnabled} />;

@@ -119,6 +119,15 @@ const en: Dict = {
   'game.darts.name': 'Darts',
   'game.darts.tagline': 'Click to throw — aim for the bullseye.',
   'game.darts.instructions': 'Click anywhere on the rotating target to throw a dart. The bullseye is worth 50 points; outer rings score less. You have 10 darts per round.',
+  'game.match-3.name': 'Match 3',
+  'game.match-3.tagline': 'Swap gems to line up three or more — score combos!',
+  'game.match-3.instructions': 'Tap a gem, then tap an adjacent one to swap them. If it makes a line of 3 or more of the same gem, they clear and gems fall in. Chains give bonus points. You have 20 moves.',
+  'game.mahjong.name': 'Mahjong Solitaire',
+  'game.mahjong.tagline': 'Find matching pairs of open tiles to remove them.',
+  'game.mahjong.instructions': 'Click two tiles with the same picture to remove them. A tile is only selectable if it is not covered by another tile above, and has no tile directly touching either its left or right side. Clear the whole board to win.',
+  'game.math-runner.name': 'Math Runner',
+  'game.math-runner.tagline': 'Steer into the correct answer before the wall!',
+  'game.math-runner.instructions': 'Press Start to run. Walls with math problems come at you, each with three answer gates. Use Left/Right arrows or A/D to move lanes and pass through the correct answer. Hit 10 correct to win; 5 wrong ends the run.',
 
   // Math activities
   'game.balloon-pop.name': 'Balloon Pop',
@@ -490,6 +499,15 @@ const it: Dict = {
   'game.darts.name': 'Freccette',
   'game.darts.tagline': 'Clicca per lanciare: mira al centro!',
   'game.darts.instructions': 'Clicca sul bersaglio rotante per lanciare una freccetta. Il centro vale 50 punti; gli anelli esterni valgono meno. Hai 10 freccette per partita.',
+  'game.match-3.name': 'Match 3',
+  'game.match-3.tagline': 'Scambia le gemme per allinearne tre o più \u2014 fai combo!',
+  'game.match-3.instructions': 'Tocca una gemma, poi una adiacente per scambiarle. Se allinei 3 o più gemme uguali, si eliminano e quelle sopra scendono. Le catene danno punti bonus. Hai 20 mosse.',
+  'game.mahjong.name': 'Mahjong Solitario',
+  'game.mahjong.tagline': 'Trova coppie di tessere libere e rimuovile.',
+  'game.mahjong.instructions': 'Clicca due tessere con la stessa immagine per rimuoverle. Una tessera è selezionabile solo se non è coperta da altre sopra e almeno uno dei suoi lati (sinistro o destro) è libero. Svuota tutto il tabellone per vincere.',
+  'game.math-runner.name': 'Corsa Matematica',
+  'game.math-runner.tagline': 'Entra nella risposta giusta prima del muro!',
+  'game.math-runner.instructions': 'Premi Start per iniziare. Arrivano muri con operazioni e tre cancelli di risposta. Usa le frecce Sinistra/Destra o A/D per cambiare corsia e attraversare la risposta corretta. 10 corrette per vincere; 5 sbagliate e finisce.',
 
 
   // Math activities
@@ -858,6 +876,15 @@ const de: Dict = {
   'game.darts.name': 'Darts',
   'game.darts.tagline': 'Klicke zum Werfen \u2014 ziele auf die Mitte!',
   'game.darts.instructions': 'Klicke auf die rotierende Scheibe, um einen Dart zu werfen. Das Bullseye gibt 50 Punkte; äußere Ringe weniger. Pro Runde hast du 10 Darts.',
+  'game.match-3.name': 'Match 3',
+  'game.match-3.tagline': 'Tausche Edelsteine, um drei in einer Reihe zu bilden!',
+  'game.match-3.instructions': 'Tippe einen Edelstein und dann einen benachbarten, um sie zu tauschen. Entsteht eine Reihe von 3 oder mehr gleichen Steinen, werden sie entfernt und neue fallen nach. Ketten geben Bonuspunkte. Du hast 20 Züge.',
+  'game.mahjong.name': 'Mahjong Solitär',
+  'game.mahjong.tagline': 'Finde Paare offener Steine und entferne sie.',
+  'game.mahjong.instructions': 'Klicke zwei Steine mit demselben Bild, um sie zu entfernen. Ein Stein ist nur wählbar, wenn er nicht von einem Stein darüber bedeckt ist und mindestens eine Seite (links oder rechts) frei ist. Leere das Brett, um zu gewinnen.',
+  'game.math-runner.name': 'Mathe Runner',
+  'game.math-runner.tagline': 'Lenke in das richtige Antwort-Tor vor der Wand!',
+  'game.math-runner.instructions': 'Drücke Start zum Laufen. Mauern mit Rechenaufgaben kommen auf dich zu, jede mit drei Antwort-Toren. Mit Pfeil-links/rechts oder A/D wechselst du die Spur und läufst durch die richtige Antwort. 10 richtige zum Gewinnen; 5 falsche beenden den Lauf.',
 
 
   // Math activities
