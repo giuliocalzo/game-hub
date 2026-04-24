@@ -82,6 +82,10 @@ import NoteQuiz from './components/games/NoteQuiz';
 import Match3 from './components/games/Match3';
 import MahjongSolitaire from './components/games/MahjongSolitaire';
 import MathRunner from './components/games/MathRunner';
+
+import TriPeaks from './components/games/TriPeaks';
+import NumberRush from './components/games/NumberRush';
+import Fractions from './components/games/Fractions';
 // New educational
 import Hangman from './components/games/Hangman';
 import WordSearch from './components/games/WordSearch';
@@ -281,6 +285,18 @@ const AVAILABLE_GAMES: Game[] = [
     solo: true,
     category: 'card',
   },
+  {
+    id: 'tripeaks',
+    name: 'TriPeaks',
+    description: 'Pick cards ±1 rank from the waste',
+    tagline: 'Clear three peaks one rank at a time.',
+    icon: '⛰️',
+    gradient: 'from-green-600 to-emerald-800',
+    difficulty: 'Easy',
+    supportsBot: false,
+    solo: true,
+    category: 'card',
+  },
 
   // Dice
   {
@@ -452,6 +468,18 @@ const AVAILABLE_GAMES: Game[] = [
     category: 'arcade',
   },
   {
+    id: 'number-rush',
+    name: 'Number Rush',
+    description: 'Grow by absorbing smaller numbers',
+    tagline: 'Absorb numbers ≤ your size. Avoid the bigger ones.',
+    icon: '🔢',
+    gradient: 'from-sky-500 to-cyan-700',
+    difficulty: 'Easy',
+    supportsBot: false,
+    solo: true,
+    category: 'arcade',
+  },
+  {
     id: 'morris',
     name: "Nine Men's Morris",
     description: 'Mill strategy game',
@@ -592,6 +620,18 @@ const AVAILABLE_GAMES: Game[] = [
     tagline: 'Steer into the correct answer before the wall!',
     icon: '🏃',
     gradient: 'from-blue-500 to-indigo-700',
+    difficulty: 'Medium',
+    supportsBot: false,
+    solo: true,
+    category: 'math',
+  },
+  {
+    id: 'fractions',
+    name: 'Fractions',
+    description: 'Pick fractions that sum to 1',
+    tagline: 'Combine tiles that add up to exactly 1.',
+    icon: '½',
+    gradient: 'from-amber-500 to-rose-600',
     difficulty: 'Medium',
     supportsBot: false,
     solo: true,
@@ -1003,6 +1043,9 @@ function App() {
       case 'match-3': return <Match3 isBotEnabled={isBotEnabled} />;
       case 'mahjong': return <MahjongSolitaire isBotEnabled={isBotEnabled} />;
       case 'math-runner': return <MathRunner isBotEnabled={isBotEnabled} />;
+      case 'tripeaks': return <TriPeaks isBotEnabled={isBotEnabled} />;
+      case 'number-rush': return <NumberRush isBotEnabled={isBotEnabled} />;
+      case 'fractions': return <Fractions isBotEnabled={isBotEnabled} />;
       case 'hangman': return <Hangman isBotEnabled={isBotEnabled} />;
       case 'word-search': return <WordSearch isBotEnabled={isBotEnabled} />;
       case 'math-quiz': return <MathQuiz isBotEnabled={isBotEnabled} />;

@@ -128,6 +128,15 @@ const en: Dict = {
   'game.math-runner.name': 'Math Runner',
   'game.math-runner.tagline': 'Steer into the correct answer before the wall!',
   'game.math-runner.instructions': 'Press Start to run. Walls with math problems come at you, each with three answer gates. Use Left/Right arrows or A/D to move lanes and pass through the correct answer. Hit 10 correct to win; 5 wrong ends the run.',
+  'game.tripeaks.name': 'TriPeaks',
+  'game.tripeaks.tagline': 'Clear three peaks one rank at a time.',
+  'game.tripeaks.instructions': 'Click any face-up card whose rank is one higher or one lower than the top of the waste pile (Ace wraps to 2 and King). Flip a card from the stock to change the waste. Clear all three peaks to win. Ace and King are adjacent.',
+  'game.number-rush.name': 'Number Rush',
+  'game.number-rush.tagline': 'Absorb numbers ≤ your size. Avoid the bigger ones.',
+  'game.number-rush.instructions': 'Move your cursor (or use arrow keys / WASD) to steer your blob. Touching a smaller or equal number absorbs it and makes you grow; touching a bigger one costs points and shrinks you. Score as much as you can in 45 seconds.',
+  'game.fractions.name': 'Fractions',
+  'game.fractions.tagline': 'Combine tiles that add up to exactly 1.',
+  'game.fractions.instructions': 'Pick fraction tiles that together sum to exactly 1 to reveal the hidden animal. Going over 1 resets the round. Three difficulty levels change the pool size and which denominators appear.',
 
   // Math activities
   'game.balloon-pop.name': 'Balloon Pop',
@@ -508,6 +517,15 @@ const it: Dict = {
   'game.math-runner.name': 'Corsa Matematica',
   'game.math-runner.tagline': 'Entra nella risposta giusta prima del muro!',
   'game.math-runner.instructions': 'Premi Start per iniziare. Arrivano muri con operazioni e tre cancelli di risposta. Usa le frecce Sinistra/Destra o A/D per cambiare corsia e attraversare la risposta corretta. 10 corrette per vincere; 5 sbagliate e finisce.',
+  'game.tripeaks.name': 'TriPeaks',
+  'game.tripeaks.tagline': 'Svuota tre piramidi un valore alla volta.',
+  'game.tripeaks.instructions': 'Clicca una carta scoperta il cui valore è di uno sopra o di uno sotto la cima del mazzo scarti (l\u2019Asso si collega al 2 e al Re). Pesca dal mazzo per cambiare la carta di base. Svuota tutte e tre le piramidi per vincere.',
+  'game.number-rush.name': 'Corsa dei Numeri',
+  'game.number-rush.tagline': 'Assorbi i numeri ≤ alla tua taglia. Evita i più grandi.',
+  'game.number-rush.instructions': 'Muovi il cursore (o usa le frecce / WASD) per guidare il tuo blob. Toccare un numero minore o uguale lo assorbe e ti fa crescere; toccare uno più grande toglie punti e ti rimpicciolisce. Fai più punti possibili in 45 secondi.',
+  'game.fractions.name': 'Frazioni',
+  'game.fractions.tagline': 'Combina tessere che sommano esattamente a 1.',
+  'game.fractions.instructions': 'Scegli tessere di frazioni che insieme sommano a 1 esatto per scoprire l\u2019animale nascosto. Superare 1 azzera la scelta. I livelli di difficoltà cambiano la dimensione del gruppo e i denominatori usati.',
 
 
   // Math activities
@@ -885,6 +903,15 @@ const de: Dict = {
   'game.math-runner.name': 'Mathe Runner',
   'game.math-runner.tagline': 'Lenke in das richtige Antwort-Tor vor der Wand!',
   'game.math-runner.instructions': 'Drücke Start zum Laufen. Mauern mit Rechenaufgaben kommen auf dich zu, jede mit drei Antwort-Toren. Mit Pfeil-links/rechts oder A/D wechselst du die Spur und läufst durch die richtige Antwort. 10 richtige zum Gewinnen; 5 falsche beenden den Lauf.',
+  'game.tripeaks.name': 'TriPeaks',
+  'game.tripeaks.tagline': 'Räume drei Gipfel Rang für Rang ab.',
+  'game.tripeaks.instructions': 'Klicke eine offene Karte, deren Rang um eins höher oder niedriger ist als die oberste Karte des Ablagestapels (Ass schließt an 2 und König an). Ziehe vom Nachziehstapel, um die Basis zu wechseln. Räume alle drei Gipfel ab, um zu gewinnen.',
+  'game.number-rush.name': 'Zahlenjagd',
+  'game.number-rush.tagline': 'Schlucke Zahlen ≤ deiner Größe. Meide die größeren.',
+  'game.number-rush.instructions': 'Bewege den Cursor (oder Pfeiltasten / WASD) und steuere deinen Blob. Kleinere oder gleich große Zahlen werden geschluckt und du wächst; größere kosten Punkte und verkleinern dich. Sammle so viele Punkte wie möglich in 45 Sekunden.',
+  'game.fractions.name': 'Brüche',
+  'game.fractions.tagline': 'Kombiniere Kacheln, die genau 1 ergeben.',
+  'game.fractions.instructions': 'Wähle Bruchkacheln, die zusammen genau 1 ergeben, um das versteckte Tier zu zeigen. Über 1 hinaus setzt die Auswahl zurück. Die Schwierigkeit ändert die Pool-Größe und die verwendeten Nenner.',
 
 
   // Math activities
