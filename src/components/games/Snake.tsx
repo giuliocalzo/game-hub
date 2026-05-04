@@ -146,9 +146,37 @@ const Snake: React.FC<{ isBotEnabled: boolean }> = () => {
                     (x + y) % 2 === 0 ? 'bg-green-700/40' : 'bg-green-700/20'
                   }`}
                 >
-                  {isHead && <div className="w-full h-full rounded-sm bg-lime-300 ring-1 ring-lime-500" />}
-                  {isBody && <div className="w-full h-full rounded-sm bg-lime-400" />}
-                  {isFood && <div className="w-full h-full rounded-full bg-red-500 scale-75" />}
+                  {isHead && (
+                    <div
+                      className="w-full h-full rounded-md ring-1 ring-lime-700 relative"
+                      style={{
+                        background: 'radial-gradient(circle at 35% 30%, #d9f99d, #84cc16 70%)',
+                        boxShadow: 'inset 0 -1px 2px rgba(0,0,0,0.3), 0 1px 1px rgba(0,0,0,0.2)',
+                      }}
+                    >
+                      <span className="absolute top-[18%] left-[18%] w-[22%] h-[22%] rounded-full bg-gray-900" />
+                      <span className="absolute top-[18%] right-[18%] w-[22%] h-[22%] rounded-full bg-gray-900" />
+                    </div>
+                  )}
+                  {isBody && (
+                    <div
+                      className="w-full h-full rounded-sm"
+                      style={{
+                        background: 'radial-gradient(circle at 35% 30%, #bef264, #65a30d 75%)',
+                      }}
+                    />
+                  )}
+                  {isFood && (
+                    <div
+                      className="w-3/4 h-3/4 rounded-full mx-auto my-auto"
+                      style={{
+                        background: 'radial-gradient(circle at 30% 25%, #fecaca, #dc2626 70%)',
+                        boxShadow: 'inset 0 -1px 2px rgba(0,0,0,0.4), 0 1px 2px rgba(0,0,0,0.4)',
+                        marginTop: '12.5%',
+                        marginLeft: '12.5%',
+                      }}
+                    />
+                  )}
                 </div>
               );
             }),

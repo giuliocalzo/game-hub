@@ -174,8 +174,8 @@ const Breakout: React.FC<{ isBotEnabled: boolean }> = () => {
       <div className="relative w-full" style={{ maxWidth: 'min(95vw, calc(80vh * 1.333))' }}>
         <svg
           viewBox={`0 0 ${W} ${H}`}
-          className="w-full rounded-2xl shadow-xl cursor-pointer"
-          style={{ background: '#0f172a' }}
+          className="w-full rounded-2xl shadow-2xl ring-1 ring-slate-950/50 cursor-pointer"
+          style={{ background: 'linear-gradient(135deg, #020617 0%, #0f172a 50%, #1e293b 100%)' }}
           onClick={() => {
             if (!running) setRunning(true);
             launch();
@@ -186,6 +186,18 @@ const Breakout: React.FC<{ isBotEnabled: boolean }> = () => {
             setPaddleX(Math.max(0, Math.min(W - PADDLE_W, x - PADDLE_W / 2)));
           }}
         >
+          <defs>
+            <linearGradient id="brkPaddle" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stopColor="#94a3b8" />
+              <stop offset="50%" stopColor="#f8fafc" />
+              <stop offset="100%" stopColor="#94a3b8" />
+            </linearGradient>
+            <radialGradient id="brkBall" cx="35%" cy="30%" r="70%">
+              <stop offset="0%" stopColor="#fffbeb" />
+              <stop offset="60%" stopColor="#fde68a" />
+              <stop offset="100%" stopColor="#d97706" />
+            </radialGradient>
+          </defs>
           {bricks.map((b, i) =>
             b.alive ? (
               <rect
@@ -196,11 +208,12 @@ const Breakout: React.FC<{ isBotEnabled: boolean }> = () => {
                 height={BRICK_H - 4}
                 fill={BRICK_COLORS[b.r % BRICK_COLORS.length]}
                 rx="3"
+                filter="drop-shadow(0 1px 1px rgba(0,0,0,0.4))"
               />
             ) : null,
           )}
-          <rect x={paddleX} y={H - 20} width={PADDLE_W} height={PADDLE_H} fill="#e2e8f0" rx="4" />
-          <circle cx={ball.x} cy={ball.y} r={BALL} fill="#fef3c7" />
+          <rect x={paddleX} y={H - 20} width={PADDLE_W} height={PADDLE_H} fill="url(#brkPaddle)" rx="4" filter="drop-shadow(0 1px 2px rgba(0,0,0,0.4))" />
+          <circle cx={ball.x} cy={ball.y} r={BALL} fill="url(#brkBall)" filter="drop-shadow(0 1px 2px rgba(0,0,0,0.5))" />
         </svg>
         {over && (
           <WinOverlay

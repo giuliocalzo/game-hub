@@ -433,7 +433,7 @@ const Dama: React.FC<DamaProps> = ({ isBotEnabled }) => {
     <div className="flex flex-col items-center gap-5">
       <StatusBar tone={statusTone}>{getStatusMessage()}</StatusBar>
 
-      <div className="grid grid-cols-8 gap-0 border-4 border-amber-900/60 rounded-lg overflow-hidden shadow-lg">
+      <div className="grid grid-cols-8 gap-0 border-4 border-amber-900 rounded-xl overflow-hidden shadow-2xl ring-1 ring-amber-950/50">
         {board.map((row, rowIndex) =>
           row.map((piece, colIndex) => (
             <div
@@ -442,19 +442,32 @@ const Dama: React.FC<DamaProps> = ({ isBotEnabled }) => {
               style={{ width: 'min(10vw, 9vh)', height: 'min(10vw, 9vh)' }}
               className={`
                 flex items-center justify-center cursor-pointer transition-colors relative
-                ${(rowIndex + colIndex) % 2 === 0 ? 'bg-amber-100' : 'bg-amber-800'}
-                ${selectedSquare?.row === rowIndex && selectedSquare?.col === colIndex ? 'ring-4 ring-blue-400' : ''}
-                ${mustCapture.some(pos => pos.row === rowIndex && pos.col === colIndex) ? 'ring-2 ring-orange-400' : ''}
+                ${(rowIndex + colIndex) % 2 === 0
+                  ? 'bg-gradient-to-br from-amber-50 to-amber-200'
+                  : 'bg-gradient-to-br from-amber-700 to-amber-900'}
+                ${selectedSquare?.row === rowIndex && selectedSquare?.col === colIndex ? 'ring-4 ring-blue-400 ring-inset' : ''}
+                ${mustCapture.some(pos => pos.row === rowIndex && pos.col === colIndex) ? 'ring-2 ring-orange-400 ring-inset' : ''}
                 hover:brightness-110
               `}
             >
               {piece && (
-                <div className={`
-                  rounded-full border-2 border-gray-800 flex items-center justify-center font-bold
-                  ${piece.color === 'red' ? 'bg-red-500 text-white' : 'bg-gray-800 text-white'}
-                `}
-                style={{ width: '70%', height: '70%' }}>
-                  {piece.isKing ? '♔' : ''}
+                <div
+                  className={`rounded-full border-2 flex items-center justify-center font-bold text-lg ${
+                    piece.color === 'red'
+                      ? 'border-red-900 text-yellow-300'
+                      : 'border-gray-950 text-yellow-300'
+                  }`}
+                  style={{
+                    width: '72%',
+                    height: '72%',
+                    background: piece.color === 'red'
+                      ? 'radial-gradient(circle at 35% 30%, #fb7185, #b91c1c 70%)'
+                      : 'radial-gradient(circle at 35% 30%, #4b5563, #111827 70%)',
+                    boxShadow:
+                      'inset 0 -3px 6px rgba(0,0,0,0.45), inset 0 2px 3px rgba(255,255,255,0.25), 0 2px 4px rgba(0,0,0,0.4)',
+                  }}
+                >
+                  {piece.isKing ? '♛' : ''}
                 </div>
               )}
             </div>

@@ -180,15 +180,27 @@ const Pong: React.FC<PongProps> = ({ isBotEnabled }) => {
       <div className="relative w-full" style={{ maxWidth: 'min(95vw, calc(80vh * 1.778))' }}>
         <svg
           viewBox={`0 0 ${W} ${H}`}
-          className="w-full rounded-2xl shadow-xl"
-          style={{ background: '#0f172a' }}
+          className="w-full rounded-2xl shadow-2xl ring-1 ring-slate-950/50"
+          style={{ background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%)' }}
         >
-          <line x1={W / 2} y1="0" x2={W / 2} y2={H} stroke="#475569" strokeWidth="2" strokeDasharray="8 8" />
-          <rect x={10} y={leftY} width={PADDLE_W} height={PADDLE_H} fill="#e2e8f0" rx="3" />
-          <rect x={W - 10 - PADDLE_W} y={rightY} width={PADDLE_W} height={PADDLE_H} fill="#e2e8f0" rx="3" />
-          <circle cx={ball.x} cy={ball.y} r={BALL} fill="#fef3c7" />
-          <text x={W / 4} y={40} textAnchor="middle" fontSize="28" fontWeight="bold" fill="#cbd5e1">{score[0]}</text>
-          <text x={(W * 3) / 4} y={40} textAnchor="middle" fontSize="28" fontWeight="bold" fill="#cbd5e1">{score[1]}</text>
+          <defs>
+            <radialGradient id="pongBall" cx="35%" cy="30%" r="70%">
+              <stop offset="0%" stopColor="#fffbeb" />
+              <stop offset="60%" stopColor="#fde68a" />
+              <stop offset="100%" stopColor="#d97706" />
+            </radialGradient>
+            <linearGradient id="pongPaddle" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stopColor="#94a3b8" />
+              <stop offset="50%" stopColor="#f8fafc" />
+              <stop offset="100%" stopColor="#94a3b8" />
+            </linearGradient>
+          </defs>
+          <line x1={W / 2} y1="0" x2={W / 2} y2={H} stroke="#475569" strokeWidth="2" strokeDasharray="8 8" opacity="0.6" />
+          <rect x={10} y={leftY} width={PADDLE_W} height={PADDLE_H} fill="url(#pongPaddle)" rx="4" />
+          <rect x={W - 10 - PADDLE_W} y={rightY} width={PADDLE_W} height={PADDLE_H} fill="url(#pongPaddle)" rx="4" />
+          <circle cx={ball.x} cy={ball.y} r={BALL} fill="url(#pongBall)" />
+          <text x={W / 4} y={40} textAnchor="middle" fontSize="32" fontWeight="bold" fill="#cbd5e1" opacity="0.7">{score[0]}</text>
+          <text x={(W * 3) / 4} y={40} textAnchor="middle" fontSize="32" fontWeight="bold" fill="#cbd5e1" opacity="0.7">{score[1]}</text>
         </svg>
         {winner !== null && (
           <WinOverlay

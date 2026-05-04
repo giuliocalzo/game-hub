@@ -76,7 +76,7 @@ const Fifteen: React.FC<{ isBotEnabled: boolean }> = () => {
 
       <div className="relative">
         <div
-          className="grid gap-1.5 p-2 rounded-2xl bg-gradient-to-br from-indigo-200 to-purple-200 shadow-inner"
+          className="grid gap-1.5 p-2 rounded-2xl bg-gradient-to-br from-indigo-300 via-purple-200 to-pink-200 dark:from-indigo-900/40 dark:via-purple-900/30 dark:to-pink-900/40 shadow-2xl ring-1 ring-indigo-300/40"
           style={{ gridTemplateColumns: `repeat(${SIZE}, minmax(0,1fr))` }}
         >
           {tiles.map((v, i) => (
@@ -88,7 +88,7 @@ const Fifteen: React.FC<{ isBotEnabled: boolean }> = () => {
               className={`rounded-xl flex items-center justify-center text-2xl md:text-3xl font-extrabold transition-all ${
                 v === 0
                   ? 'bg-transparent cursor-default'
-                  : 'bg-white dark:bg-gray-800 text-indigo-700 shadow hover:-translate-y-0.5 active:scale-95'
+                  : 'bg-gradient-to-br from-white to-indigo-50 dark:from-gray-700 dark:to-gray-800 text-indigo-700 dark:text-indigo-300 shadow-lg ring-1 ring-indigo-200/60 dark:ring-indigo-700/40 hover:-translate-y-0.5 hover:shadow-xl active:scale-95'
               }`}
             >
               {v !== 0 && v}

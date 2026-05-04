@@ -149,22 +149,36 @@ const DinoRun: React.FC<{ isBotEnabled: boolean }> = () => {
           }}
           onClick={jump}
         >
+          <defs>
+            <linearGradient id="dinoBody" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="#10b981" />
+              <stop offset="100%" stopColor="#065f46" />
+            </linearGradient>
+            <linearGradient id="cactusBody" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="#16a34a" />
+              <stop offset="100%" stopColor="#14532d" />
+            </linearGradient>
+          </defs>
           {/* ground line */}
           <line x1="0" y1={GROUND} x2={W} y2={GROUND} stroke="#78350f" strokeWidth="2" />
 
           {/* Dino */}
           <g transform={`translate(${DINO.x}, ${y})`}>
-            <rect x="0" y="0" width={DINO.w} height={DINO.h} rx="4" fill="#059669" />
-            <rect x={DINO.w - 8} y="4" width="8" height="8" rx="2" fill="#065f46" />
-            <circle cx={DINO.w - 4} cy="7" r="1.5" fill="white" />
+            <rect x="0" y="0" width={DINO.w} height={DINO.h} rx="6" fill="url(#dinoBody)" />
+            <rect x={DINO.w - 12} y="-3" width="14" height="14" rx="3" fill="url(#dinoBody)" />
+            <circle cx={DINO.w - 4} cy="4" r="2" fill="white" />
+            <circle cx={DINO.w - 4} cy="4" r="1" fill="#0f172a" />
+            <rect x="3" y={DINO.h - 5} width="7" height="6" fill="#064e3b" />
+            <rect x={DINO.w - 11} y={DINO.h - 5} width="7" height="6" fill="#064e3b" />
           </g>
 
           {/* Obstacles (cacti) */}
           {obstacles.map((ob, i) => (
             <g key={i} transform={`translate(${ob.x}, ${GROUND - ob.h})`}>
-              <rect x="4" y="0" width={ob.w - 8} height={ob.h} rx="2" fill="#15803d" />
-              <rect x="0" y={ob.h / 3} width="4" height={ob.h / 3} rx="1" fill="#15803d" />
-              <rect x={ob.w - 4} y={ob.h / 4} width="4" height={ob.h / 3} rx="1" fill="#15803d" />
+              <rect x="4" y="0" width={ob.w - 8} height={ob.h} rx="3" fill="url(#cactusBody)" />
+              <rect x="0" y={ob.h / 3} width="4" height={ob.h / 3} rx="2" fill="url(#cactusBody)" />
+              <rect x={ob.w - 4} y={ob.h / 4} width="4" height={ob.h / 3} rx="2" fill="url(#cactusBody)" />
+              <line x1={ob.w / 2} y1="3" x2={ob.w / 2} y2={ob.h - 3} stroke="#052e16" strokeWidth="0.6" opacity="0.5" />
             </g>
           ))}
         </svg>

@@ -188,7 +188,7 @@ const Tetris: React.FC<{ isBotEnabled: boolean }> = () => {
 
       <div className="relative">
         <div
-          className="p-2 rounded-2xl bg-gray-900 shadow-xl grid"
+          className="p-2 rounded-2xl bg-gradient-to-br from-gray-900 via-slate-900 to-gray-950 shadow-2xl ring-1 ring-slate-700/50 grid"
           style={{
             gridTemplateColumns: `repeat(${COLS}, min(8vw, 3.6vh))`,
             gridAutoRows: 'min(8vw, 3.6vh)',
@@ -200,7 +200,14 @@ const Tetris: React.FC<{ isBotEnabled: boolean }> = () => {
               <div
                 key={`${r}-${c}`}
                 className="rounded-[2px]"
-                style={{ background: cell ?? 'rgba(255,255,255,0.05)' }}
+                style={{
+                  background: cell
+                    ? `linear-gradient(135deg, ${cell}, ${cell}cc 70%, ${cell}88)`
+                    : 'rgba(255,255,255,0.05)',
+                  boxShadow: cell
+                    ? 'inset 0 1px 1px rgba(255,255,255,0.5), inset 0 -1px 1px rgba(0,0,0,0.4)'
+                    : 'none',
+                }}
               />
             )),
           )}

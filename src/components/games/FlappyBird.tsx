@@ -139,17 +139,36 @@ const FlappyBird: React.FC<{ isBotEnabled: boolean }> = () => {
             className="absolute inset-0 w-full h-full"
             preserveAspectRatio="xMidYMid meet"
           >
+            <defs>
+              <linearGradient id="pipeBody" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stopColor="#15803d" />
+                <stop offset="50%" stopColor="#22c55e" />
+                <stop offset="100%" stopColor="#15803d" />
+              </linearGradient>
+              <linearGradient id="pipeCap" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stopColor="#14532d" />
+                <stop offset="50%" stopColor="#16a34a" />
+                <stop offset="100%" stopColor="#14532d" />
+              </linearGradient>
+              <radialGradient id="birdBody" cx="35%" cy="30%" r="70%">
+                <stop offset="0%" stopColor="#fef9c3" />
+                <stop offset="60%" stopColor="#facc15" />
+                <stop offset="100%" stopColor="#ca8a04" />
+              </radialGradient>
+            </defs>
             {pipes.map((p, i) => (
               <g key={i}>
-                <rect x={p.x} y={0} width={PIPE_W} height={p.gapY} fill="#16a34a" />
-                <rect x={p.x} y={p.gapY + GAP} width={PIPE_W} height={HEIGHT - p.gapY - GAP} fill="#16a34a" />
-                <rect x={p.x - 3} y={p.gapY - 14} width={PIPE_W + 6} height={14} fill="#166534" />
-                <rect x={p.x - 3} y={p.gapY + GAP} width={PIPE_W + 6} height={14} fill="#166534" />
+                <rect x={p.x} y={0} width={PIPE_W} height={p.gapY} fill="url(#pipeBody)" />
+                <rect x={p.x} y={p.gapY + GAP} width={PIPE_W} height={HEIGHT - p.gapY - GAP} fill="url(#pipeBody)" />
+                <rect x={p.x - 4} y={p.gapY - 16} width={PIPE_W + 8} height={16} rx="2" fill="url(#pipeCap)" />
+                <rect x={p.x - 4} y={p.gapY + GAP} width={PIPE_W + 8} height={16} rx="2" fill="url(#pipeCap)" />
               </g>
             ))}
-            <circle cx={BIRD.x} cy={y} r={BIRD.r} fill="#facc15" stroke="#78350f" strokeWidth={2} />
-            <circle cx={BIRD.x + 6} cy={y - 4} r={3} fill="#0f172a" />
-            <polygon points={`${BIRD.x + BIRD.r - 2},${y} ${BIRD.x + BIRD.r + 8},${y - 3} ${BIRD.x + BIRD.r + 8},${y + 3}`} fill="#f97316" />
+            <circle cx={BIRD.x} cy={y} r={BIRD.r} fill="url(#birdBody)" stroke="#78350f" strokeWidth={2} />
+            <ellipse cx={BIRD.x - 4} cy={y + 2} rx={6} ry={4} fill="#fde047" opacity="0.7" />
+            <circle cx={BIRD.x + 6} cy={y - 4} r={4} fill="white" />
+            <circle cx={BIRD.x + 7} cy={y - 4} r={2} fill="#0f172a" />
+            <polygon points={`${BIRD.x + BIRD.r - 2},${y} ${BIRD.x + BIRD.r + 9},${y - 3} ${BIRD.x + BIRD.r + 9},${y + 3}`} fill="#f97316" />
           </svg>
         </div>
         {over && (

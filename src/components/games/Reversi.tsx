@@ -126,7 +126,7 @@ const Reversi: React.FC<{ isBotEnabled: boolean }> = ({ isBotEnabled }) => {
       <StatusBar tone={tone}>{status}</StatusBar>
 
       <div className="relative">
-        <div className="grid grid-cols-8 gap-0.5 p-2 rounded-2xl bg-emerald-800 shadow-xl">
+        <div className="grid grid-cols-8 gap-0.5 p-2 rounded-2xl bg-gradient-to-br from-emerald-700 to-emerald-900 shadow-2xl ring-1 ring-emerald-950/40">
           {grid.map((row, r) =>
             row.map((cell, c) => {
               const isLegal = moves.has(`${r},${c}`);
@@ -140,10 +140,16 @@ const Reversi: React.FC<{ isBotEnabled: boolean }> = ({ isBotEnabled }) => {
                 >
                   {cell && (
                     <div
-                      className={`rounded-full ${
-                        cell === 'B' ? 'bg-gray-900' : 'bg-white dark:bg-gray-800'
-                      } shadow`}
-                      style={{ width: '78%', height: '78%' }}
+                      className="rounded-full"
+                      style={{
+                        width: '78%',
+                        height: '78%',
+                        background: cell === 'B'
+                          ? 'radial-gradient(circle at 35% 30%, #4b5563, #030712 70%)'
+                          : 'radial-gradient(circle at 35% 30%, #ffffff, #cbd5e1 70%)',
+                        boxShadow:
+                          'inset 0 -3px 6px rgba(0,0,0,0.4), inset 0 2px 3px rgba(255,255,255,0.4), 0 2px 4px rgba(0,0,0,0.4)',
+                      }}
                     />
                   )}
                   {!cell && isLegal && !gameOver && (

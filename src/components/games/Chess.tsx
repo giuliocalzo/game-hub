@@ -379,7 +379,7 @@ const Chess: React.FC<ChessProps> = ({ isBotEnabled }) => {
     <div className="flex flex-col items-center gap-5">
       <StatusBar tone={statusTone}>{getStatusMessage()}</StatusBar>
 
-      <div className="grid grid-cols-8 gap-0 border-4 border-stone-800 rounded-lg overflow-hidden shadow-lg">
+      <div className="grid grid-cols-8 gap-0 border-4 border-stone-800 rounded-xl overflow-hidden shadow-2xl ring-1 ring-stone-900/40">
         {board.map((row, rowIndex) =>
           row.map((piece, colIndex) => (
             <div
@@ -388,13 +388,22 @@ const Chess: React.FC<ChessProps> = ({ isBotEnabled }) => {
               style={{ width: 'min(10vw, 9vh)', height: 'min(10vw, 9vh)' }}
               className={`
                 flex items-center justify-center cursor-pointer text-4xl transition-all
-                ${(rowIndex + colIndex) % 2 === 0 ? 'bg-stone-100' : 'bg-stone-500'}
-                ${selectedSquare?.row === rowIndex && selectedSquare?.col === colIndex ? 'ring-4 ring-blue-400 ring-inset' : ''}
+                ${(rowIndex + colIndex) % 2 === 0
+                  ? 'bg-gradient-to-br from-amber-50 to-stone-200'
+                  : 'bg-gradient-to-br from-stone-500 to-stone-700'}
+                ${selectedSquare?.row === rowIndex && selectedSquare?.col === colIndex ? 'ring-4 ring-amber-400 ring-inset' : ''}
                 hover:brightness-110
               `}
             >
               {piece && (
-                <span className={piece.color === 'white' ? 'text-white drop-shadow-sm' : 'text-gray-900 dark:text-gray-100'}>
+                <span
+                  className={piece.color === 'white' ? 'text-white' : 'text-gray-900'}
+                  style={{
+                    filter: piece.color === 'white'
+                      ? 'drop-shadow(0 2px 2px rgba(0,0,0,0.5))'
+                      : 'drop-shadow(0 1px 1px rgba(255,255,255,0.4))',
+                  }}
+                >
                   {getPieceSymbol(piece)}
                 </span>
               )}

@@ -135,9 +135,14 @@ const Gomoku: React.FC<{ isBotEnabled: boolean }> = ({ isBotEnabled }) => {
                 >
                   {cell && (
                     <div
-                      className={`absolute inset-[2px] rounded-full ${
-                        cell === 'B' ? 'bg-gray-900' : 'bg-white dark:bg-gray-800 border border-gray-400'
-                      } ${isWin(r, c) ? 'ring-2 ring-emerald-400' : ''}`}
+                      className={`absolute inset-[2px] rounded-full ${isWin(r, c) ? 'ring-2 ring-emerald-400' : ''}`}
+                      style={{
+                        background: cell === 'B'
+                          ? 'radial-gradient(circle at 35% 30%, #4b5563, #030712 70%)'
+                          : 'radial-gradient(circle at 35% 30%, #ffffff, #d1d5db 70%)',
+                        boxShadow:
+                          'inset 0 -2px 4px rgba(0,0,0,0.4), inset 0 1px 2px rgba(255,255,255,0.4), 0 1px 2px rgba(0,0,0,0.4)',
+                      }}
                     />
                   )}
                 </button>

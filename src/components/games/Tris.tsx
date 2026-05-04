@@ -160,7 +160,7 @@ const Tris: React.FC<TrisProps> = ({ isBotEnabled }) => {
 
       {/* Board */}
       <div className="relative">
-        <div className="grid grid-cols-3 gap-2 md:gap-3 p-3 md:p-4 rounded-2xl bg-gradient-to-br from-indigo-100 to-blue-100 shadow-inner">
+        <div className="grid grid-cols-3 gap-2 md:gap-3 p-3 md:p-4 rounded-2xl bg-gradient-to-br from-indigo-200 via-blue-100 to-sky-200 dark:from-indigo-900/40 dark:via-blue-900/30 dark:to-sky-900/40 shadow-2xl ring-1 ring-indigo-200/60 dark:ring-indigo-800/50">
           {board.squares.map((square, index) => {
             const isWinning = winningLine?.includes(index) ?? false;
             const isLast = lastMove === index;
@@ -172,17 +172,21 @@ const Tris: React.FC<TrisProps> = ({ isBotEnabled }) => {
                 disabled={!clickable}
                 aria-label={`Square ${index + 1}${square ? `, ${square}` : ', empty'}`}
                 style={{ width: 'min(22vw, 22vh)', height: 'min(22vw, 22vh)' }}
-                className={`relative rounded-xl bg-white dark:bg-gray-800 shadow-sm flex items-center justify-center text-7xl font-extrabold transition-all duration-200
-                  ${clickable ? 'cursor-pointer hover:shadow-md hover:-translate-y-0.5 active:scale-95' : 'cursor-default'}
-                  ${isWinning ? 'ring-4 ring-emerald-400 bg-emerald-50' : ''}
-                  ${isLast && !isWinning ? 'ring-2 ring-blue-200' : ''}
+                className={`relative rounded-2xl bg-gradient-to-br from-white to-stone-100 dark:from-gray-700 dark:to-gray-800 shadow-md flex items-center justify-center text-7xl font-extrabold transition-all duration-200
+                  ${clickable ? 'cursor-pointer hover:shadow-xl hover:-translate-y-0.5 active:scale-95' : 'cursor-default'}
+                  ${isWinning ? 'ring-4 ring-emerald-400 bg-gradient-to-br from-emerald-50 to-emerald-100' : ''}
+                  ${isLast && !isWinning ? 'ring-2 ring-blue-300' : ''}
                 `}
               >
                 {square && (
                   <span
                     className={`inline-block animate-pop ${
-                      square === 'X' ? 'text-blue-500' : 'text-rose-500'
+                      square === 'X' ? 'text-blue-600' : 'text-rose-600'
                     }`}
+                    style={{
+                      filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.15))',
+                      textShadow: '0 1px 2px rgba(0,0,0,0.1)',
+                    }}
                   >
                     {square}
                   </span>

@@ -145,12 +145,18 @@ const Memory: React.FC<MemoryProps> = () => {
                     show ? 'rotate-y-180' : ''
                   }`}
                 >
-                  <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 text-white flex items-center justify-center text-2xl font-bold shadow-md backface-hidden">
-                    ?
+                  <div
+                    className="absolute inset-0 rounded-xl text-white flex items-center justify-center text-2xl font-bold shadow-lg backface-hidden ring-2 ring-indigo-300/40"
+                    style={{
+                      background:
+                        'repeating-linear-gradient(45deg, #6366f1, #6366f1 6px, #7c3aed 6px, #7c3aed 12px)',
+                    }}
+                  >
+                    <span className="bg-white/20 backdrop-blur-sm w-8 h-8 rounded-full flex items-center justify-center">★</span>
                   </div>
                   <div
-                    className={`absolute inset-0 rounded-xl bg-white dark:bg-gray-800 shadow-md flex items-center justify-center text-4xl md:text-5xl rotate-y-180 backface-hidden border ${
-                      card.matched ? 'border-emerald-400 ring-2 ring-emerald-300' : 'border-gray-200 dark:border-gray-700'
+                    className={`absolute inset-0 rounded-xl bg-gradient-to-br from-white to-stone-100 dark:from-gray-700 dark:to-gray-800 shadow-md flex items-center justify-center text-4xl md:text-5xl rotate-y-180 backface-hidden border-2 ${
+                      card.matched ? 'border-emerald-400 ring-2 ring-emerald-300' : 'border-gray-200 dark:border-gray-600'
                     }`}
                   >
                     {card.emoji}

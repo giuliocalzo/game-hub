@@ -154,7 +154,7 @@ const ConnectFour: React.FC<ConnectFourProps> = ({ isBotEnabled }) => {
           ))}
         </div>
 
-        <div className="relative p-2 rounded-2xl bg-gradient-to-br from-blue-500 to-blue-700 shadow-xl">
+        <div className="relative p-3 rounded-2xl bg-gradient-to-br from-blue-500 to-blue-800 shadow-2xl ring-1 ring-blue-950/50">
           <div className="grid grid-cols-7 gap-1.5">
             {board.map((row, r) =>
               row.map((cell, c) => (
@@ -173,10 +173,13 @@ const ConnectFour: React.FC<ConnectFourProps> = ({ isBotEnabled }) => {
                     height: 'min(11vw, 11vh)',
                     background:
                       cell === 'R'
-                        ? 'radial-gradient(circle at 35% 35%, #f87171, #b91c1c)'
+                        ? 'radial-gradient(circle at 32% 28%, #fda4af, #ef4444 55%, #7f1d1d)'
                         : cell === 'Y'
-                          ? 'radial-gradient(circle at 35% 35%, #fde047, #ca8a04)'
-                          : 'radial-gradient(circle, #1e40af, #1e3a8a)',
+                          ? 'radial-gradient(circle at 32% 28%, #fef9c3, #facc15 55%, #854d0e)'
+                          : 'radial-gradient(circle at 50% 50%, #1e3a8a, #0f1d3f)',
+                    boxShadow: cell
+                      ? 'inset 0 -3px 6px rgba(0,0,0,0.45), inset 0 2px 3px rgba(255,255,255,0.3), 0 1px 3px rgba(0,0,0,0.3)'
+                      : 'inset 0 3px 8px rgba(0,0,0,0.5)',
                   }}
                 />
               )),

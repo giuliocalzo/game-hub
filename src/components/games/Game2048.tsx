@@ -67,18 +67,18 @@ const hasMoves = (grid: Grid): boolean => {
 };
 
 const TILE_STYLES: Record<number, string> = {
-  0: 'bg-gray-200 text-transparent',
-  2: 'bg-amber-50 text-gray-700 dark:text-gray-300',
-  4: 'bg-amber-100 text-gray-700 dark:text-gray-300',
-  8: 'bg-orange-300 text-white',
-  16: 'bg-orange-400 text-white',
-  32: 'bg-orange-500 text-white',
-  64: 'bg-red-500 text-white',
-  128: 'bg-yellow-300 text-white',
-  256: 'bg-yellow-400 text-white',
-  512: 'bg-yellow-500 text-white',
-  1024: 'bg-indigo-400 text-white',
-  2048: 'bg-indigo-600 text-white',
+  0: 'bg-stone-200/70 text-transparent',
+  2: 'bg-gradient-to-br from-amber-50 to-amber-100 text-stone-700 ring-1 ring-amber-200',
+  4: 'bg-gradient-to-br from-amber-100 to-orange-100 text-stone-700 ring-1 ring-orange-200',
+  8: 'bg-gradient-to-br from-orange-300 to-orange-400 text-white shadow-md',
+  16: 'bg-gradient-to-br from-orange-400 to-orange-500 text-white shadow-md',
+  32: 'bg-gradient-to-br from-orange-500 to-red-500 text-white shadow-lg',
+  64: 'bg-gradient-to-br from-red-500 to-rose-600 text-white shadow-lg',
+  128: 'bg-gradient-to-br from-yellow-300 to-amber-400 text-white shadow-lg ring-2 ring-yellow-200',
+  256: 'bg-gradient-to-br from-yellow-400 to-amber-500 text-white shadow-lg ring-2 ring-yellow-200',
+  512: 'bg-gradient-to-br from-yellow-500 to-amber-600 text-white shadow-xl ring-2 ring-yellow-300',
+  1024: 'bg-gradient-to-br from-indigo-400 to-purple-500 text-white shadow-xl ring-2 ring-indigo-300',
+  2048: 'bg-gradient-to-br from-indigo-500 via-purple-600 to-pink-500 text-white shadow-2xl ring-2 ring-fuchsia-300 animate-pulse',
 };
 
 const Game2048: React.FC<{ isBotEnabled: boolean }> = () => {
@@ -176,7 +176,7 @@ const Game2048: React.FC<{ isBotEnabled: boolean }> = () => {
       <StatusBar tone={tone}>{status}</StatusBar>
 
       <div className="relative">
-        <div className="p-3 rounded-2xl bg-stone-300">
+        <div className="p-3 rounded-2xl bg-gradient-to-br from-stone-300 to-stone-400 shadow-2xl ring-1 ring-stone-500/30">
           <div
             className="grid gap-2"
             style={{ gridTemplateColumns: `repeat(${SIZE}, minmax(0,1fr))` }}
