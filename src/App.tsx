@@ -1065,6 +1065,24 @@ function App() {
 
   const handleRestart = () => setRestartKey((k) => k + 1);
 
+  // Fullscreen, no-scroll layout when a game is active
+  if (view === 'game' && activeGame) {
+    return (
+      <div className="fixed inset-0 h-screen w-screen overflow-hidden bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 dark:from-gray-950 dark:via-slate-900 dark:to-gray-900 text-gray-900 dark:text-gray-100">
+        <GameShell
+          game={activeGame}
+          isBotEnabled={isBotEnabled}
+          onBack={handleBackHome}
+          onRestart={handleRestart}
+        >
+          <div key={`${activeGame.id}-${restartKey}`} className="w-full h-full flex items-center justify-center">
+            {renderGame(activeGame.id)}
+          </div>
+        </GameShell>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 dark:from-gray-950 dark:via-slate-900 dark:to-gray-900 text-gray-900 dark:text-gray-100 transition-colors">
       <div
@@ -1102,25 +1120,12 @@ function App() {
         </header>
 
         <main>
-          {view === 'home' || !activeGame ? (
-            <HomePage
-              games={AVAILABLE_GAMES}
-              isBotEnabled={isBotEnabled}
-              onToggleBot={setIsBotEnabled}
-              onSelectGame={handleSelectGame}
-            />
-          ) : (
-            <GameShell
-              game={activeGame}
-              isBotEnabled={isBotEnabled}
-              onBack={handleBackHome}
-              onRestart={handleRestart}
-            >
-              <div key={`${activeGame.id}-${restartKey}`}>
-                {renderGame(activeGame.id)}
-              </div>
-            </GameShell>
-          )}
+          <HomePage
+            games={AVAILABLE_GAMES}
+            isBotEnabled={isBotEnabled}
+            onToggleBot={setIsBotEnabled}
+            onSelectGame={handleSelectGame}
+          />
         </main>
 
         <footer className="max-w-6xl mx-auto px-4 py-8 text-center text-xs text-gray-500 dark:text-gray-400">
