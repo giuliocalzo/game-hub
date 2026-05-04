@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { useTranslation } from '../../i18n/I18nContext';
 import StatusBar, { StatusTone } from '../shared/StatusBar';
 import WinOverlay from '../shared/WinOverlay';
 
@@ -52,6 +53,7 @@ const generateMaze = (cols: number, rows: number): Cell[][] => {
 };
 
 const Maze: React.FC<{ isBotEnabled: boolean }> = () => {
+  const { t } = useTranslation();
   const [level, setLevel] = useState<Level>('small');
   const [grid, setGrid] = useState<Cell[][]>(() => generateMaze(SIZES.small, SIZES.small));
   const [pos, setPos] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
@@ -209,7 +211,7 @@ const Maze: React.FC<{ isBotEnabled: boolean }> = () => {
             title={`${moves} moves`}
             subtitle={`Escaped in ${elapsed}s`}
             onPlayAgain={() => reset(level)}
-            playAgainLabel="New maze"
+            playAgainLabel={t('common.new_maze')}
           />
         )}
       </div>

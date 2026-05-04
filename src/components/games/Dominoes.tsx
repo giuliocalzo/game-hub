@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
+import { useTranslation } from '../../i18n/I18nContext';
 import StatusBar, { StatusTone } from '../shared/StatusBar';
 import WinOverlay from '../shared/WinOverlay';
 
@@ -22,6 +23,7 @@ type Hand = Tile[];
 const pips = (hand: Tile[]) => hand.reduce((s, t) => s + t.a + t.b, 0);
 
 const Dominoes: React.FC<{ isBotEnabled: boolean }> = ({ isBotEnabled }) => {
+  const { t } = useTranslation();
   const [boneyard, setBoneyard] = useState<Tile[]>([]);
   const [you, setYou] = useState<Hand>([]);
   const [bot, setBot] = useState<Hand>([]);
@@ -236,7 +238,7 @@ const Dominoes: React.FC<{ isBotEnabled: boolean }> = ({ isBotEnabled }) => {
       <div className="relative w-full overflow-x-auto">
         <div className="flex items-center justify-center gap-0 min-h-[72px] py-2 px-2">
           {chain.length === 0 ? (
-            <div className="text-sm text-gray-500 dark:text-gray-400">No tiles played yet.</div>
+            <div className="text-sm text-gray-500 dark:text-gray-400">{t('common.no_tiles_played')}</div>
           ) : (
             chain.map((t, i) => (
               <div

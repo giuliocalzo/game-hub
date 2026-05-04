@@ -1,4 +1,5 @@
 import React, { useCallback, useMemo, useState } from 'react';
+import { useTranslation } from '../../i18n/I18nContext';
 import StatusBar, { StatusTone } from '../shared/StatusBar';
 import WinOverlay from '../shared/WinOverlay';
 
@@ -53,6 +54,7 @@ const lineHints = (line: number[]): number[] => {
 };
 
 const Nonogram: React.FC<{ isBotEnabled: boolean }> = () => {
+  const { t } = useTranslation();
   const [idx, setIdx] = useState(0);
   const puzzle = PUZZLES[idx];
   const [grid, setGrid] = useState<State[][]>(() =>
@@ -150,10 +152,10 @@ const Nonogram: React.FC<{ isBotEnabled: boolean }> = () => {
         </div>
         {solved && (
           <WinOverlay
-            title="Solved!"
+            title={t('common.solved')}
             subtitle={`${puzzle.name} revealed.`}
             onPlayAgain={() => reset(idx)}
-            playAgainLabel="Reset"
+            playAgainLabel={t('common.reset')}
           />
         )}
       </div>

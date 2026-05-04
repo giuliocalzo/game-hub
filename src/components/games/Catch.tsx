@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { useTranslation } from '../../i18n/I18nContext';
 import StatusBar, { StatusTone } from '../shared/StatusBar';
 import WinOverlay from '../shared/WinOverlay';
 
@@ -21,6 +22,7 @@ const GOOD = ['🍎', '🍊', '🍓', '🍋', '⭐', '🍌'];
 const BAD = ['💣', '🪨'];
 
 const Catch: React.FC<{ isBotEnabled: boolean }> = () => {
+  const { t } = useTranslation();
   const [basketX, setBasketX] = useState(W / 2 - BASKET_W / 2);
   const [items, setItems] = useState<Item[]>([]);
   const [score, setScore] = useState(0);
@@ -211,10 +213,10 @@ const Catch: React.FC<{ isBotEnabled: boolean }> = () => {
         </svg>
         {over && (
           <WinOverlay
-            title="Game over"
+            title={t('common.game_over')}
             subtitle={`Score: ${score}`}
             onPlayAgain={reset}
-            playAgainLabel="Play again"
+            playAgainLabel={t('common.play_again')}
           />
         )}
       </div>

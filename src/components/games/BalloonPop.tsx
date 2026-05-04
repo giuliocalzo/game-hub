@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { useTranslation } from '../../i18n/I18nContext';
 import StatusBar, { StatusTone } from '../shared/StatusBar';
 import WinOverlay from '../shared/WinOverlay';
 
@@ -60,6 +61,7 @@ const ROUND_TIME = 60;
 const TARGET = 10;
 
 const BalloonPop: React.FC<{ isBotEnabled: boolean }> = () => {
+  const { t } = useTranslation();
   const [level, setLevel] = useState<Level>('easy');
   const [q, setQ] = useState(() => genQuestion('easy'));
   const [balloons, setBalloons] = useState<Balloon[]>([]);
@@ -270,7 +272,7 @@ const BalloonPop: React.FC<{ isBotEnabled: boolean }> = () => {
             title={`${score} points`}
             subtitle={hits >= TARGET ? 'Goal reached — great work!' : 'Time up — try again?'}
             onPlayAgain={() => reset(level)}
-            playAgainLabel="New round"
+            playAgainLabel={t('common.new_round')}
           />
         )}
       </div>

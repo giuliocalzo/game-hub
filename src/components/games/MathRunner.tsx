@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { useTranslation } from '../../i18n/I18nContext';
 import StatusBar, { StatusTone } from '../shared/StatusBar';
 import WinOverlay from '../shared/WinOverlay';
 
@@ -61,6 +62,7 @@ const makeQuestion = (level: Level): Question => {
 const TARGET_CORRECT = 10;
 
 const MathRunner: React.FC<{ isBotEnabled: boolean }> = () => {
+  const { t } = useTranslation();
   const [level, setLevel] = useState<Level>('easy');
   const [lane, setLane] = useState(1);
   const [gates, setGates] = useState<Gate[]>([]);
@@ -302,7 +304,7 @@ const MathRunner: React.FC<{ isBotEnabled: boolean }> = () => {
             title={correct >= TARGET_CORRECT ? 'Goal reached!' : 'Out of tries'}
             subtitle={`${correct} correct · ${wrong} wrong`}
             onPlayAgain={() => reset(level)}
-            playAgainLabel="Run again"
+            playAgainLabel={t('common.new_run')}
           />
         )}
       </div>

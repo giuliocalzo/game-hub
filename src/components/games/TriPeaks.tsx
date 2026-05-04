@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
+import { useTranslation } from '../../i18n/I18nContext';
 import { RefreshCw } from 'lucide-react';
 import StatusBar, { StatusTone } from '../shared/StatusBar';
 import WinOverlay from '../shared/WinOverlay';
@@ -109,6 +110,7 @@ const adjacent = (a: number, b: number): boolean => {
 };
 
 const TriPeaks: React.FC<{ isBotEnabled: boolean }> = () => {
+  const { t } = useTranslation();
   const init = () => {
     const deck = makeDeck();
     return buildLayout(deck);
@@ -336,7 +338,7 @@ const TriPeaks: React.FC<{ isBotEnabled: boolean }> = () => {
           title={done === 'won' ? 'Cleared!' : 'Stuck'}
           subtitle={`Score ${score}`}
           onPlayAgain={reset}
-          playAgainLabel="New deal"
+          playAgainLabel={t('common.new_deal')}
         />
       )}
     </div>

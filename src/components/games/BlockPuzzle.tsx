@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import { useTranslation } from '../../i18n/I18nContext';
 import { RefreshCw } from 'lucide-react';
 import StatusBar, { StatusTone } from '../shared/StatusBar';
 import WinOverlay from '../shared/WinOverlay';
@@ -94,6 +95,7 @@ const canPlaceAny = (grid: (string | null)[], pieces: Array<Piece | null>): bool
 };
 
 const BlockPuzzle: React.FC<{ isBotEnabled: boolean }> = () => {
+  const { t } = useTranslation();
   const [grid, setGrid] = useState<(string | null)[]>(emptyGrid);
   const [pieces, setPieces] = useState<Array<Piece | null>>(() => [randomPiece(), randomPiece(), randomPiece()]);
   const [selected, setSelected] = useState<number | null>(null);
@@ -231,9 +233,9 @@ const BlockPuzzle: React.FC<{ isBotEnabled: boolean }> = () => {
         {done && (
           <WinOverlay
             title={`${score} points`}
-            subtitle="No more pieces fit."
+            subtitle={t('common.win_no_pieces_fit')}
             onPlayAgain={reset}
-            playAgainLabel="New game"
+            playAgainLabel={t('common.new_game')}
           />
         )}
       </div>

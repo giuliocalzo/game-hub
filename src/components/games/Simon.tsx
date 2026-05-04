@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { useTranslation } from '../../i18n/I18nContext';
 import StatusBar, { StatusTone } from '../shared/StatusBar';
 import WinOverlay from '../shared/WinOverlay';
 
@@ -13,6 +14,7 @@ const COLOR_CLASS: Record<Color, { base: string; lit: string }> = {
 };
 
 const Simon: React.FC<{ isBotEnabled: boolean }> = () => {
+  const { t } = useTranslation();
   const [sequence, setSequence] = useState<Color[]>([]);
   const [userIdx, setUserIdx] = useState(0);
   const [playingBack, setPlayingBack] = useState(false);
@@ -117,7 +119,7 @@ const Simon: React.FC<{ isBotEnabled: boolean }> = () => {
             title="Oops — wrong color"
             subtitle={`You matched ${sequence.length - 1} steps.`}
             onPlayAgain={start}
-            playAgainLabel="Try again"
+            playAgainLabel={t('common.try_again')}
           />
         )}
       </div>

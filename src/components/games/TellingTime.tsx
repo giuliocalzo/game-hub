@@ -1,4 +1,5 @@
 import React, { useCallback, useState } from 'react';
+import { useTranslation } from '../../i18n/I18nContext';
 import StatusBar, { StatusTone } from '../shared/StatusBar';
 import WinOverlay from '../shared/WinOverlay';
 
@@ -31,6 +32,7 @@ const buildOptions = (answer: { h: number; m: number }, level: Level): string[] 
 };
 
 const Clock: React.FC<{ h: number; m: number; size?: number }> = ({ h, m, size = 240 }) => {
+  const { t } = useTranslation();
   const cx = size / 2;
   const cy = size / 2;
   const r = size / 2 - 10;
@@ -215,7 +217,7 @@ const TellingTime: React.FC<{ isBotEnabled: boolean }> = () => {
             title={`${score}/${TOTAL} correct`}
             subtitle={score === TOTAL ? 'Clock master!' : 'Tick-tock — try again?'}
             onPlayAgain={() => reset(level)}
-            playAgainLabel="New round"
+            playAgainLabel={t('common.new_round')}
           />
         )}
       </div>

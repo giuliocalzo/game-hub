@@ -1,4 +1,5 @@
 import React, { useCallback, useState } from 'react';
+import { useTranslation } from '../../i18n/I18nContext';
 import StatusBar, { StatusTone } from '../shared/StatusBar';
 import WinOverlay from '../shared/WinOverlay';
 
@@ -44,6 +45,7 @@ const pickQuestion = (pool: typeof FLAGS, prev: string | null) => {
 };
 
 const FlagsQuiz: React.FC<{ isBotEnabled: boolean }> = () => {
+  const { t } = useTranslation();
   const [round, setRound] = useState(0);
   const [score, setScore] = useState(0);
   const [q, setQ] = useState(() => pickQuestion(FLAGS, null));
@@ -115,7 +117,7 @@ const FlagsQuiz: React.FC<{ isBotEnabled: boolean }> = () => {
           title={`${score}/${ROUNDS}`}
           subtitle={score === ROUNDS ? 'Geography whiz!' : 'Want another round?'}
           onPlayAgain={reset}
-          playAgainLabel="Play again"
+          playAgainLabel={t('common.play_again')}
         />
       )}
 

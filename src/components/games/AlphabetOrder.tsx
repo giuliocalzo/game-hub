@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { useTranslation } from '../../i18n/I18nContext';
 import StatusBar, { StatusTone } from '../shared/StatusBar';
 import WinOverlay from '../shared/WinOverlay';
 
@@ -28,6 +29,7 @@ const pickLetters = (level: Level): string[] => {
 };
 
 const AlphabetOrder: React.FC<{ isBotEnabled: boolean }> = () => {
+  const { t } = useTranslation();
   const [level, setLevel] = useState<Level>('five');
   const [letters, setLetters] = useState<string[]>(() => pickLetters('five'));
   const [nextIdx, setNextIdx] = useState(0);
@@ -143,7 +145,7 @@ const AlphabetOrder: React.FC<{ isBotEnabled: boolean }> = () => {
             title={`${elapsed.toFixed(1)}s`}
             subtitle={missed.size === 0 ? 'Perfect order!' : `${missed.size} mistake${missed.size === 1 ? '' : 's'}`}
             onPlayAgain={() => reset(level)}
-            playAgainLabel="New round"
+            playAgainLabel={t('common.new_round')}
           />
         )}
       </div>

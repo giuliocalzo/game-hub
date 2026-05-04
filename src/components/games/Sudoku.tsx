@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import { useTranslation } from '../../i18n/I18nContext';
 import StatusBar, { StatusTone } from '../shared/StatusBar';
 import WinOverlay from '../shared/WinOverlay';
 
@@ -59,6 +60,7 @@ const generate = (diff: Difficulty): { puzzle: Board; solution: Board } => {
 };
 
 const Sudoku: React.FC<{ isBotEnabled: boolean }> = () => {
+  const { t } = useTranslation();
   const [diff, setDiff] = useState<Difficulty>('easy');
   const [data, setData] = useState(() => generate('easy'));
   const [board, setBoard] = useState<Board>(() => deepCopy(data.puzzle));
@@ -159,9 +161,9 @@ const Sudoku: React.FC<{ isBotEnabled: boolean }> = () => {
         {isSolved && (
           <WinOverlay
             title="Sudoku solved!"
-            subtitle="Great logic work."
+            subtitle={t('common.win_great_logic')}
             onPlayAgain={() => reset(diff)}
-            playAgainLabel="New puzzle"
+            playAgainLabel={t('common.new_puzzle')}
           />
         )}
       </div>

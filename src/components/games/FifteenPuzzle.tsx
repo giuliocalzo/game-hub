@@ -1,4 +1,5 @@
 import React, { useCallback, useMemo, useState } from 'react';
+import { useTranslation } from '../../i18n/I18nContext';
 import StatusBar, { StatusTone } from '../shared/StatusBar';
 import WinOverlay from '../shared/WinOverlay';
 
@@ -43,6 +44,7 @@ const swap = (arr: number[], a: number, b: number): number[] => {
 };
 
 const Fifteen: React.FC<{ isBotEnabled: boolean }> = () => {
+  const { t } = useTranslation();
   const [tiles, setTiles] = useState<number[]>(scramble);
   const [moves, setMoves] = useState(0);
 
@@ -97,7 +99,7 @@ const Fifteen: React.FC<{ isBotEnabled: boolean }> = () => {
             title="Puzzle solved!"
             subtitle={`In ${moves} moves.`}
             onPlayAgain={reset}
-            playAgainLabel="Shuffle again"
+            playAgainLabel={t('common.shuffle_again')}
           />
         )}
       </div>

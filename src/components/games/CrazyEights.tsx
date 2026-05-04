@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
+import { useTranslation } from '../../i18n/I18nContext';
 import StatusBar, { StatusTone } from '../shared/StatusBar';
 import WinOverlay from '../shared/WinOverlay';
 
@@ -16,6 +17,7 @@ const build = (): Card[] => {
 };
 
 const CrazyEights: React.FC<{ isBotEnabled: boolean }> = () => {
+  const { t } = useTranslation();
   const [deck, setDeck] = useState<Card[]>([]);
   const [you, setYou] = useState<Card[]>([]);
   const [bot, setBot] = useState<Card[]>([]);
@@ -198,7 +200,7 @@ const CrazyEights: React.FC<{ isBotEnabled: boolean }> = () => {
       {picking && (
         <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
           <div className="bg-white dark:bg-gray-800 rounded-2xl p-5 shadow-xl text-center">
-            <div className="mb-3 font-bold text-gray-800 dark:text-gray-200">Choose a suit</div>
+            <div className="mb-3 font-bold text-gray-800 dark:text-gray-200">{t('common.choose_suit')}</div>
             <div className="grid grid-cols-4 gap-2">
               {(['♠', '♥', '♦', '♣'] as Suit[]).map((s) => (
                 <button
@@ -248,7 +250,7 @@ const CrazyEights: React.FC<{ isBotEnabled: boolean }> = () => {
       {winner && (
         <WinOverlay
           title={winner === 'you' ? 'You win!' : 'Bot wins!'}
-          subtitle="Cleaned out the hand."
+          subtitle={t('common.win_clean_hand')}
           onPlayAgain={reset}
         />
       )}

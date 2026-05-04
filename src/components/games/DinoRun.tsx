@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { useTranslation } from '../../i18n/I18nContext';
 import StatusBar, { StatusTone } from '../shared/StatusBar';
 import WinOverlay from '../shared/WinOverlay';
 
@@ -17,6 +18,7 @@ interface Obstacle {
 }
 
 const DinoRun: React.FC<{ isBotEnabled: boolean }> = () => {
+  const { t } = useTranslation();
   const [y, setY] = useState(GROUND - DINO.h);
   const [vy, setVy] = useState(0);
   const [obstacles, setObstacles] = useState<Obstacle[]>([]);
@@ -168,10 +170,10 @@ const DinoRun: React.FC<{ isBotEnabled: boolean }> = () => {
         </svg>
         {over && (
           <WinOverlay
-            title="Crashed!"
+            title={t('common.crashed')}
             subtitle={`Score: ${score} · Best: ${best}`}
             onPlayAgain={reset}
-            playAgainLabel="Try again"
+            playAgainLabel={t('common.try_again')}
           />
         )}
       </div>

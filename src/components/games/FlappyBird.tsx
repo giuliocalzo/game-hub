@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { useTranslation } from '../../i18n/I18nContext';
 import StatusBar, { StatusTone } from '../shared/StatusBar';
 import WinOverlay from '../shared/WinOverlay';
 
@@ -18,6 +19,7 @@ interface Pipe {
 }
 
 const FlappyBird: React.FC<{ isBotEnabled: boolean }> = () => {
+  const { t } = useTranslation();
   const [y, setY] = useState(HEIGHT / 2);
   const [v, setV] = useState(0);
   const [pipes, setPipes] = useState<Pipe[]>([]);
@@ -152,10 +154,10 @@ const FlappyBird: React.FC<{ isBotEnabled: boolean }> = () => {
         </div>
         {over && (
           <WinOverlay
-            title="Game over"
+            title={t('common.game_over')}
             subtitle={`Score: ${score} · Best: ${best}`}
             onPlayAgain={reset}
-            playAgainLabel="Try again"
+            playAgainLabel={t('common.try_again')}
           />
         )}
       </div>

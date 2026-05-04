@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
+import { useTranslation } from '../../i18n/I18nContext';
 import { Dice1, Dice2, Dice3, Dice4, Dice5, Dice6 } from 'lucide-react';
 import StatusBar, { StatusTone } from '../shared/StatusBar';
 import WinOverlay from '../shared/WinOverlay';
@@ -27,6 +28,7 @@ const mkPlayer = (color: string, start: number, name: string): PlayerState => ({
 const DIE_ICONS = [Dice1, Dice2, Dice3, Dice4, Dice5, Dice6];
 
 const Ludo: React.FC<{ isBotEnabled: boolean }> = ({ isBotEnabled }) => {
+  const { t } = useTranslation();
   const [players, setPlayers] = useState<PlayerState[]>(() => [
     mkPlayer('bg-rose-500', 0, 'Red'),
     mkPlayer('bg-amber-500', 26, isBotEnabled ? 'Bot' : 'Yellow'),
@@ -251,7 +253,7 @@ const Ludo: React.FC<{ isBotEnabled: boolean }> = ({ isBotEnabled }) => {
         {winner !== null && (
           <WinOverlay
             title={`${players[winner].name} wins!`}
-            subtitle="All four tokens home."
+            subtitle={t('common.win_all_tokens_home')}
             onPlayAgain={reset}
           />
         )}

@@ -1,4 +1,5 @@
 import React, { useState, useCallback, useEffect, useRef } from 'react';
+import { useTranslation } from '../../i18n/I18nContext';
 import { Shuffle } from 'lucide-react';
 import { UnoCard, UnoPlayer, UnoGameState } from '../../types/games';
 import StatusBar, { StatusTone } from '../shared/StatusBar';
@@ -8,6 +9,7 @@ interface UnoProps {
 }
 
 const Uno: React.FC<UnoProps> = ({ isBotEnabled }) => {
+  const { t } = useTranslation();
   const [gameState, setGameState] = useState<UnoGameState>(initializeGame());
   const [selectedCard, setSelectedCard] = useState<UnoCard | null>(null);
   const [gameStatus, setGameStatus] = useState<string>('');
@@ -349,7 +351,7 @@ const Uno: React.FC<UnoProps> = ({ isBotEnabled }) => {
       {gameState.gamePhase === 'color-selection' && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
           <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
-            <h4 className="text-lg font-bold mb-4 text-center">Choose a Color</h4>
+            <h4 className="text-lg font-bold mb-4 text-center">{t('common.choose_color')}</h4>
             <div className="grid grid-cols-2 gap-6">
               {(['red', 'blue', 'green', 'yellow'] as const).map(color => (
                 <button

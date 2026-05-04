@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { useTranslation } from '../../i18n/I18nContext';
 import StatusBar, { StatusTone } from '../shared/StatusBar';
 import WinOverlay from '../shared/WinOverlay';
 
@@ -24,6 +25,7 @@ const bubbleColor = (val: number): string => COLORS[val % COLORS.length];
 const ROUND_TIME = 45;
 
 const NumberRush: React.FC<{ isBotEnabled: boolean }> = () => {
+  const { t } = useTranslation();
   const [player, setPlayer] = useState({ x: W / 2, y: H / 2, value: 3, r: 22 });
   const [bubbles, setBubbles] = useState<Bubble[]>([]);
   const [score, setScore] = useState(0);
@@ -253,7 +255,7 @@ const NumberRush: React.FC<{ isBotEnabled: boolean }> = () => {
             title={`${score} points`}
             subtitle={`You grew to size ${player.value}`}
             onPlayAgain={reset}
-            playAgainLabel="Play again"
+            playAgainLabel={t('common.play_again')}
           />
         )}
       </div>

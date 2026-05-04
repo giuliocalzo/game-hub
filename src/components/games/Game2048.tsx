@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
+import { useTranslation } from '../../i18n/I18nContext';
 import StatusBar, { StatusTone } from '../shared/StatusBar';
 import WinOverlay from '../shared/WinOverlay';
 
@@ -81,6 +82,7 @@ const TILE_STYLES: Record<number, string> = {
 };
 
 const Game2048: React.FC<{ isBotEnabled: boolean }> = () => {
+  const { t } = useTranslation();
   const [grid, setGrid] = useState<Grid>(() =>
     addRandomTile(addRandomTile(emptyGrid())),
   );
@@ -195,10 +197,10 @@ const Game2048: React.FC<{ isBotEnabled: boolean }> = () => {
         </div>
         {over && (
           <WinOverlay
-            title="Game over"
+            title={t('common.game_over')}
             subtitle={`Final score: ${score}`}
             onPlayAgain={reset}
-            playAgainLabel="New game"
+            playAgainLabel={t('common.new_game')}
           />
         )}
       </div>

@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
+import { useTranslation } from '../../i18n/I18nContext';
 import { RefreshCw, Undo2 } from 'lucide-react';
 import StatusBar, { StatusTone } from '../shared/StatusBar';
 import WinOverlay from '../shared/WinOverlay';
@@ -45,6 +46,7 @@ const isSolved = (tubes: string[][]): boolean =>
   );
 
 const BallSort: React.FC<{ isBotEnabled: boolean }> = () => {
+  const { t } = useTranslation();
   const [level, setLevel] = useState<Level>('easy');
   const [tubes, setTubes] = useState<string[][]>(() => generateBoard('easy'));
   const [selected, setSelected] = useState<number | null>(null);
@@ -182,9 +184,9 @@ const BallSort: React.FC<{ isBotEnabled: boolean }> = () => {
         {done && (
           <WinOverlay
             title={`${moves} moves`}
-            subtitle="All sorted!"
+            subtitle={t('common.win_all_pairs')}
             onPlayAgain={() => reset(level)}
-            playAgainLabel="New puzzle"
+            playAgainLabel={t('common.new_puzzle')}
           />
         )}
       </div>

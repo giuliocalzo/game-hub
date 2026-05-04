@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { useTranslation } from '../../i18n/I18nContext';
 import StatusBar, { StatusTone } from '../shared/StatusBar';
 import WinOverlay from '../shared/WinOverlay';
 
@@ -53,6 +54,7 @@ const buildOptions = (count: number, level: Level): number[] => {
 const TOTAL = 10;
 
 const Subitize: React.FC<{ isBotEnabled: boolean }> = () => {
+  const { t } = useTranslation();
   const [level, setLevel] = useState<Level>('easy');
   const [count, setCount] = useState(() => randInt(1, 5));
   const [dots, setDots] = useState<Dot[]>(() => generateDots(count));
@@ -195,7 +197,7 @@ const Subitize: React.FC<{ isBotEnabled: boolean }> = () => {
             title={`${score}/${TOTAL} correct`}
             subtitle={score === TOTAL ? 'Sharp eyes!' : 'Quick counting takes practice'}
             onPlayAgain={() => reset(level)}
-            playAgainLabel="New round"
+            playAgainLabel={t('common.new_round')}
           />
         )}
       </div>

@@ -1,4 +1,5 @@
 import React, { useCallback, useMemo, useState } from 'react';
+import { useTranslation } from '../../i18n/I18nContext';
 import StatusBar, { StatusTone } from '../shared/StatusBar';
 import WinOverlay from '../shared/WinOverlay';
 
@@ -48,6 +49,7 @@ const initial = (): State => {
 };
 
 const Solitaire: React.FC<{ isBotEnabled: boolean }> = () => {
+  const { t } = useTranslation();
   const [s, setS] = useState<State>(initial);
   const [sel, setSel] = useState<Sel>(null);
   const [moves, setMoves] = useState(0);
@@ -292,10 +294,10 @@ const Solitaire: React.FC<{ isBotEnabled: boolean }> = () => {
 
       {won && (
         <WinOverlay
-          title="Solved!"
+          title={t('common.solved')}
           subtitle={`In ${moves} moves.`}
           onPlayAgain={reset}
-          playAgainLabel="New deal"
+          playAgainLabel={t('common.new_deal')}
         />
       )}
 

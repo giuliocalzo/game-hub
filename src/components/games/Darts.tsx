@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { useTranslation } from '../../i18n/I18nContext';
 import StatusBar, { StatusTone } from '../shared/StatusBar';
 import WinOverlay from '../shared/WinOverlay';
 
@@ -35,6 +36,7 @@ const scoreAt = (x: number, y: number): number => {
 const TOTAL = 10;
 
 const Darts: React.FC<{ isBotEnabled: boolean }> = () => {
+  const { t } = useTranslation();
   const [angle, setAngle] = useState(0);
   const [darts, setDarts] = useState<Dart[]>([]);
   const [thrown, setThrown] = useState(0);
@@ -138,7 +140,7 @@ const Darts: React.FC<{ isBotEnabled: boolean }> = () => {
             title={`${score} points`}
             subtitle={score >= 350 ? 'Bullseye champion!' : score >= 200 ? 'Sharp shooter' : 'Keep practicing'}
             onPlayAgain={reset}
-            playAgainLabel="Play again"
+            playAgainLabel={t('common.play_again')}
           />
         )}
       </div>

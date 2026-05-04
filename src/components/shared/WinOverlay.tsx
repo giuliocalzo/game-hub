@@ -1,5 +1,6 @@
 import React from 'react';
 import { Trophy, Sparkles, Handshake } from 'lucide-react';
+import { useTranslation } from '../../i18n/I18nContext';
 
 interface WinOverlayProps {
   title: string;
@@ -14,8 +15,11 @@ const WinOverlay: React.FC<WinOverlayProps> = ({
   subtitle,
   tie = false,
   onPlayAgain,
-  playAgainLabel = 'Play again',
-}) => (
+  playAgainLabel,
+}) => {
+  const { t } = useTranslation();
+  const label = playAgainLabel ?? t('common.play_again');
+  return (
   <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-20">
     <div className="pointer-events-auto bg-white/95 backdrop-blur rounded-2xl shadow-xl border border-gray-200 px-6 py-5 text-center animate-fadeIn max-w-xs dark:bg-gray-800/95 dark:border-gray-700">
       <div className="flex items-center justify-center gap-2 text-amber-500 mb-1 dark:text-amber-300">
@@ -36,7 +40,7 @@ const WinOverlay: React.FC<WinOverlayProps> = ({
           onClick={onPlayAgain}
           className="mt-3 inline-flex items-center px-4 py-2 rounded-lg bg-gradient-to-r from-blue-500 to-indigo-500 text-white text-sm font-semibold shadow hover:brightness-110 active:scale-95 transition"
         >
-          {playAgainLabel}
+          {label}
         </button>
       )}
       <style>{`
@@ -48,6 +52,7 @@ const WinOverlay: React.FC<WinOverlayProps> = ({
       `}</style>
     </div>
   </div>
-);
+  );
+};
 
 export default WinOverlay;

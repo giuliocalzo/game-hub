@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
+import { useTranslation } from '../../i18n/I18nContext';
 import { RefreshCw, Undo2 } from 'lucide-react';
 import StatusBar, { StatusTone } from '../shared/StatusBar';
 import WinOverlay from '../shared/WinOverlay';
@@ -64,6 +65,7 @@ const validMovesFor = (g: Cell[][], x: number, y: number): Array<[number, number
 };
 
 const PegSolitaire: React.FC<{ isBotEnabled: boolean }> = () => {
+  const { t } = useTranslation();
   const [board, setBoard] = useState<Cell[][]>(initialBoard);
   const [selected, setSelected] = useState<[number, number] | null>(null);
   const [history, setHistory] = useState<Cell[][][]>([]);
@@ -202,7 +204,7 @@ const PegSolitaire: React.FC<{ isBotEnabled: boolean }> = () => {
             title={isWin ? 'Perfect solve' : `${pegs} pegs left`}
             subtitle={isWin ? 'One peg in the center!' : 'No more moves available'}
             onPlayAgain={reset}
-            playAgainLabel="Play again"
+            playAgainLabel={t('common.play_again')}
           />
         )}
       </div>

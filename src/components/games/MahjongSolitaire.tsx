@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { useTranslation } from '../../i18n/I18nContext';
 import { RefreshCw, Undo2 } from 'lucide-react';
 import StatusBar, { StatusTone } from '../shared/StatusBar';
 import WinOverlay from '../shared/WinOverlay';
@@ -107,6 +108,7 @@ const isFree = (t: Tile, tiles: Tile[]): boolean => {
 };
 
 const MahjongSolitaire: React.FC<{ isBotEnabled: boolean }> = () => {
+  const { t } = useTranslation();
   const [tiles, setTiles] = useState<Tile[]>(() => buildBoard());
   const [selected, setSelected] = useState<number | null>(null);
   const [history, setHistory] = useState<number[][]>([]); // pairs of removed ids
@@ -280,9 +282,9 @@ const MahjongSolitaire: React.FC<{ isBotEnabled: boolean }> = () => {
         {done && (
           <WinOverlay
             title={`Cleared in ${elapsed}s`}
-            subtitle="Every tile matched!"
+            subtitle={t('common.win_all_tiles')}
             onPlayAgain={reset}
-            playAgainLabel="New board"
+            playAgainLabel={t('common.new_board')}
           />
         )}
       </div>

@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { useTranslation } from '../../i18n/I18nContext';
 import StatusBar, { StatusTone } from '../shared/StatusBar';
 import WinOverlay from '../shared/WinOverlay';
 
@@ -72,6 +73,7 @@ const clearLines = (grid: Grid): { grid: Grid; cleared: number } => {
 };
 
 const Tetris: React.FC<{ isBotEnabled: boolean }> = () => {
+  const { t } = useTranslation();
   const [grid, setGrid] = useState<Grid>(emptyGrid);
   const [piece, setPiece] = useState<Piece>(() => spawn());
   const [running, setRunning] = useState(false);
@@ -205,10 +207,10 @@ const Tetris: React.FC<{ isBotEnabled: boolean }> = () => {
         </div>
         {over && (
           <WinOverlay
-            title="Game over"
+            title={t('common.game_over')}
             subtitle={`Score ${score} · Lines ${lines}`}
             onPlayAgain={reset}
-            playAgainLabel="New game"
+            playAgainLabel={t('common.new_game')}
           />
         )}
       </div>

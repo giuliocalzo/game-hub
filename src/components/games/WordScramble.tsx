@@ -34,7 +34,7 @@ const scrambleWord = (word: string): string[] => {
 };
 
 const WordScramble: React.FC<{ isBotEnabled: boolean }> = () => {
-  const { lang } = useTranslation();
+  const { t, lang } = useTranslation();
   const pool = useMemo(() => {
     const allPools = WORD_SEARCH_POOLS[lang] ?? WORD_SEARCH_POOLS.en;
     return allPools.flat().filter((w) => w.length >= 4);
@@ -99,11 +99,11 @@ const WordScramble: React.FC<{ isBotEnabled: boolean }> = () => {
   useEffect(() => {
     if (done || feedback) return;
     if (picked.length !== target.length) return;
-    const guess = picked.map((id) => tiles.find((t) => t.id === id)!.letter).join('');
+    const guess = picked.map((id) => tiles.find((tt) => tt.id === id)!.letter).join('');
     const ok = guess === target;
     setFeedback(ok ? 'ok' : 'bad');
     if (ok) setScore((s) => s + 1);
-    const t = setTimeout(() => {
+    const timer = setTimeout(() => {
       if (asked + 1 >= TOTAL) {
         setDone(true);
       } else {
@@ -111,12 +111,12 @@ const WordScramble: React.FC<{ isBotEnabled: boolean }> = () => {
         nextRound();
       }
     }, 900);
-    return () => clearTimeout(t);
+    return () => clearTimeout(timer);
   }, [picked, target, tiles, asked, nextRound, done, feedback]);
 
   const tone: StatusTone = done ? 'success' : feedback === 'bad' ? 'warning' : 'info';
 
-  const guessLetters = picked.map((id) => tiles.find((t) => t.id === id)!.letter);
+  const guessLetters = picked.map((id) => tiles.find((tt) => tt.id === id)!.letter);
 
   return (
     <div className="flex flex-col items-center gap-4">
@@ -192,7 +192,7 @@ const WordScramble: React.FC<{ isBotEnabled: boolean }> = () => {
             title={`${score}/${TOTAL} correct`}
             subtitle={score === TOTAL ? 'Word wizard!' : 'Another round?'}
             onPlayAgain={reset}
-            playAgainLabel="New round"
+            playAgainLabel={t('common.new_round')}
           />
         )}
       </div>

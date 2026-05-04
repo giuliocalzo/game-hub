@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
+import { useTranslation } from '../../i18n/I18nContext';
 import StatusBar, { StatusTone } from '../shared/StatusBar';
 import WinOverlay from '../shared/WinOverlay';
 import { noteFreq, playTone } from './audio';
@@ -53,6 +54,7 @@ const buildOptions = (correct: string): string[] => {
 };
 
 const NoteQuiz: React.FC<{ isBotEnabled: boolean }> = () => {
+  const { t } = useTranslation();
   const [note, setNote] = useState(() => pickNote());
   const [options, setOptions] = useState<string[]>(() => buildOptions(note.name));
   const [asked, setAsked] = useState(0);
@@ -175,7 +177,7 @@ const NoteQuiz: React.FC<{ isBotEnabled: boolean }> = () => {
             title={`${score}/${TOTAL}`}
             subtitle={score === TOTAL ? 'Perfect pitch!' : 'Keep reading the staff'}
             onPlayAgain={reset}
-            playAgainLabel="New round"
+            playAgainLabel={t('common.new_round')}
           />
         )}
       </div>

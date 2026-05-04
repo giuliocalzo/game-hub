@@ -1,4 +1,5 @@
 import React, { useCallback, useState } from 'react';
+import { useTranslation } from '../../i18n/I18nContext';
 import StatusBar, { StatusTone } from '../shared/StatusBar';
 import WinOverlay from '../shared/WinOverlay';
 
@@ -25,6 +26,7 @@ const split = (deck: Card[]): [Card[], Card[]] => {
 };
 
 const War: React.FC<{ isBotEnabled: boolean }> = () => {
+  const { t } = useTranslation();
   const [[p1, p2], setDecks] = useState<[Card[], Card[]]>(() => split(buildDeck()));
   const [played, setPlayed] = useState<{ p1?: Card; p2?: Card; spoils?: Card[] }>({});
   const [log, setLog] = useState<string>('Tap "Flip" to play a round.');
@@ -107,7 +109,7 @@ const War: React.FC<{ isBotEnabled: boolean }> = () => {
       {winner !== null && (
         <WinOverlay
           title={`Player ${winner + 1} wins!`}
-          subtitle="Captured the whole deck."
+          subtitle={t('common.win_captured_deck')}
           onPlayAgain={reset}
         />
       )}

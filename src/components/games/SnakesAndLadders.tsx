@@ -1,4 +1,5 @@
 import React, { useState, useCallback } from 'react';
+import { useTranslation } from '../../i18n/I18nContext';
 import { Dice6 } from 'lucide-react';
 import { SnakesAndLaddersPlayer } from '../../types/games';
 import StatusBar from '../shared/StatusBar';
@@ -9,6 +10,7 @@ interface SnakesAndLaddersProps {
 }
 
 const SnakesAndLadders: React.FC<SnakesAndLaddersProps> = ({ isBotEnabled }) => {
+  const { t } = useTranslation();
   const [players] = useState<SnakesAndLaddersPlayer[]>([
     { id: '1', name: 'Player 1', position: 1, color: 'bg-blue-500' },
     { id: '2', name: 'Bot Player', position: 1, color: 'bg-red-500' },
@@ -166,7 +168,7 @@ const SnakesAndLadders: React.FC<SnakesAndLaddersProps> = ({ isBotEnabled }) => 
           }`}
         >
           <Dice6 className={`w-5 h-5 ${isRolling ? 'animate-spin' : ''}`} />
-          <span>Roll Dice</span>
+          <span>{t('common.roll_dice')}</span>
         </button>
 
         {diceValue && (
@@ -183,7 +185,7 @@ const SnakesAndLadders: React.FC<SnakesAndLaddersProps> = ({ isBotEnabled }) => 
         {winner && (
           <WinOverlay
             title={`${winner} wins!`}
-            subtitle="First to 100 takes the crown."
+            subtitle={t('common.win_first_to_100')}
           />
         )}
       </div>

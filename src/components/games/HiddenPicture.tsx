@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { useTranslation } from '../../i18n/I18nContext';
 import StatusBar, { StatusTone } from '../shared/StatusBar';
 import WinOverlay from '../shared/WinOverlay';
 
@@ -129,6 +130,7 @@ const placeItems = (scene: Scene): Item[] => {
 };
 
 const HiddenPicture: React.FC<{ isBotEnabled: boolean }> = () => {
+  const { t } = useTranslation();
   const [sceneIdx, setSceneIdx] = useState(0);
   const scene = SCENES[sceneIdx];
   const [items, setItems] = useState<Item[]>(() => placeItems(SCENES[0]));
@@ -265,9 +267,9 @@ const HiddenPicture: React.FC<{ isBotEnabled: boolean }> = () => {
         {done && (
           <WinOverlay
             title={`Found in ${elapsed}s`}
-            subtitle="Try another scene!"
+            subtitle={t('common.win_try_another_scene')}
             onPlayAgain={() => reset(sceneIdx)}
-            playAgainLabel="Play again"
+            playAgainLabel={t('common.play_again')}
           />
         )}
       </div>

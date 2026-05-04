@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { useTranslation } from '../../i18n/I18nContext';
 import StatusBar, { StatusTone } from '../shared/StatusBar';
 import WinOverlay from '../shared/WinOverlay';
 
@@ -36,6 +37,7 @@ const QUESTIONS = 10;
 const TIME = 60;
 
 const MathQuiz: React.FC<{ isBotEnabled: boolean }> = () => {
+  const { t } = useTranslation();
   const [level, setLevel] = useState<Level>('easy');
   const [q, setQ] = useState(() => generate('easy'));
   const [input, setInput] = useState('');
@@ -142,7 +144,7 @@ const MathQuiz: React.FC<{ isBotEnabled: boolean }> = () => {
             title={`${score}/${QUESTIONS} correct`}
             subtitle={score === QUESTIONS ? 'Perfect score!' : 'Nice work — try again?'}
             onPlayAgain={() => reset(level)}
-            playAgainLabel="New quiz"
+            playAgainLabel={t('common.new_quiz')}
           />
         )}
       </div>

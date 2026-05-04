@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { useTranslation } from '../../i18n/I18nContext';
 import StatusBar, { StatusTone } from '../shared/StatusBar';
 import WinOverlay from '../shared/WinOverlay';
 
@@ -24,6 +25,7 @@ const randomFood = (snake: Point[]): Point => {
 };
 
 const Snake: React.FC<{ isBotEnabled: boolean }> = () => {
+  const { t } = useTranslation();
   const [snake, setSnake] = useState<Point[]>([{ x: 9, y: 9 }]);
   const [food, setFood] = useState<Point>({ x: 5, y: 5 });
   const [dir, setDir] = useState<Dir>('right');
@@ -155,10 +157,10 @@ const Snake: React.FC<{ isBotEnabled: boolean }> = () => {
 
         {over && (
           <WinOverlay
-            title="Game over"
+            title={t('common.game_over')}
             subtitle={`Score: ${score}`}
             onPlayAgain={reset}
-            playAgainLabel="New game"
+            playAgainLabel={t('common.new_game')}
           />
         )}
       </div>

@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { useTranslation } from '../../i18n/I18nContext';
 import { RefreshCw } from 'lucide-react';
 import StatusBar, { StatusTone } from '../shared/StatusBar';
 import WinOverlay from '../shared/WinOverlay';
@@ -69,6 +70,7 @@ const adjacent = (a: [number, number], b: [number, number]) =>
   Math.abs(a[0] - b[0]) + Math.abs(a[1] - b[1]) === 1;
 
 const ColorLink: React.FC<{ isBotEnabled: boolean }> = () => {
+  const { t } = useTranslation();
   const [level, setLevel] = useState<Level>('easy');
   const [puzzleIdx, setPuzzleIdx] = useState(0);
   const puzzle = PUZZLES[level][puzzleIdx % PUZZLES[level].length];
@@ -303,9 +305,9 @@ const ColorLink: React.FC<{ isBotEnabled: boolean }> = () => {
         {done && (
           <WinOverlay
             title="Connected!"
-            subtitle="All dots linked."
+            subtitle={t('common.win_all_dots_linked')}
             onPlayAgain={() => reset(level, (puzzleIdx + 1) % puzzleCount)}
-            playAgainLabel="Next puzzle"
+            playAgainLabel={t('common.next_puzzle')}
           />
         )}
       </div>

@@ -1,4 +1,5 @@
 import React, { useState, useCallback, useEffect, useRef } from 'react';
+import { useTranslation } from '../../i18n/I18nContext';
 import { Dice1, Dice2, Dice3, Dice4, Dice5, Dice6 } from 'lucide-react';
 import { BackgammonGameState, BackgammonPiece, BackgammonMove } from '../../types/games';
 import StatusBar, { StatusTone } from '../shared/StatusBar';
@@ -9,6 +10,7 @@ interface BackgammonProps {
 }
 
 const Backgammon: React.FC<BackgammonProps> = ({ isBotEnabled }) => {
+  const { t } = useTranslation();
   const [gameState, setGameState] = useState<BackgammonGameState>(initializeGame());
   const [gameStatus] = useState<string>('');
   const [isRolling, setIsRolling] = useState(false);
@@ -446,7 +448,7 @@ const Backgammon: React.FC<BackgammonProps> = ({ isBotEnabled }) => {
               : 'bg-gradient-to-r from-amber-500 to-orange-500 hover:brightness-110 active:scale-95'
           }`}
         >
-          <span>Roll Dice</span>
+          <span>{t('common.roll_dice')}</span>
         </button>
         
         <div className="flex space-x-2">
@@ -521,7 +523,7 @@ const Backgammon: React.FC<BackgammonProps> = ({ isBotEnabled }) => {
         {gameState.winner && (
           <WinOverlay
             title={`${gameState.winner === 'white' ? 'White' : 'Black'} wins!`}
-            subtitle="All pieces borne off."
+            subtitle={t('common.win_pieces_borne_off')}
           />
         )}
       </div>

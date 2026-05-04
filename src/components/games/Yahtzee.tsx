@@ -1,4 +1,5 @@
 import React, { useCallback, useState } from 'react';
+import { useTranslation } from '../../i18n/I18nContext';
 import { Dice1, Dice2, Dice3, Dice4, Dice5, Dice6 } from 'lucide-react';
 import StatusBar, { StatusTone } from '../shared/StatusBar';
 import WinOverlay from '../shared/WinOverlay';
@@ -61,6 +62,7 @@ const rollDice = (dice: Dice, keep: boolean[]): Dice =>
   dice.map((v, i) => (keep[i] ? v : Math.floor(Math.random() * 6) + 1)) as Dice;
 
 const Yahtzee: React.FC<{ isBotEnabled: boolean }> = () => {
+  const { t } = useTranslation();
   const [dice, setDice] = useState<Dice>([1, 2, 3, 4, 5]);
   const [keep, setKeep] = useState<boolean[]>([false, false, false, false, false]);
   const [rolls, setRolls] = useState(3);
@@ -168,7 +170,7 @@ const Yahtzee: React.FC<{ isBotEnabled: boolean }> = () => {
           title={`Total: ${total}`}
           subtitle={total >= 200 ? 'Amazing game!' : 'Try again for a higher score.'}
           onPlayAgain={reset}
-          playAgainLabel="New game"
+          playAgainLabel={t('common.new_game')}
         />
       )}
 

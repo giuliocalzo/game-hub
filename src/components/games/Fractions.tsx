@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
+import { useTranslation } from '../../i18n/I18nContext';
 import { RefreshCw } from 'lucide-react';
 import StatusBar, { StatusTone } from '../shared/StatusBar';
 import WinOverlay from '../shared/WinOverlay';
@@ -78,6 +79,7 @@ const sumTiles = (tiles: Tile[]): number =>
   tiles.filter((t) => t.picked).reduce((s, t) => s + t.n / t.d, 0);
 
 const Fractions: React.FC<{ isBotEnabled: boolean }> = () => {
+  const { t } = useTranslation();
   const [level, setLevel] = useState<Level>('easy');
   const [tiles, setTiles] = useState<Tile[]>(() => buildPool('easy'));
   const [animal, setAnimal] = useState(() => ANIMALS[Math.floor(Math.random() * ANIMALS.length)]);
@@ -209,7 +211,7 @@ const Fractions: React.FC<{ isBotEnabled: boolean }> = () => {
             title={`${score}/${TOTAL_ROUNDS}`}
             subtitle={score === TOTAL_ROUNDS ? 'Fraction wizard!' : 'Nice work'}
             onPlayAgain={() => reset(level)}
-            playAgainLabel="New round"
+            playAgainLabel={t('common.new_round')}
           />
         )}
       </div>

@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
+import { useTranslation } from '../../i18n/I18nContext';
 import StatusBar, { StatusTone } from '../shared/StatusBar';
 import WinOverlay from '../shared/WinOverlay';
 import { RefreshCw } from 'lucide-react';
@@ -59,6 +60,7 @@ const CARD_COLORS = [
 ];
 
 const MakeTen: React.FC<{ isBotEnabled: boolean }> = () => {
+  const { t } = useTranslation();
   const [level, setLevel] = useState<Level>('ten');
   const [deck, setDeck] = useState<Card[]>(() => generateDeck('ten'));
   const [selected, setSelected] = useState<number[]>([]);
@@ -183,9 +185,9 @@ const MakeTen: React.FC<{ isBotEnabled: boolean }> = () => {
         {done && (
           <WinOverlay
             title={`Cleared in ${moves} moves`}
-            subtitle="All pairs matched!"
+            subtitle={t('common.win_all_pairs')}
             onPlayAgain={() => reset(level)}
-            playAgainLabel="New deck"
+            playAgainLabel={t('common.new_deck')}
           />
         )}
       </div>

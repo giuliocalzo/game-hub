@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { useTranslation } from '../../i18n/I18nContext';
 import { RefreshCw } from 'lucide-react';
 import StatusBar, { StatusTone } from '../shared/StatusBar';
 import WinOverlay from '../shared/WinOverlay';
@@ -92,6 +93,7 @@ const areAdjacent = (i: number, j: number): boolean => {
 };
 
 const Match3: React.FC<{ isBotEnabled: boolean }> = () => {
+  const { t } = useTranslation();
   const [board, setBoard] = useState<Board>(randomBoard);
   const [selected, setSelected] = useState<number | null>(null);
   const [score, setScore] = useState(0);
@@ -229,7 +231,7 @@ const Match3: React.FC<{ isBotEnabled: boolean }> = () => {
             title={`${score} points`}
             subtitle={score >= 500 ? 'Gem master!' : score >= 200 ? 'Nice combos' : 'Try again'}
             onPlayAgain={reset}
-            playAgainLabel="Play again"
+            playAgainLabel={t('common.play_again')}
           />
         )}
       </div>

@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import { useTranslation } from '../../i18n/I18nContext';
 import StatusBar, { StatusTone } from '../shared/StatusBar';
 import WinOverlay from '../shared/WinOverlay';
 
@@ -13,6 +14,7 @@ const ALPHA = 'abcdefghijklmnopqrstuvwxyz'.split('');
 const MAX_WRONG = 6;
 
 const Hangman: React.FC<{ isBotEnabled: boolean }> = () => {
+  const { t } = useTranslation();
   const [word, setWord] = useState<string>(() => WORDS[Math.floor(Math.random() * WORDS.length)]);
   const [guessed, setGuessed] = useState<Set<string>>(new Set());
   const [wrong, setWrong] = useState(0);
@@ -131,7 +133,7 @@ const Hangman: React.FC<{ isBotEnabled: boolean }> = () => {
           title="Out of guesses"
           subtitle={`The word was "${word}".`}
           onPlayAgain={reset}
-          playAgainLabel="Try again"
+          playAgainLabel={t('common.try_again')}
         />
       )}
     </div>
