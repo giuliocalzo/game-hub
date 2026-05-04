@@ -190,8 +190,8 @@ const Tetris: React.FC<{ isBotEnabled: boolean }> = () => {
         <div
           className="p-2 rounded-2xl bg-gray-900 shadow-xl grid"
           style={{
-            gridTemplateColumns: `repeat(${COLS}, 1.25rem)`,
-            gridAutoRows: '1.25rem',
+            gridTemplateColumns: `repeat(${COLS}, min(8vw, 3.6vh))`,
+            gridAutoRows: 'min(8vw, 3.6vh)',
             gap: 1,
           }}
         >

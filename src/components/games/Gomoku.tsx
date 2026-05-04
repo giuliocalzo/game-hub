@@ -121,7 +121,7 @@ const Gomoku: React.FC<{ isBotEnabled: boolean }> = ({ isBotEnabled }) => {
         <div className="p-2 rounded-2xl bg-amber-200 shadow-inner overflow-x-auto">
           <div
             className="grid gap-0"
-            style={{ gridTemplateColumns: `repeat(${SIZE}, 22px)` }}
+            style={{ gridTemplateColumns: `repeat(${SIZE}, min(5vw, 4.5vh))` }}
           >
             {grid.map((row, r) =>
               row.map((cell, c) => (
@@ -129,7 +129,8 @@ const Gomoku: React.FC<{ isBotEnabled: boolean }> = ({ isBotEnabled }) => {
                   key={`${r}-${c}`}
                   onClick={() => place(r, c, turn)}
                   disabled={!!cell || !!winner || (isBotEnabled && turn === 'W')}
-                  className="relative w-[22px] h-[22px] bg-amber-200 border border-amber-700/40"
+                  className="relative bg-amber-200 border border-amber-700/40"
+                  style={{ width: 'min(5vw, 4.5vh)', height: 'min(5vw, 4.5vh)' }}
                   aria-label={`Cell ${r}, ${c}`}
                 >
                   {cell && (

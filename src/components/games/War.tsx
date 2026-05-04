@@ -92,7 +92,7 @@ const War: React.FC<{ isBotEnabled: boolean }> = () => {
     <div className="flex flex-col items-center gap-5">
       <StatusBar tone={tone}>{log}</StatusBar>
 
-      <div className="flex items-center justify-around w-full max-w-md gap-4">
+      <div className="flex items-center justify-around w-full max-w-2xl gap-4">
         <PlayerPile label="Player 1" count={p1.length} card={played.p1} face />
         <div className="text-3xl font-extrabold text-gray-500 dark:text-gray-400 dark:text-gray-500">VS</div>
         <PlayerPile label="Player 2" count={p2.length} card={played.p2} face />

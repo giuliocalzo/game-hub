@@ -164,7 +164,7 @@ const Catch: React.FC<{ isBotEnabled: boolean }> = () => {
             : 'Use ← → (or drag) to move the basket.'}
       </StatusBar>
 
-      <div className="relative w-full" style={{ maxWidth: 720 }}>
+      <div className="relative w-full" style={{ maxWidth: 'min(95vw, calc(80vh * 1.200))' }}>
         <svg
           viewBox={`0 0 ${W} ${H}`}
           className="w-full rounded-2xl shadow-xl cursor-pointer select-none"

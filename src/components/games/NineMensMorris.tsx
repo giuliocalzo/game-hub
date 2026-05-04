@@ -344,8 +344,8 @@ const NineMensMorris: React.FC<{ isBotEnabled: boolean }> = ({ isBotEnabled }) =
       <div className="relative">
         <svg
           viewBox="0 0 400 400"
-          className="w-full max-w-md rounded-2xl shadow-xl"
-          style={{ background: '#f3e8d3' }}
+          className="rounded-2xl shadow-xl"
+          style={{ background: '#f3e8d3', width: 'min(85vw, 80vh)', height: 'min(85vw, 80vh)' }}
         >
           {/* Squares */}
           <rect x="40" y="40" width="320" height="320" fill="none" stroke="#78350f" strokeWidth="3" />

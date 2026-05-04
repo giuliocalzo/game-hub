@@ -116,7 +116,7 @@ const Nonogram: React.FC<{ isBotEnabled: boolean }> = () => {
       <div className="relative">
         <div
           className="grid gap-0"
-          style={{ gridTemplateColumns: `auto repeat(${SIZE}, 2.25rem)` }}
+          style={{ gridTemplateColumns: `auto repeat(${SIZE}, min(7vw, 5.5vh))` }}
         >
           <div />
           {colHints.map((hs, i) => (
@@ -139,7 +139,8 @@ const Nonogram: React.FC<{ isBotEnabled: boolean }> = () => {
                     key={c}
                     onClick={(e) => click(r, c, e)}
                     onContextMenu={(e) => { e.preventDefault(); click(r, c, e); }}
-                    className={`w-9 h-9 ${major} ${majorB} text-lg font-bold flex items-center justify-center ${
+                    style={{ width: 'min(7vw, 5.5vh)', height: 'min(7vw, 5.5vh)' }}
+                    className={`${major} ${majorB} text-lg font-bold flex items-center justify-center ${
                       v === 1 ? 'bg-gray-900 text-white' : v === -1 ? 'bg-white dark:bg-gray-800 text-rose-500' : 'bg-white dark:bg-gray-800 hover:bg-blue-50 dark:hover:bg-blue-500/20'
                     }`}
                   >

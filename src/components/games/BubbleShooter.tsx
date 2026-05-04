@@ -264,7 +264,7 @@ const BubbleShooter: React.FC<{ isBotEnabled: boolean }> = () => {
             : `Score ${score} · Bubbles left: ${remaining}`}
       </StatusBar>
 
-      <div className="relative w-full" style={{ maxWidth: 640 }}>
+      <div className="relative w-full" style={{ maxWidth: 'min(95vw, calc(80vh * 1.000))' }}>
         <svg
           viewBox={`0 0 ${W} ${H}`}
           className="w-full rounded-2xl shadow-xl cursor-crosshair select-none"
@@ -317,7 +317,7 @@ const BubbleShooter: React.FC<{ isBotEnabled: boolean }> = () => {
         )}
       </div>
 
-      <p className="text-xs text-gray-500 dark:text-gray-400 max-w-md text-center">
+      <p className="text-xs text-gray-500 dark:text-gray-400 max-w-2xl text-center">
         Aim with the mouse, click to shoot. Match 3+ bubbles of the same color to pop them.
       </p>
     </div>

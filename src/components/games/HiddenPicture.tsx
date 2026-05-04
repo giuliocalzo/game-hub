@@ -214,7 +214,7 @@ const HiddenPicture: React.FC<{ isBotEnabled: boolean }> = () => {
       </div>
 
       {/* Scene */}
-      <div className="relative w-full" style={{ maxWidth: 900 }}>
+      <div className="relative w-full" style={{ maxWidth: 'min(95vw, calc(80vh * 1.455))' }}>
         <svg
           viewBox={`0 0 ${W} ${H}`}
           className="w-full rounded-2xl shadow-xl select-none"

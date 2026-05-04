@@ -203,7 +203,7 @@ const MathRunner: React.FC<{ isBotEnabled: boolean }> = () => {
           : `Correct ${correct}/${TARGET_CORRECT} · Wrong ${wrong}/5${!running ? ' · Tap Start to run' : ''}`}
       </StatusBar>
 
-      <div className="relative w-full" style={{ maxWidth: 860 }}>
+      <div className="relative w-full" style={{ maxWidth: 'min(95vw, calc(80vh * 2.000))' }}>
         <svg
           viewBox={`0 0 ${W} ${H}`}
           className="w-full rounded-2xl shadow-xl select-none"

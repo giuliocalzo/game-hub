@@ -169,7 +169,7 @@ const Game2048: React.FC<{ isBotEnabled: boolean }> = () => {
 
   return (
     <div className="flex flex-col items-center gap-5">
-      <div className="flex items-center justify-between w-full max-w-md">
+      <div className="flex items-center justify-between w-full max-w-2xl">
         <StatBox label="Score" value={score} tone="from-blue-500 to-indigo-500" />
         <StatBox label="Best" value={best} tone="from-amber-500 to-orange-500" />
       </div>
@@ -185,9 +185,10 @@ const Game2048: React.FC<{ isBotEnabled: boolean }> = () => {
               row.map((v, c) => (
                 <div
                   key={`${r}-${c}`}
-                  className={`w-16 h-16 md:w-20 md:h-20 rounded-xl flex items-center justify-center font-extrabold text-xl md:text-2xl transition-all ${
+                  className={`rounded-xl flex items-center justify-center font-extrabold text-xl md:text-2xl transition-all ${
                     TILE_STYLES[v] ?? 'bg-purple-600 text-white'
                   }`}
+                  style={{ width: 'min(18vw, 13vh)', height: 'min(18vw, 13vh)' }}
                 >
                   {v || ''}
                 </div>

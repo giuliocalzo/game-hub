@@ -165,10 +165,12 @@ const ConnectFour: React.FC<ConnectFourProps> = ({ isBotEnabled }) => {
                   onMouseLeave={() => setHoverCol((h) => (h === c ? null : h))}
                   disabled={!!winner || blockColumn || findLandingRow(board, c) < 0}
                   aria-label={`Column ${c + 1}, row ${r + 1}`}
-                  className={`w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center transition-all ${
+                  className={`rounded-full flex items-center justify-center transition-all ${
                     isWinningCell(r, c) ? 'ring-4 ring-emerald-300' : ''
                   }`}
                   style={{
+                    width: 'min(11vw, 11vh)',
+                    height: 'min(11vw, 11vh)',
                     background:
                       cell === 'R'
                         ? 'radial-gradient(circle at 35% 35%, #f87171, #b91c1c)'

@@ -186,7 +186,7 @@ const MiniBoard: React.FC<{
     </div>
     <div
       className="grid p-1 rounded-lg bg-gradient-to-br from-blue-500 to-indigo-600"
-      style={{ gridTemplateColumns: `repeat(${SIZE}, 1.8rem)`, gap: 2 }}
+      style={{ gridTemplateColumns: `repeat(${SIZE}, min(4vw, 5vh))`, gap: 2 }}
     >
       {board.cells.map((row, r) =>
         row.map((cell, c) => {
@@ -197,7 +197,8 @@ const MiniBoard: React.FC<{
               key={`${r}-${c}`}
               onClick={() => onFire?.(r, c)}
               disabled={!!shot || !onFire}
-              className={`w-[1.8rem] h-[1.8rem] rounded flex items-center justify-center text-sm font-bold ${
+              style={{ width: 'min(4vw, 5vh)', height: 'min(4vw, 5vh)' }}
+              className={`rounded flex items-center justify-center text-sm font-bold ${
                 shot === 'hit'
                   ? 'bg-rose-500 text-white'
                   : shot === 'miss'

@@ -119,7 +119,7 @@ const DrumPad: React.FC<{ isBotEnabled: boolean }> = () => {
         })}
       </div>
 
-      <p className="text-xs text-gray-500 dark:text-gray-400 max-w-md text-center">
+      <p className="text-xs text-gray-500 dark:text-gray-400 max-w-2xl text-center">
         Tap the pads or press keys 1–9. Make your own beat!
       </p>
     </div>

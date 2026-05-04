@@ -130,7 +130,7 @@ const Snake: React.FC<{ isBotEnabled: boolean }> = () => {
           className="grid gap-0 p-1 rounded-2xl bg-gradient-to-br from-emerald-600 to-green-800 shadow-xl"
           style={{
             gridTemplateColumns: `repeat(${COLS}, minmax(0,1fr))`,
-            width: 'min(95vw, 640px)',
+            width: 'min(95vw, 70vh)',
             aspectRatio: `${COLS} / ${ROWS}`,
           }}
         >

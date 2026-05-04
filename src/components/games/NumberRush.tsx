@@ -199,7 +199,7 @@ const NumberRush: React.FC<{ isBotEnabled: boolean }> = () => {
           : 'Move your cursor to steer. Absorb smaller or equal numbers to grow.'}
       </StatusBar>
 
-      <div className="relative w-full" style={{ maxWidth: 900 }}>
+      <div className="relative w-full" style={{ maxWidth: 'min(95vw, calc(80vh * 1.636))' }}>
         <svg
           ref={svgRef}
           viewBox={`0 0 ${W} ${H}`}

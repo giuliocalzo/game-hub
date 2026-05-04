@@ -214,7 +214,7 @@ const MahjongSolitaire: React.FC<{ isBotEnabled: boolean }> = () => {
           : `Tiles remaining ${remaining} · ${elapsed}s`}
       </StatusBar>
 
-      <div className="relative w-full overflow-x-auto" style={{ maxWidth: 900 }}>
+      <div className="relative w-full overflow-x-auto" style={{ maxWidth: 'min(95vw, calc(80vh * 1.500))' }}>
         <svg
           viewBox={`0 0 ${W} ${H}`}
           style={{ width: '100%', aspectRatio: `${W} / ${H}`, minWidth: 400 }}

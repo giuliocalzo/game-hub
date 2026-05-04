@@ -136,7 +136,8 @@ const Memory: React.FC<MemoryProps> = () => {
                 key={card.id}
                 onClick={() => handleFlip(card.id)}
                 disabled={card.matched || lock}
-                className="w-16 h-20 md:w-20 md:h-24 perspective"
+                className="perspective"
+                style={{ width: 'min(13vw, 8vh)', height: 'min(17vw, 11vh)' }}
                 aria-label={show ? `Card ${card.emoji}` : 'Card face down'}
               >
                 <div

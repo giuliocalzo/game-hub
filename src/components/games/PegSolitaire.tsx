@@ -155,7 +155,7 @@ const PegSolitaire: React.FC<{ isBotEnabled: boolean }> = () => {
           : `Pegs remaining: ${pegs}`}
       </StatusBar>
 
-      <div className="relative w-full" style={{ maxWidth: 440 }}>
+      <div className="relative w-full" style={{ maxWidth: 'min(95vw, calc(80vh * 1.000))' }}>
         <svg
           viewBox={`0 0 ${cell * SIZE} ${cell * SIZE}`}
           className="w-full rounded-2xl shadow-xl"

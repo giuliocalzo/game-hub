@@ -180,7 +180,7 @@ const BlockPuzzle: React.FC<{ isBotEnabled: boolean }> = () => {
         {done ? `Game over — ${score} points` : `Score ${score} · Pick a piece, then tap a grid cell`}
       </StatusBar>
 
-      <div className="relative w-full" style={{ maxWidth: 520 }}>
+      <div className="relative w-full" style={{ maxWidth: 'min(95vw, calc(80vh * 0.800))' }}>
         <div
           className="grid p-1.5 rounded-2xl bg-gradient-to-br from-slate-200 to-slate-400 dark:from-slate-800 dark:to-slate-950 shadow-xl"
           style={{ gridTemplateColumns: `repeat(${GRID}, minmax(0, 1fr))`, gap: 2 }}

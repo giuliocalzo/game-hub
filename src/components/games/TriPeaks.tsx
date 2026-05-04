@@ -276,7 +276,7 @@ const TriPeaks: React.FC<{ isBotEnabled: boolean }> = () => {
           : `Score ${score} · Streak ${streak} · Stock ${state.stock.length}`}
       </StatusBar>
 
-      <div className="relative w-full overflow-x-auto" style={{ maxWidth: 900 }}>
+      <div className="relative w-full overflow-x-auto" style={{ maxWidth: 'min(95vw, calc(80vh * 1.500))' }}>
         <svg
           viewBox={`0 0 ${boardW} ${boardH}`}
           className="w-full rounded-2xl shadow-xl"

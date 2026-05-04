@@ -114,7 +114,7 @@ const Sticker: React.FC<{ isBotEnabled: boolean }> = () => {
         className="w-full rounded-2xl shadow-xl cursor-copy select-none"
         style={{
           background: 'linear-gradient(135deg, #fce7f3 0%, #e0e7ff 50%, #dcfce7 100%)',
-          maxWidth: 900,
+          maxWidth: 'min(95vw, calc(80vh * 1.455))',
           aspectRatio: `${W} / ${H}`,
         }}
         onClick={handlePlace}
@@ -134,7 +134,7 @@ const Sticker: React.FC<{ isBotEnabled: boolean }> = () => {
         ))}
       </svg>
 
-      <p className="text-xs text-gray-500 dark:text-gray-400 max-w-md text-center">
+      <p className="text-xs text-gray-500 dark:text-gray-400 max-w-2xl text-center">
         Click anywhere on the canvas to stamp a sticker. Click a sticker to remove it.
       </p>
     </div>

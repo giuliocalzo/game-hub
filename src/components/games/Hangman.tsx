@@ -96,7 +96,7 @@ const Hangman: React.FC<{ isBotEnabled: boolean }> = () => {
         {masked}
       </div>
 
-      <div className="grid grid-cols-7 md:grid-cols-9 gap-1.5 max-w-md">
+      <div className="grid grid-cols-7 md:grid-cols-9 gap-1.5 max-w-2xl">
         {ALPHA.map((ch) => {
           const isGuessed = guessed.has(ch);
           const correct = isGuessed && word.includes(ch);

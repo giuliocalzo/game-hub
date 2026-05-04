@@ -102,7 +102,7 @@ const Darts: React.FC<{ isBotEnabled: boolean }> = () => {
           : `Dart ${thrown + 1}/${TOTAL} · Score ${score}`}
       </StatusBar>
 
-      <div className="relative w-full" style={{ maxWidth: 520 }}>
+      <div className="relative w-full" style={{ maxWidth: 'min(95vw, calc(80vh * 1.000))' }}>
         <svg
           viewBox={`0 0 ${SIZE} ${SIZE}`}
           className="w-full rounded-full shadow-xl cursor-crosshair"

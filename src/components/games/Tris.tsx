@@ -118,7 +118,7 @@ const Tris: React.FC<TrisProps> = ({ isBotEnabled }) => {
   return (
     <div className="flex flex-col items-center gap-6 md:gap-8">
       {/* Scoreboard + turn */}
-      <div className="w-full max-w-md flex items-center justify-between gap-3">
+      <div className="w-full max-w-2xl flex items-center justify-between gap-3">
         <PlayerChip
           label={isBotEnabled ? 'You' : 'Player 1'}
           mark="X"
@@ -171,7 +171,8 @@ const Tris: React.FC<TrisProps> = ({ isBotEnabled }) => {
                 onClick={() => handleSquareClick(index)}
                 disabled={!clickable}
                 aria-label={`Square ${index + 1}${square ? `, ${square}` : ', empty'}`}
-                className={`relative w-20 h-20 md:w-24 md:h-24 rounded-xl bg-white dark:bg-gray-800 shadow-sm flex items-center justify-center text-5xl md:text-6xl font-extrabold transition-all duration-200
+                style={{ width: 'min(22vw, 22vh)', height: 'min(22vw, 22vh)' }}
+                className={`relative rounded-xl bg-white dark:bg-gray-800 shadow-sm flex items-center justify-center text-7xl font-extrabold transition-all duration-200
                   ${clickable ? 'cursor-pointer hover:shadow-md hover:-translate-y-0.5 active:scale-95' : 'cursor-default'}
                   ${isWinning ? 'ring-4 ring-emerald-400 bg-emerald-50' : ''}
                   ${isLast && !isWinning ? 'ring-2 ring-blue-200' : ''}

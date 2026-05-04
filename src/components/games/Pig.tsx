@@ -110,7 +110,7 @@ const Pig: React.FC<PigProps> = ({ isBotEnabled }) => {
     <div className="flex flex-col items-center gap-5">
       <StatusBar tone={tone}>{message}</StatusBar>
 
-      <div className="flex gap-3 w-full max-w-md">
+      <div className="flex gap-3 w-full max-w-2xl">
         <PlayerCard
           label={isBotEnabled ? 'You' : 'Player 1'}
           total={scores[0]}

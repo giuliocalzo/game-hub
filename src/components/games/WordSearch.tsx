@@ -182,7 +182,7 @@ const WordSearch: React.FC<{ isBotEnabled: boolean }> = () => {
         )}
       </div>
 
-      <div className="flex gap-2 flex-wrap justify-center max-w-md">
+      <div className="flex gap-2 flex-wrap justify-center max-w-2xl">
         {pool.map((w) => (
           <span
             key={w}

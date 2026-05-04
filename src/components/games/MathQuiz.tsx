@@ -117,7 +117,7 @@ const MathQuiz: React.FC<{ isBotEnabled: boolean }> = () => {
           : `Question ${asked + 1}/${QUESTIONS} · Score ${score} · Time ${timeLeft}s`}
       </StatusBar>
 
-      <div className="relative w-full max-w-md p-6 rounded-2xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-lg text-center">
+      <div className="relative w-full max-w-2xl p-6 rounded-2xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-lg text-center">
         <div className="text-5xl font-extrabold text-gray-900 dark:text-gray-100 mb-4">
           {q.a} {q.op} {q.b} = ?
         </div>

@@ -133,7 +133,7 @@ const Subitize: React.FC<{ isBotEnabled: boolean }> = () => {
             }`}
       </StatusBar>
 
-      <div className="relative w-full max-w-md p-4 rounded-2xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-xl flex flex-col items-center gap-4">
+      <div className="relative w-full max-w-2xl p-4 rounded-2xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-xl flex flex-col items-center gap-4">
         <svg
           viewBox={`0 0 ${W} ${H}`}
           className="w-full rounded-xl"

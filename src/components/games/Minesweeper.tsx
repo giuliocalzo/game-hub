@@ -152,7 +152,8 @@ const Minesweeper: React.FC<{ isBotEnabled: boolean }> = () => {
                   key={`${r}-${c}`}
                   onClick={() => open(r, c)}
                   onContextMenu={handleRightClick}
-                  className={`w-7 h-7 md:w-8 md:h-8 text-xs md:text-sm font-bold flex items-center justify-center rounded ${
+                  style={{ width: 'min(5vw, 5vh)', height: 'min(5vw, 5vh)' }}
+                  className={`text-xs md:text-sm font-bold flex items-center justify-center rounded ${
                     cell.open
                       ? cell.mine
                         ? 'bg-rose-500 text-white'

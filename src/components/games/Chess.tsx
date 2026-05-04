@@ -385,8 +385,9 @@ const Chess: React.FC<ChessProps> = ({ isBotEnabled }) => {
             <div
               key={`${rowIndex}-${colIndex}`}
               onClick={() => handleSquareClick(rowIndex, colIndex)}
+              style={{ width: 'min(10vw, 9vh)', height: 'min(10vw, 9vh)' }}
               className={`
-                w-11 h-11 md:w-12 md:h-12 flex items-center justify-center cursor-pointer text-3xl transition-all
+                flex items-center justify-center cursor-pointer text-4xl transition-all
                 ${(rowIndex + colIndex) % 2 === 0 ? 'bg-stone-100' : 'bg-stone-500'}
                 ${selectedSquare?.row === rowIndex && selectedSquare?.col === colIndex ? 'ring-4 ring-blue-400 ring-inset' : ''}
                 hover:brightness-110

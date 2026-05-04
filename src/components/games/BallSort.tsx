@@ -153,7 +153,7 @@ const BallSort: React.FC<{ isBotEnabled: boolean }> = () => {
         {done ? `Sorted in ${moves} moves!` : `Moves ${moves} · Tap a tube, then tap a target`}
       </StatusBar>
 
-      <div className="relative w-full max-w-3xl">
+      <div className="relative w-full max-w-5xl">
         <div className="flex flex-wrap justify-center gap-3 sm:gap-4 p-4 sm:p-5 rounded-2xl bg-gradient-to-br from-slate-200 to-slate-400 dark:from-slate-800 dark:to-slate-950 shadow-xl">
           {tubes.map((tube, i) => {
             const isSel = selected === i;

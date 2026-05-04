@@ -156,7 +156,7 @@ const Maze: React.FC<{ isBotEnabled: boolean }> = () => {
           : `Moves ${moves} · ${elapsed}s · Use arrow keys or WASD`}
       </StatusBar>
 
-      <div className="relative w-full" style={{ maxWidth: 560 }}>
+      <div className="relative w-full" style={{ maxWidth: 'min(95vw, calc(80vh * 1.000))' }}>
         <svg
           viewBox={`0 0 ${viewSize} ${viewSize}`}
           className="w-full rounded-2xl shadow-xl"

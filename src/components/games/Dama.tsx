@@ -439,8 +439,9 @@ const Dama: React.FC<DamaProps> = ({ isBotEnabled }) => {
             <div
               key={`${rowIndex}-${colIndex}`}
               onClick={() => handleSquareClick(rowIndex, colIndex)}
+              style={{ width: 'min(10vw, 9vh)', height: 'min(10vw, 9vh)' }}
               className={`
-                w-12 h-12 flex items-center justify-center cursor-pointer transition-colors relative
+                flex items-center justify-center cursor-pointer transition-colors relative
                 ${(rowIndex + colIndex) % 2 === 0 ? 'bg-amber-100' : 'bg-amber-800'}
                 ${selectedSquare?.row === rowIndex && selectedSquare?.col === colIndex ? 'ring-4 ring-blue-400' : ''}
                 ${mustCapture.some(pos => pos.row === rowIndex && pos.col === colIndex) ? 'ring-2 ring-orange-400' : ''}
@@ -449,9 +450,10 @@ const Dama: React.FC<DamaProps> = ({ isBotEnabled }) => {
             >
               {piece && (
                 <div className={`
-                  w-8 h-8 rounded-full border-2 border-gray-800 flex items-center justify-center font-bold text-sm
+                  rounded-full border-2 border-gray-800 flex items-center justify-center font-bold
                   ${piece.color === 'red' ? 'bg-red-500 text-white' : 'bg-gray-800 text-white'}
-                `}>
+                `}
+                style={{ width: '70%', height: '70%' }}>
                   {piece.isKing ? '♔' : ''}
                 </div>
               )}

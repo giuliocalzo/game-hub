@@ -84,7 +84,8 @@ const Fifteen: React.FC<{ isBotEnabled: boolean }> = () => {
               key={i}
               onClick={() => move(i)}
               disabled={v === 0 || won}
-              className={`w-16 h-16 md:w-20 md:h-20 rounded-xl flex items-center justify-center text-2xl md:text-3xl font-extrabold transition-all ${
+              style={{ width: 'min(18vw, 14vh)', height: 'min(18vw, 14vh)' }}
+              className={`rounded-xl flex items-center justify-center text-2xl md:text-3xl font-extrabold transition-all ${
                 v === 0
                   ? 'bg-transparent cursor-default'
                   : 'bg-white dark:bg-gray-800 text-indigo-700 shadow hover:-translate-y-0.5 active:scale-95'

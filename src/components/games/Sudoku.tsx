@@ -139,7 +139,7 @@ const Sudoku: React.FC<{ isBotEnabled: boolean }> = () => {
         <div className="p-1 rounded-2xl bg-gray-900 shadow-xl">
           <div
             className="grid bg-gray-900"
-            style={{ gridTemplateColumns: `repeat(${N}, 2.2rem)` }}
+            style={{ gridTemplateColumns: `repeat(${N}, min(8vw, 6vh))` }}
           >
             {board.map((row, r) =>
               row.map((v, c) => {
@@ -149,7 +149,8 @@ const Sudoku: React.FC<{ isBotEnabled: boolean }> = () => {
                   <button
                     key={`${r}-${c}`}
                     onClick={() => setSelected([r, c])}
-                    className={`w-[2.2rem] h-[2.2rem] ${borderR} ${borderB} text-lg font-bold ${cellClass(r, c)}`}
+                    className={`${borderR} ${borderB} text-lg font-bold ${cellClass(r, c)}`}
+                    style={{ width: 'min(8vw, 6vh)', height: 'min(8vw, 6vh)' }}
                   >
                     {v !== 0 ? v : ''}
                   </button>

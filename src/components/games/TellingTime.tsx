@@ -87,7 +87,7 @@ const Clock: React.FC<{ h: number; m: number; size?: number }> = ({ h, m, size =
   const minRad = (minuteAngle * Math.PI) / 180;
 
   return (
-    <svg viewBox={`0 0 ${size} ${size}`} width={size} height={size} className="drop-shadow-xl">
+    <svg viewBox={`0 0 ${size} ${size}`} className="drop-shadow-xl" style={{ width: 'min(70vw, 50vh)', height: 'min(70vw, 50vh)' }}>
       <circle cx={cx} cy={cy} r={r} fill="#fefce8" stroke="#0f172a" strokeWidth={4} />
       <circle cx={cx} cy={cy} r={r - 10} fill="none" stroke="#fde68a" strokeWidth={1} />
       {ticks}
@@ -184,7 +184,7 @@ const TellingTime: React.FC<{ isBotEnabled: boolean }> = () => {
           : `Question ${asked + 1}/${TOTAL} · Score ${score}`}
       </StatusBar>
 
-      <div className="relative w-full max-w-md p-5 rounded-2xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-xl flex flex-col items-center gap-4">
+      <div className="relative w-full max-w-2xl p-5 rounded-2xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-xl flex flex-col items-center gap-4">
         <Clock h={answer.h} m={answer.m} />
 
         <div className="grid grid-cols-2 gap-2 w-full">

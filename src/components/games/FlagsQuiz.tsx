@@ -85,7 +85,7 @@ const FlagsQuiz: React.FC<{ isBotEnabled: boolean }> = () => {
       </StatusBar>
 
       <div className="text-8xl select-none">{q.correct.flag}</div>
-      <div className="grid grid-cols-2 gap-3 w-full max-w-md">
+      <div className="grid grid-cols-2 gap-3 w-full max-w-2xl">
         {q.options.map((o) => {
           const picked = locked === o.name;
           const isRight = o.name === q.correct.name;

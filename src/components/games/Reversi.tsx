@@ -135,13 +135,15 @@ const Reversi: React.FC<{ isBotEnabled: boolean }> = ({ isBotEnabled }) => {
                   key={`${r}-${c}`}
                   onClick={() => play(r, c)}
                   disabled={!isLegal || gameOver}
-                  className={`w-9 h-9 md:w-11 md:h-11 rounded bg-emerald-600 hover:bg-emerald-500 flex items-center justify-center`}
+                  style={{ width: 'min(9vw, 9vh)', height: 'min(9vw, 9vh)' }}
+                  className={`rounded bg-emerald-600 hover:bg-emerald-500 flex items-center justify-center`}
                 >
                   {cell && (
                     <div
-                      className={`w-7 h-7 md:w-9 md:h-9 rounded-full ${
+                      className={`rounded-full ${
                         cell === 'B' ? 'bg-gray-900' : 'bg-white dark:bg-gray-800'
                       } shadow`}
+                      style={{ width: '78%', height: '78%' }}
                     />
                   )}
                   {!cell && isLegal && !gameOver && (

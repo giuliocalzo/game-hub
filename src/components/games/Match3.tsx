@@ -192,7 +192,7 @@ const Match3: React.FC<{ isBotEnabled: boolean }> = () => {
           : `Score ${score} · Moves left ${movesLeft}`}
       </StatusBar>
 
-      <div className="relative w-full" style={{ maxWidth: 520 }}>
+      <div className="relative w-full" style={{ maxWidth: 'min(95vw, calc(80vh * 1.000))' }}>
         <div
           className="grid gap-1 p-2 sm:p-3 rounded-2xl bg-gradient-to-br from-slate-200 to-slate-400 dark:from-slate-800 dark:to-slate-950 shadow-xl"
           style={{ gridTemplateColumns: `repeat(${SIZE}, minmax(0, 1fr))` }}

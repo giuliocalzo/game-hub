@@ -249,7 +249,7 @@ const ColorLink: React.FC<{ isBotEnabled: boolean }> = () => {
           : 'Drag from a dot to its match. Fill every cell.'}
       </StatusBar>
 
-      <div className="relative w-full" style={{ maxWidth: 560 }}>
+      <div className="relative w-full" style={{ maxWidth: 'min(95vw, calc(80vh * 1.000))' }}>
         <svg
           ref={svgRef}
           viewBox={`0 0 ${viewSize} ${viewSize}`}

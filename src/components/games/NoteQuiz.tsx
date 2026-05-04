@@ -116,7 +116,7 @@ const NoteQuiz: React.FC<{ isBotEnabled: boolean }> = () => {
           : `Note ${asked + 1}/${TOTAL} · Score ${score}`}
       </StatusBar>
 
-      <div className="relative w-full max-w-md p-5 rounded-2xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-xl flex flex-col items-center gap-4">
+      <div className="relative w-full max-w-2xl p-5 rounded-2xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-xl flex flex-col items-center gap-4">
         <svg viewBox="0 0 320 180" className="w-full" style={{ aspectRatio: '320 / 180' }}>
           {/* Staff lines */}
           {[0, 2, 4, 6, 8].map((s) => (
